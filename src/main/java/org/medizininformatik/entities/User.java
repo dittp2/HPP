@@ -1,5 +1,8 @@
 package org.medizininformatik.entities;
 
+import java.sql.Date;
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,10 +12,12 @@ public class User {
 	@Id
 	@GeneratedValue
     private Long id;
+	private String prefix;
     private String fname;
+    private String secfname;
     private String lname;
-    private String gender;
-    private String bdate;
+    private int gender;
+    private Date bdate;
     
 	public Long getId() {
 		return id;
@@ -33,22 +38,24 @@ public class User {
 		this.lname = lname;
 	}
 	
-	public void setGender(String gender) {
+	public void setGender(int gender) {
 		this.gender = gender;
 	}
-	public String getGender() {
+	public int getGender() {
 		return gender;
 	}
 	
-	public void setBdate(String bdate) {
+	public void setBdate(Date bdate) {
 		this.bdate = bdate;
 	}
-	public String getBdate() {
+	public Date getBdate() {
 		return bdate;
 	}
 	
-	public User(String fname, String lname, String gender, String bdate) {
+	public User(String prefix, String fname, String secfname, String lname, int gender, Date bdate) {
+		this.prefix = prefix;
 		this.fname = fname;
+		this.secfname = secfname;
 		this.lname = lname;
 		this.gender = gender;
 		this.bdate = bdate;
@@ -57,9 +64,22 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", fname=" + fname + ", lname=" + lname + ", gender=" + gender + ", bdate=" + bdate + "]";
+		return "User [id=" + id + ", prefix=" + prefix + ", fname=" + fname + ", secfname=" + secfname + ", lname="
+				+ lname + ", gender=" + gender + ", bdate=" + bdate + "]";
 	}
 	public User() {
+	}
+	public String getPrefix() {
+		return prefix;
+	}
+	public void setPrefix(String prefix) {
+		this.prefix = prefix;
+	}
+	public String getSecfname() {
+		return secfname;
+	}
+	public void setSecfname(String secfname) {
+		this.secfname = secfname;
 	}
     
 }
