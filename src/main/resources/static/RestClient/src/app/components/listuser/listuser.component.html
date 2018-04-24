@@ -1,0 +1,83 @@
+
+
+
+<h1>Health Professional Portal</h1>
+<h2>Dashboard</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+
+
+      <h3>Patientenangaben</h3>
+      <form (ngSubmit)="processForm()">
+        <div class="form group">
+          <span>
+            <label for="id">User ID</label>
+          </span>
+          <input type="text" name="searchId" class="form-control" placeholder="ID of User" [(ngModel)]="idSearch">
+          
+        </div>
+        <div class="form group">
+          <label for="id">First Name</label>
+          <input type="text" name="searchFname" class="form-control" placeholder="Firstname of User" [(ngModel)]="fnameSearch">
+        </div>
+        <div class="form group">
+          <label for="id">Last Name</label>
+          <input type="text" name="searchLname" class="form-control" placeholder="Lastname of User">
+        </div>
+        <div class="form group">
+          <label for="id">Gender</label>
+          <input type="text" name="searchGender" class="form-control" placeholder="Gender of User">
+        </div>
+        <div class="form group">
+            <label for="id">Birthdate</label>
+            <input type="text" name="searchBdate" class="form-control" placeholder="Birthdate of User">
+          </div>
+      </form>
+      <br>
+      <button class="btn btn-primary" (click)="searchUser()"> Search User </button>
+    </div>
+
+
+    <div class="col-6">
+      <h3>Suchergebnisse</h3>
+      <table class="table table-striped">
+        <thead>
+          <th>Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+          <th>Birthdate</th>
+          <th>Operations</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{user.id}}</td>
+            <td>{{user.fname}}</td>
+            <td>{{user.lname}}</td>
+            <td>{{user.gender}}</td>
+            <td>{{user.bdate}}</td>
+            <td>
+              <button class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
+            </td>
+            <td>
+              <button class="btn btn-primary" (click)="updateUser(user)">Edit</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" (click)="newUser()"> New User </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <br>
+      <h3>Hilfspersonen</h3>
+    </div>
+    <div class="col-6">
+      <br>
+      <h3>Suchergebnisse</h3>
+    </div>
+
+  </div>
+</div>
