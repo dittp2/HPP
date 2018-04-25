@@ -27,6 +27,15 @@ public class UserController {
 		return userRepository.findAll();
 	}
 
+//	
+//	@GetMapping("/user/{fname}")
+//	public List<User> searchUser(@PathVariable String fname){
+//	
+//		
+//		return userRepository.findAll();
+//		
+//	}
+	
 	@GetMapping("/user/{id}")
 	public User getUser(@PathVariable Long id) {
 		return userRepository.findOne(id);

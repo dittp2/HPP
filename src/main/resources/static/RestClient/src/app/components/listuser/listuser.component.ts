@@ -3,6 +3,7 @@ import { UserService } from '../../shared-service/user.service';
 import { User } from '../../user';
 import { Router } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
+// import { userInfo } from 'os';
 
 @Component({
   selector: 'app-listuser',
@@ -36,37 +37,23 @@ export class ListuserComponent implements OnInit {
     this._router.navigate(['/op']);
   }
 
+  searchUser(){
+  
+  this._userService.getUser(this.idSearch).subscribe((user) => {
+    console.log(user);
+    this.users = [];
+    this.users[0] = user;
+    
+  }, (error) => {
+    console.log(error);
+  });
+  
+  }
+
   newUser() {
     let user = new User();
     this._userService.setter(user);
     this._router.navigate(['/op']);
   }
-/*
-  searchUser(users, user) {
-    let idSearch = this.idSearch.toString();
-    console.log(idSearch);
-    let fnameSearch = this.fnameSearch.toString();
-    console.log(fnameSearch);
-    let fnameSearch = this.fnameSearch.toString();
-    console.log(fnameSearch);
-    console.log(user.fname === fnameSearch);
+}
 
-    this.users.filter(function(user) {
-      return user.fname === fnameSearch;
-    });
-
-    */
-  }
-/*
-    let users = this.users.find(x => x.Id === this.users);
-    if (users !== undefined) {
-        // You can access Id or Name of the found server object.
-        concole.log(server.Name);
-
-    for (let i = 0; i < users.count; i++) {
-      if (users[i].name === idSearch) {
-        return users[i];
-      }
-    }
-  }
-  */
