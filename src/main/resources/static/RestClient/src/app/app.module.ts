@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserService } from './shared-service/user.service';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { AppComponent } from './app.component';
 import { ListuserComponent } from './components/listuser/listuser.component';
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    MatToolbarModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
