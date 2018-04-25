@@ -1,4 +1,15 @@
 .mat-toolbar {
-    background-color: rgb(49, 159, 231);
     
 }
+
+.container {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.col-4 {
+    padding-left: 2%;
+    padding-top: 1%
+}
+

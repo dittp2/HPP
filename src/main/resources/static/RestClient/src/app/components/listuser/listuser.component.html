@@ -1,100 +1,112 @@
-<mat-toolbar class="mat-toolbar">  
-  <mat-toolbar-row>
-    <span><h1>Health Professional Portal</h1></span>
-  </mat-toolbar-row>
-</mat-toolbar>
+<div class="body">
+  <mat-toolbar class="mat-toolbar">
+    <mat-toolbar-row>
+      <span>
+        <h1>Health Professional Portal</h1>
+      </span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <span>
+        <h2>Dashboard</h2>
+      </span>
+    </mat-toolbar-row>
+  </mat-toolbar>
 
+  <div class="container">
+    <div class="row">
+      <div class="">
 
-<h2>Dashboard</h2>
-<div class="container">
-  <div class="row">
-    <div class="col-4">
-
-
-      <h3>Patientenangaben</h3>
-      <form (ngSubmit)="processForm()">
-        <div class="form group">
-          <span>
-            <label for="id">User ID</label>
-          </span>
-          <input type="text" name="searchId" class="form-control" placeholder="ID of User" [(ngModel)]="idSearch">
-          
-        </div>
-        <div class="form group">
-          <label for="id">Prefix</label>
-          <input type="text" name="searchPrefix" class="form-control" placeholder="Prefix of User" >
-        </div>
-        <div class="form group">
-          <label for="id">First Name</label>
-          <input type="text" name="searchFname" class="form-control" placeholder="Firstname of User" [(ngModel)]="fnameSearch">
+        <div class="form group col">
+          <h3>Patientenangaben</h3>
         </div>
 
-        <div class="form group">
-          <label for="id">Second Name</label>
-          <input type="text" name="searchSecfname" class="form-control" placeholder="Secondname of User" >
-        </div>
 
-        <div class="form group">
-          <label for="id">Last Name</label>
-          <input type="text" name="searchLname" class="form-control" placeholder="Lastname of User">
-        </div>
-        <div class="form group">
-          <label for="id">Gender</label>
-          <input type="text" name="searchGender" class="form-control" placeholder="Gender of User">
-        </div>
-        <div class="form group">
+        <form (ngSubmit)="processForm()">
+          <div class="form group col">
+            <span>
+              <label for="id">User ID</label>
+            </span>
+            <input type="text" name="searchId" class="form-control" placeholder="ID of User" [(ngModel)]="idSearch">
+
+          </div>
+          <div class="form group col">
+            <label for="id">Prefix</label>
+            <input type="text" name="searchPrefix" class="form-control" placeholder="Prefix of User">
+          </div>
+
+
+          <div class="form group col">
+            <form>
+              <label for="id">
+
+                <i>First Name</i>
+              </label>
+            </form>
+            <input type="text" name="searchFname" class="form-control" placeholder="Firstname of User" [(ngModel)]="fnameSearch">
+          </div>
+
+          <div class="form group col">
+            <label for="id">Second Name</label>
+            <input type="text" name="searchSecfname" class="form-control" placeholder="Secondname of User">
+          </div>
+
+          <div class="form group col">
+            <label for="id">Last Name</label>
+            <input type="text" name="searchLname" class="form-control" placeholder="Lastname of User">
+          </div>
+          <div class="form group col">
+            <label for="id">Gender</label>
+            <input type="text" name="searchGender" class="form-control" placeholder="Gender of User">
+          </div>
+          <div class="form group col">
             <label for="id">Birthdate</label>
             <input type="text" name="searchBdate" class="form-control" placeholder="Birthdate of User">
           </div>
-      </form>
-      <br>
-      <button class="btn btn-primary" (click)="searchUser()"> Search User </button>
-    </div>
+
+        </form>
+        <div class="form group col">
+          <br>
+          <button class="btn btn-info btn-block" (click)="searchUser()"> Search User </button>
+        </div>
+      </div>
 
 
-    <div class="col-6">
-      <h3>Suchergebnisse</h3>
-      <table class="table table-striped">
-        <thead>
-          <th>Id</th>
-          <th>Prefix</th>
-          <th>First Name</th>
-          <th>Second Name</th>
-          <th>Last Name</th>
-          <th>Gender</th>
-          <th>Birthdate</th>
-          <th>Operations</th>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
-            <td>{{user.id}}</td>
-            <td>{{user.prefix}}</td>
-            <td>{{user.fname}}</td>
-            <td>{{user.secfname}}</td>
-            <td>{{user.lname}}</td>
-            <td>{{user.gender}}</td>
-            <td>{{user.bdate}}</td>
-            <td>
-              <button class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
-            </td>
-            <td>
-              <button class="btn btn-primary" (click)="updateUser(user)">Edit</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <button class="btn btn-primary" (click)="newUser()"> New User </button>
+      <div class="col-6">
+        <h3>Suchergebnisse</h3>
+        <table class="table table-striped">
+          <thead>
+            <th>Id</th>
+            <th>Prefix</th>
+            <th>First Name</th>
+            <th>Second Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Birthdate</th>
+            <th>Operations</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{user.id}}</td>
+              <td>{{user.prefix}}</td>
+              <td>{{user.fname}}</td>
+              <td>{{user.secfname}}</td>
+              <td>{{user.lname}}</td>
+              <td>{{user.gender}}</td>
+              <td>{{user.bdate}}</td>
+              <td>Test1</td>
+              <td>Test2</td>
+              <td>Test3</td>
+              <td>
+                <button class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
+              </td>
+              <td>
+                <button class="btn btn-primary" (click)="updateUser(user)">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-primary" (click)="newUser()"> New User </button>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-4">
-      <br>
-      <h3>Hilfspersonen</h3>
-    </div>
-    <div class="col-6">
-      <br>
-      <h3>Suchergebnisse</h3>
-    </div>
-
   </div>
 </div>
