@@ -38,16 +38,63 @@ export class ListuserComponent implements OnInit {
   }
 
   searchUser(){
+    this._userService.getfUsers(this.fnameSearch).subscribe((users) => {
+      console.log(users);
+          this.users = users;
+        }, (error) => {
+          console.log(error);
+        });
+}
+
+  //   //this.searchFname();
+  //   console.log(this.fnameSearch);
+  //   this._userService.getUsers().subscribe((users) => {
+  //     console.log(users);
+  //     this.users = users;
+  //   }, (error) => {
+  //     console.log(error);
+  //   });
+
+  //   // console.log(this.users[0].id);
+  //   // console.log(this.users[0].fname);
+  //   // console.log(this.users[0].gender);
+  //   // console.log(this.users[0].lname);
+
+  //   // let idid;
+  //   for(var i=0; i<this.users.length;i++){
+  //     if(this.fnameSearch = this.users[i].fname){
+  //       this.idSearch = this.users[i].id;
+  //       console.log(this.users[i]);
+  //     }
+  // }
   
-  this._userService.getUser(this.idSearch).subscribe((user) => {
-    console.log(user);
-    this.users = [];
-    this.users[0] = user;
+  // //console.log(idid)
+
+  //   this._userService.getUser(this.idSearch).subscribe((user) => {
+  //   console.log(user);
+  //   this.users = [];
+  //   this.users[0] = user;
     
-  }, (error) => {
-    console.log(error);
-  });
+  // }, (error) => {
+  //   console.log(error);
+  // });
   
+
+
+  searchFname(){
+    console.log(this.fnameSearch);
+
+
+    this._userService.getUser(this.idSearch).subscribe((user) => {
+      console.log(user);
+      this.users = [];
+      this.users[0] = user;
+      
+    }, (error) => {
+      console.log(error);
+    });
+    
+    
   }
 
   newUser() {

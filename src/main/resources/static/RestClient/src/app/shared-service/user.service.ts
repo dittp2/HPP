@@ -21,6 +21,13 @@ export class UserService {
     return this._http.get(this.baseUrl + '/users', this.options).map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
+
+  getfUsers(fname:String) {
+
+    return this._http.get(this.baseUrl + '/users/'+fname, this.options).map((response: Response) => response.json())
+      .catch(this.errorHandler);
+  }
+
   getUser(id: Number) {
 
     return this._http.get(this.baseUrl + '/user/' + id, this.options).map((response: Response) => response.json())
