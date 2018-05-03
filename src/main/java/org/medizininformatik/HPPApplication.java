@@ -24,8 +24,9 @@ public class HPPApplication implements CommandLineRunner {
 	@SuppressWarnings("deprecation")
 	@Override
 	public void run(String... args) throws Exception {
-		userRepository.save(new User("dr", "Astmah","Blub", "Allang", 1,new Date(1918,06,14)));
-		userRepository.save(new User("", "Test"," ", "Test", 2, new Date(18,06,14)));
+		userRepository.save(new User("Frau", "Astrid","Simone", "Beieler", 1,new Date(1918,06,14)));
+		userRepository.save(new User("Herr", "Markus","Peter", "Meister", 2, new Date(18,06,14)));
+		userRepository.save(new User("Herr", "Pietro","Pablo", "Golums", 2, new Date(1972,06,14)));
 		/*
 		userRepository.save(new User("Astrid", "Aescher", "weiblich", "12.05.1948"));
 		userRepository.save(new User("Bruno", "Berling", "männlich", "23.07.1973"));

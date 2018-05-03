@@ -1,15 +1,58 @@
+.example-icon {
+    padding: 0 14px;
+  }
+  
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+
+.body {
+    width: 1200px;
+}
+
 .mat-toolbar {
+    padding-left: 2%;    
+    background-color: #007bff;
+    color: white;
     
+}
+
+.searchContainer {
+    width: 300px;
+    height: 100%;
+    margin-left: 1%;
+
+}
+
+.patientsList {
+    margin-left: 20px;
+    width: 800px;
 }
 
 .container {
     width: 100%;
-    padding: 0px;
+    padding-top: 4%;
     margin: 0px;
+    position: static; 
 }
 
 .col-4 {
     padding-left: 2%;
     padding-top: 1%
 }
+
+.example-full-width {
+    width: 100%;
+}
+
+.patLabel {
+    width: 50;
+}
+
+
+
+
+
+
 

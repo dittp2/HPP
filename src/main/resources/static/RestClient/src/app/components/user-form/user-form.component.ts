@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../shared-service/user.service';
 import { User } from '../../user';
 import { Router } from '@angular/router';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDividerModule} from '@angular/material/divider';
 
 @Component({
   selector: 'app-user-form',
@@ -13,6 +15,10 @@ export class UserFormComponent implements OnInit {
 
 
   constructor(private _userService: UserService, private _router: Router ) { }
+
+  navigateToHome() {
+    this._router.navigate(['/']);
+  }
 
   ngOnInit() {
     this.user = this._userService.getter();

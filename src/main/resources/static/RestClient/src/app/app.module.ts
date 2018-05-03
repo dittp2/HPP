@@ -12,11 +12,15 @@ import { AppComponent } from './app.component';
 import { ListuserComponent } from './components/listuser/listuser.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { User } from './user';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MaterialModule} from './material.module';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatGridListModule} from '@angular/material/grid-list';
+//import {MatInputModule} from '@angular/material/input';
 
 const appRoutes: Routes = [
   {path: '', component: ListuserComponent},
   {path: 'op', component: UserFormComponent}
-
 ];
 
 @NgModule({
@@ -37,7 +41,10 @@ const appRoutes: Routes = [
     MatInputModule,
     MatIconModule,
     MatFormFieldModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule,
+    MatDividerModule,
+    MatGridListModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

@@ -1,0 +1,40 @@
+.gridPatDossier {
+    margin-top: 20px;
+}
+
+.container {
+    margin-top: 20px;
+    align-content: center;
+}
+
+  .patInformation {
+      width: 400px;
+      height: 400px;
+      background-color: blue;
+  }
+
+  .patDocuments {
+    width: 400px;
+    height: 400px;
+    background-color: red;
+  }
+
+  .gridPatDossier {
+    width: 900px;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.patName {
+    color: blue;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .patDocumentContainer {
+      margin-left: 5%;
+  }

@@ -4,6 +4,7 @@ import { User } from '../../user';
 import { Router } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDividerModule} from '@angular/material/divider';
 
 @Component({
   selector: 'app-listuser',
@@ -42,6 +43,9 @@ export class ListuserComponent implements OnInit {
     this._userService.setter(user);
     this._router.navigate(['/op']);
   }
+
+
+
 /*
   searchUser(users, user) {
     let idSearch = this.idSearch.toString();

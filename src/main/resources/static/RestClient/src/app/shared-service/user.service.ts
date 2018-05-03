@@ -58,11 +58,11 @@ export class UserService {
     return this.user;
   }
 
-  
-  // searchUser(id: Number) {
-  //   // angular.isArray(users);
-  //   return this._http.get(this.baseUrl + '/user/' + id, this.options).map((response: Response) => response.json())
-  //     .catch(this.errorHandler);
-  // }
-  
+  /*
+  searchUser(id: Number) {
+    angular.isArray(users);
+    return this._http.get(this.baseUrl + '/user/' + id, this.options).map((response: Response) => response.json())
+      .catch(this.errorHandler);
+  }
+  */
 }
