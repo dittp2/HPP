@@ -14,6 +14,8 @@ export class ListuserComponent implements OnInit {
   private users: User[];
   private idSearch;
   private fnameSearch;
+  private lnameSearch;
+  private genderSearch;
 
   constructor(private _userService: UserService, private _router: Router) { }
 
@@ -25,6 +27,7 @@ export class ListuserComponent implements OnInit {
       console.log(error);
     });
   }
+
   deleteUser(user) {
     this._userService.deleteUser(user.id).subscribe((data) => {
     }, (error) => {
@@ -38,66 +41,28 @@ export class ListuserComponent implements OnInit {
   }
 
   searchUser(){
-    this._userService.getfUsers(this.fnameSearch).subscribe((users) => {
+
+    //Suche nach Name und Vorname und oder geschlecht.
+    this._userService.getNameUsers(this.fnameSearch,this.lnameSearch, this.genderSearch).subscribe((users) => {
       console.log(users);
           this.users = users;
         }, (error) => {
           console.log(error);
         });
+  
+    //SUche Nach ID
+     this._userService.getUser(this.idSearch).subscribe((user) => {
+     console.log(user);
+     this.users = [];
+     this.users[0] = user;
+    
+   }, (error) => {
+     console.log(error);
+   });
+
+ 
 }
-
-  //   //this.searchFname();
-  //   console.log(this.fnameSearch);
-  //   this._userService.getUsers().subscribe((users) => {
-  //     console.log(users);
-  //     this.users = users;
-  //   }, (error) => {
-  //     console.log(error);
-  //   });
-
-  //   // console.log(this.users[0].id);
-  //   // console.log(this.users[0].fname);
-  //   // console.log(this.users[0].gender);
-  //   // console.log(this.users[0].lname);
-
-  //   // let idid;
-  //   for(var i=0; i<this.users.length;i++){
-  //     if(this.fnameSearch = this.users[i].fname){
-  //       this.idSearch = this.users[i].id;
-  //       console.log(this.users[i]);
-  //     }
-  // }
-  
-  // //console.log(idid)
-
-  //   this._userService.getUser(this.idSearch).subscribe((user) => {
-  //   console.log(user);
-  //   this.users = [];
-  //   this.users[0] = user;
-    
-  // }, (error) => {
-  //   console.log(error);
-  // });
-  
-
-
-  searchFname(){
-    console.log(this.fnameSearch);
-
-
-    this._userService.getUser(this.idSearch).subscribe((user) => {
-      console.log(user);
-      this.users = [];
-      this.users[0] = user;
-      
-    }, (error) => {
-      console.log(error);
-    });
-    
-    
-  }
-
-  newUser() {
+ newUser() {
     let user = new User();
     this._userService.setter(user);
     this._router.navigate(['/op']);

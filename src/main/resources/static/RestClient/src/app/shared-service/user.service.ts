@@ -22,9 +22,9 @@ export class UserService {
       .catch(this.errorHandler);
   }
 
-  getfUsers(fname:String) {
+  getNameUsers(fname:String, lname:String, gender:number) {
 
-    return this._http.get(this.baseUrl + '/users/'+fname, this.options).map((response: Response) => response.json())
+    return this._http.get(this.baseUrl + '/users/'+fname+"&"+lname+"&"+ gender, this.options).map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
 
@@ -33,6 +33,7 @@ export class UserService {
     return this._http.get(this.baseUrl + '/user/' + id, this.options).map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
+  
   deleteUser(id: Number) {
 
     return this._http.delete(this.baseUrl + '/user/' + id, this.options).map((response: Response) => response.json())
@@ -66,10 +67,5 @@ export class UserService {
   }
 
   
-  // searchUser(id: Number) {
-  //   // angular.isArray(users);
-  //   return this._http.get(this.baseUrl + '/user/' + id, this.options).map((response: Response) => response.json())
-  //     .catch(this.errorHandler);
-  // }
   
 }
