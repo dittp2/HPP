@@ -14,9 +14,10 @@
 
   <div class="container">
     <div class="row">
-      <div class="patInfoContainer">
+      <div class="leftContainer">
         <form (ngSubmit)="processForm()">
-          <h3> Patientenangaben</h3>
+          <!-- Titel bestimmt breite des div-containers!!! -->
+          <h3 id="containerTitle">Patientenangaben</h3>
 
           <br>
           <div class="form group">
@@ -52,18 +53,10 @@
           </div>
 
           <div class="form group">
-            <br>
-            <table>
-              <tr>
-                <td>
-            <label for="lname">Last Name:</label>
-          </td>
-          <td style=" align: right;">
-            <label></label>
-            {{ user.lname }}
-          </td>
-          </tr>
-          </table>
+            <br>           
+                  <label for="lname">Last Name:</label>
+                  <label></label>
+                  {{ user.lname }}
             <mat-divider></mat-divider>
           </div>
 
@@ -82,10 +75,10 @@
           </div>
         </form>
       </div>
-      <div class="patDocumentContainer">
-        <table>
+      <div class="rightContainer">
+        <table class="tableRightContainer">
           <td>
-            <h3>Dokumente</h3>
+            <h3 id="containerTitle">Dokumente</h3>
           </td>
           <td></td>
           <td>
@@ -97,17 +90,109 @@
           <td>
             <button class="btn btn-primary"> Dokument hochladen </button>
           </td>
-          </table>
-          <table class="table table-striped">
-            <thead>
-              <th>Dokumenttitel</th>
-              <th>Dokumenttyp</th>
-              <th>Fachrichtung</th>
-              <th>Instutition</th>
-              <th>Rolle des Authors</th>
-              <th>Aktionen</th>
-            </thead>         
-          </table>
+        </table>
+        <table class="tableRightContainer">
+          <thead>
+            <th>Dokumenttitel</th>
+            <th>Dokumenttyp</th>
+            <th>Fachrichtung</th>
+            <th>Instutition</th>
+            <th>Rolle des Authors</th>
+            <th>Aktionen</th>
+          </thead>
+          <tbody>
+            <td>Zusammenfassender Bericht</td>
+            <td>Austrittsbericht</td>
+            <td>Neuphrologie</td>
+            <td>Spital</td>
+            <td>Arzt</td>
+            <td>
+                <button class="btn btn-info">einsehen</button>
+            </td>
+            <td>
+                <button class="btn btn-primary">herunterladen</button>
+            </td>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="leftContainer" id="downContainer">
+        <form (ngSubmit)="processForm()">
+          <!-- Titel bestimmt breite des div-containers!!! -->
+          <h3 id="containerTitle">Berechtigungen delegieren</h3>
+          <br>
+          <div class="form group">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="GLN Nummer" value="">
+            </mat-form-field>
+          </div>
+
+          <div class="form group">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Name" value="">
+            </mat-form-field>
+
+          </div>
+
+          <div class="form group">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Vorname" value="">
+            </mat-form-field>
+
+          </div>
+          <div class="form group">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Fachrichtung" value="">
+            </mat-form-field>
+
+          </div>
+
+          <div class="form group col">
+            <br>
+            <button class="btn btn-primary btn-block"> Gesundheitsfachperson suchen</button>
+          </div>
+
+        </form>
+
+
+      </div>
+
+      <div class="rightContainer" id="downContainer">
+        <table class="tableRightContainer">
+          <td>
+            <h3 id="containerTitle">Gesundheitsfachpersonen</h3>
+          </td>
+        </table>
+        <table class="tableRightContainer">
+          <thead>
+            <th>Name</th>
+            <th>Vorname</th>
+            <th>Fachrichtung</th>
+            <th>GLN</th>
+            <th>Zugriffsstufen</th>
+          </thead>
+          <tbody>
+            <!-- Example Entry of Health Professional-->
+            <td>Peterssen</td>
+            <td>Manuel</td>
+            <td>Allgemeinmedizin</td>
+            <td>7601000248718</td>
+            <td>
+              <form>
+              </form>
+            </td>
+
+          </tbody>
+        </table>
+        <button class="btn btn-primary"> Änderungen speichern</button>
+
+        <!--
+              
+            <mat-checkbox labelPosition="left">normale Zugriffsstufe</mat-checkbox>
+            <mat-checkbox labelPosition="left">erweiterte Zugriffsstufe</mat-checkbox>
+            -->
+
 
       </div>
     </div>

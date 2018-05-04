@@ -4,6 +4,7 @@ import { User } from '../../user';
 import { Router } from '@angular/router';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDividerModule} from '@angular/material/divider';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user-form',

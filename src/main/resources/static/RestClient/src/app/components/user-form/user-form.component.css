@@ -1,34 +1,64 @@
+.body {
+    width: 1200px;
+}
+
+.mat-toolbar {
+    padding-left: 0%;    
+    background-color: #007bff;
+    color: white;
+    
+}
+
 .gridPatDossier {
     margin-top: 20px;
 }
 
 .container {
-    margin-top: 20px;
-    align-content: center;
+    margin-top: 2%;
+}
+
+
+.leftContainer {
+    width: 20%;
+}
+
+#downContainer {
+    margin-top: 5%;
+}
+
+h3 {
+    font-size: medium;
+    font-style: bold;
+}
+
+.rightContainer {
+    width: 70%;
+    margin-left: 5%;
+}
+
+.tableRightContainer {
+    width: 100%;
 }
 
   .patInformation {
-      width: 400px;
-      height: 400px;
-      background-color: blue;
+     margin-left: 5%;
+     width: 80%;
   }
 
-  .patDocuments {
-    width: 400px;
-    height: 400px;
-    background-color: red;
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
   }
-
-  .gridPatDossier {
-    width: 900px;
-}
-
+ 
 .example-full-width {
     width: 100%;
 }
 
 .patName {
-    color: blue;
+    color: #007bff;
+    font-size: 32px;
 }
 
 .example-spacer {

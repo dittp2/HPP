@@ -6,9 +6,8 @@
       </span>
     </mat-toolbar-row>
   </mat-toolbar>
-
   <br>
-<h2>Dashboard</h2>
+  <h2>Dashboard</h2>
 
   <div class="container">
     <div class="row">
@@ -19,94 +18,107 @@
 
         <form (ngSubmit)="processForm()">
 
-          <div class="form group col">
-            <label for="id">User ID</label>
-            <input type="text" name="searchId" class="form-control" placeholder="ID of User" [(ngModel)]="idSearch">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="">ID:</span>
+            </div>
+            <input type="text" class="form-control" name="searchId" placeholder="type in ID..." [(ngModel)]="idSearch">
           </div>
-
-          <div class="form group col">
-            <label for="id">Prefix</label>
-            <input type="text" name="searchPrefix" class="form-control" matInput placeholder="Prefix of User">
-
-          </div>
-
-          <div class="form group col">
-            <label for="id">Firstname</label>
-            <input type="text" name="searchFname" class="form-control" placeholder="Firstname of User" [(ngModel)]="fnameSearch">
-          </div>
-
-          <div class="form group col">
-            <label for="id">Second Name</label>
-            <input type="text" name="searchSecfname" class="form-control" placeholder="Secondname of User">
-          </div>
-
-          <div class="form group col">
-            <label for="id">Last Name</label>
-            <input type="text" name="searchLname" class="form-control" placeholder="Lastname of User">
-          </div>
-          <div class="form group col">
-            <label for="id">Gender</label>
-            <input type="text" name="searchGender" class="form-control" placeholder="Gender of User">
-          </div>
-          <div class="form group col">
-          <label for="id">Last Name</label>
-          <input type="text" name="searchLname" class="form-control" placeholder="Lastname of User"  [(ngModel)]="lnameSearch">
-        </div>
-        <div class="form group col">
-          <label for="id">Gender</label>
-          <input type="text" name="searchGender" class="form-control" placeholder="Gender of User" [(ngModel)]="genderSearch">
-        </div>
-        <div class="form group col">
-            <label for="id">Birthdate</label>
-            <input type="text" name="searchBdate" class="form-control" placeholder="Birthdate of User">
-        </div>
-
-        </form>
-
-        <div class="form group col">
           <br>
-          <button class="btn btn-primary btn-block" (click)="searchUser()"> Search User </button>
-        </div>
-      </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="">Prefix:</span>
+            </div>
+            <input type="text" class="form-control" placeholder="type Prefix...">
+          </div>
+          <br>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="">First Name:</span>
+            </div>
+            <input type="text" class="form-control" placeholder="type in First Name..." [(ngModel)]="fnameSearch">
+          </div>
+          <br>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="">Second Name:</span>
+            </div>
+            <input type="text" class="form-control" placeholder="type in Second Name...">
+          </div>
 
+          <br>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="">Last Name:</span>
+            </div>
+            <input type="text" class="form-control" placeholder="type in Last Name..." [(ngModel)]="lnameSearch">
+          </div>
+          <br>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Gender</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="genderSearch">
+              <option selected>Choose Gender</option>
+              <option value="1">male</option>
+              <option value="2">female</option>
+            </select>
+          </div>
 
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="">Birthdate:</span>
+            </div>
+            <input type="text" class="form-control" placeholder="type in Birthdate...">
+          </div>
+          <br>
+          <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="radio" aria-label="Radio button for following text input">
+              </div>
+            <input type="text" class="form-control" aria-label="Text input with radio button">
+            </div>
+      </form>
 
-
-
-      <div class="patientsList">
-        <h3>Suchergebnisse</h3>
-        <mat-divider></mat-divider>
-        <table class="table table-striped">
-          <thead>
-            <th>Id</th>
-            <th>Prefix</th>
-            <th>First Name</th>
-            <th>Second Name</th>
-            <th>Last Name</th>
-            <th>Gender</th>
-            <th>Birthdate</th>
-            <th>Operations</th>
-          </thead>
-          <tbody>
-            <tr *ngFor="let user of users">
-              <td>{{user.id}}</td>
-              <td>{{user.prefix}}</td>
-              <td>{{user.fname}}</td>
-              <td>{{user.secfname}}</td>
-              <td>{{user.lname}}</td>
-              <td>{{user.gender}}</td>
-              <td>{{user.bdate}}</td>
-              <td>
-                <button class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
-              </td>
-              <td>
-                <button class="btn btn-primary" (click)="updateUser(user)">Dossier öffnen</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <button class="btn btn-primary" (click)="newUser()"> New User </button>
+      <div class="form group col">
+        <br>
+        <button class="btn btn-primary btn-block" (click)="searchUser()"> Search User </button>
       </div>
     </div>
+    <div class="patientsList">
+      <h3>Suchergebnisse</h3>
+      <mat-divider></mat-divider>
+      <table class="table table-striped">
+        <thead>
+          <th>Id</th>
+          <th>Prefix</th>
+          <th>First Name</th>
+          <th>Second Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+          <th>Birthdate</th>
+          <th>Operations</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{user.id}}</td>
+            <td>{{user.prefix}}</td>
+            <td>{{user.fname}}</td>
+            <td>{{user.secfname}}</td>
+            <td>{{user.lname}}</td>
+            <td>{{user.gender}}</td>
+            <td>{{user.bdate}}</td>
+            <td>
+              <button class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
+            </td>
+            <td>
+              <button class="btn btn-primary" (click)="updateUser(user)">Dossier öffnen</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary" (click)="newUser()"> New User </button>
+    </div>
   </div>
+</div>
 </div>
