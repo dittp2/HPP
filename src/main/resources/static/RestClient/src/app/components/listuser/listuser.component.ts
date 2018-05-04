@@ -41,10 +41,8 @@ export class ListuserComponent implements OnInit {
     this._router.navigate(['/op']);
   }
 
-<<<<<<< HEAD
-  newUser() {
-=======
-  searchUser(){
+
+  searchUser() {
 
     //Suche nach Name und Vorname und oder geschlecht.
     this._userService.getNameUsers(this.fnameSearch,this.lnameSearch, this.genderSearch).subscribe((users) => {
@@ -53,21 +51,21 @@ export class ListuserComponent implements OnInit {
         }, (error) => {
           console.log(error);
         });
-  
+
     //SUche Nach ID
      this._userService.getUser(this.idSearch).subscribe((user) => {
      console.log(user);
      this.users = [];
      this.users[0] = user;
-    
    }, (error) => {
      console.log(error);
    });
 
- 
+
 }
+
  newUser() {
->>>>>>> 5c5211ce955bdff4a9f1e813cb16a49bdb548220
+
     let user = new User();
     this._userService.setter(user);
     this._router.navigate(['/op']);

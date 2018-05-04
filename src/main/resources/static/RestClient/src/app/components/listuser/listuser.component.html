@@ -28,7 +28,6 @@
             <label for="id">Prefix</label>
             <input type="text" name="searchPrefix" class="form-control" matInput placeholder="Prefix of User">
 
-<<<<<<< HEAD
           </div>
 
           <div class="form group col">
@@ -50,22 +49,20 @@
             <input type="text" name="searchGender" class="form-control" placeholder="Gender of User">
           </div>
           <div class="form group col">
-=======
-        <div class="form group">
           <label for="id">Last Name</label>
           <input type="text" name="searchLname" class="form-control" placeholder="Lastname of User"  [(ngModel)]="lnameSearch">
         </div>
-        <div class="form group">
+        <div class="form group col">
           <label for="id">Gender</label>
           <input type="text" name="searchGender" class="form-control" placeholder="Gender of User" [(ngModel)]="genderSearch">
         </div>
-        <div class="form group">
->>>>>>> 5c5211ce955bdff4a9f1e813cb16a49bdb548220
+        <div class="form group col">
             <label for="id">Birthdate</label>
             <input type="text" name="searchBdate" class="form-control" placeholder="Birthdate of User">
-          </div>
+        </div>
 
         </form>
+
         <div class="form group col">
           <br>
           <button class="btn btn-primary btn-block" (click)="searchUser()"> Search User </button>

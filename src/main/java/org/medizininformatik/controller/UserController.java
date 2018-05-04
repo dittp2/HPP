@@ -31,9 +31,7 @@ public class UserController {
 	public List<User> getUsers() {
 		return userRepository.findAll();
 	}
-<<<<<<< HEAD
 
-=======
 	
 	/*
 	 * Get all Patients, condition firstname and lastname , from the Repository (function as MPI)
@@ -64,7 +62,7 @@ public class UserController {
 	/*
 	 * Get all Patients, condition id, from the Repository (function as MPI)
 	 */
->>>>>>> 5c5211ce955bdff4a9f1e813cb16a49bdb548220
+
 	@GetMapping("/user/{id}")
 	public User getUser(@PathVariable Long id) {
 		return userRepository.findOne(id);

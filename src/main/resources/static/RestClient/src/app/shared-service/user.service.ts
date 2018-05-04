@@ -33,7 +33,7 @@ export class UserService {
     return this._http.get(this.baseUrl + '/user/' + id, this.options).map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
-  
+
   deleteUser(id: Number) {
 
     return this._http.delete(this.baseUrl + '/user/' + id, this.options).map((response: Response) => response.json())
@@ -66,7 +66,6 @@ export class UserService {
     return this.user;
   }
 
-<<<<<<< HEAD
   /*
   searchUser(id: Number) {
     angular.isArray(users);
@@ -74,8 +73,5 @@ export class UserService {
       .catch(this.errorHandler);
   }
   */
-=======
-  
-  
->>>>>>> 5c5211ce955bdff4a9f1e813cb16a49bdb548220
+
 }
