@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS tbl_user;
+CREATE TABLE User (
+  id INT NOT NULL AUTO_INCREMENT,
+  prefix VARCHAR(50),
+  fname VARCHAR(100) NOT NULL,
+  secname VARCHAR(100) NOT NULL,
+  lname VARCHAR(100) NOT NULL,
+  gender VARCHAR(10) NOT NULL,
+  bdate DATE NOT NULL,
+  PRIMARY KEY (id));
+  
