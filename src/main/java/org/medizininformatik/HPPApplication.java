@@ -36,12 +36,6 @@ public class HPPApplication implements CommandLineRunner {
 		userRepository.save(new User("","Erika", "","Eppener", 2,new Date(56,02,21)));
 		userRepository.save(new User("","Bruno", "","Hause", 1, new Date(75,9,03)));
 
-		/*
-		userRepository.save(new User("Astrid", "Aescher", "weiblich", "12.05.1948"));
-		userRepository.save(new User("Bruno", "Berling", "männlich", "23.07.1973"));
-		userRepository.save(new User("Christina", "Caruso", "weiblich", "29.09.1942"));
-		userRepository.save(new User("Denis", "Danlicker", "männlich", "01.01.2000"));
-		userRepository.save(new User("Erika", "Eppener", "weiblich", "21.02.1956"));
-		*/
+		
 	}
 }
