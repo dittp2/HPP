@@ -174,14 +174,13 @@
           </thead>
           <tbody>
             <!-- Example Entry of Health Professional-->
-            <td>Peterssen</td>
-            <td>Manuel</td>
-            <td>Allgemeinmedizin</td>
-            <td>7601000248718</td>
-            <td>
-              <form>
-              </form>
-            </td>
+            <tr *ngFor="let healthProfessional of healthProfessionals">
+              <td>{{healthProfessional.HP_gln}}</td>
+              <td>{{healthProfessional.HP_prefix}}</td>
+              <td>{{healthProfessional.HP_fname}}</td> 
+              <td>{{healthProfessional.HP_lname}}</td>    
+    
+            </tr>
 
           </tbody>
         </table>

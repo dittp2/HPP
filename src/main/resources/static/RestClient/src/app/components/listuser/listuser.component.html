@@ -19,12 +19,12 @@
         <form (ngSubmit)="processForm()">
 
           <div class="input-group">
-            <div class="input-group-prepend">
+              <br>
+            <div class="input-group-prepend">              
               <span class="input-group-text" id="">ID:</span>
             </div>
             <input type="text" class="form-control" name="searchId" placeholder="type in ID..." [(ngModel)]="idSearch">
           </div>
-          <br>
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text" id="">Prefix:</span>
@@ -100,10 +100,11 @@
             <td>{{user.fname}}</td>
             <td>{{user.secfname}}</td>
             <td>{{user.lname}}</td>
-            <td>{{user.gender}}</td>
+            <td>{{user.gender === 1 ? 'männlich' : 'weiblich'}}</td>
+
             <td>{{user.bdate}}</td>
             <td>
-              <button class="btn btn-danger" (click)="deleteUser(user)">Delete</button>
+              <button class="btn btn-danger" (click)="getGender(user)">Delete</button>
             </td>
             <td>
               <button class="btn btn-primary" (click)="updateUser(user)">Dossier öffnen</button>

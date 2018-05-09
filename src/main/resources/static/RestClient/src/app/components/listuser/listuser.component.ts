@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../shared-service/user.service';
 import { User } from '../../user';
+import { HealthProfessional } from '../../healthProfessional';
 import { Router } from '@angular/router';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -44,15 +45,15 @@ export class ListuserComponent implements OnInit {
 
   searchUser() {
 
-    //Suche nach Name und Vorname und oder geschlecht.
-    this._userService.getNameUsers(this.fnameSearch,this.lnameSearch, this.genderSearch).subscribe((users) => {
+    //Suche nach Name und Vorname und oder Geschlecht.
+    this._userService.getNameUsers(this.fnameSearch, this.lnameSearch, this.genderSearch).subscribe((users) => {
       console.log(users);
           this.users = users;
         }, (error) => {
           console.log(error);
         });
 
-    //SUche Nach ID
+    //Suche Nach ID
      this._userService.getUser(this.idSearch).subscribe((user) => {
      console.log(user);
      this.users = [];
