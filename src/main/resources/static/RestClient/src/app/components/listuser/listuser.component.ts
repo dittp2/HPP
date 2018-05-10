@@ -44,7 +44,6 @@ export class ListuserComponent implements OnInit {
 
 
   searchUser() {
-
     // Suche nach Name und Vorname und oder Geschlecht.
     this._userService.getNameUsers(this.fnameSearch, this.lnameSearch, this.genderSearch).subscribe((users) => {
       console.log(users);
@@ -66,16 +65,16 @@ export class ListuserComponent implements OnInit {
 
 }
 
- newUser() {
-
-    let user = new User();
-    this._userService.setter(user);
-    this._router.navigate(['/op']);
-  }
-
 
 
 /*
+
+ newUser() {
+    let user = new User();
+    this._userService.setter(user);
+    this._router.navigate(['/op']);
+ }
+
   searchUser(users, user) {
     let idSearch = this.idSearch.toString();
     console.log(idSearch);

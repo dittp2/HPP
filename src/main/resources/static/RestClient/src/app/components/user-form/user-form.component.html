@@ -166,22 +166,20 @@
         </table>
         <table class="tableRightContainer">
           <thead>
-            <th>Name</th>
-            <th>Vorname</th>
-            <th>Fachrichtung</th>
             <th>GLN</th>
-            <th>Zugriffsstufen</th>
+            <th>Prefix</th>
+            <th>Vorname</th>
+            <th>Nachname</th>
           </thead>
+
           <tbody>
             <!-- Example Entry of Health Professional-->
             <tr *ngFor="let healthProfessional of healthProfessionals">
-              <td>{{healthProfessional.HP_gln}}</td>
-              <td>{{healthProfessional.HP_prefix}}</td>
-              <td>{{healthProfessional.HP_fname}}</td> 
-              <td>{{healthProfessional.HP_lname}}</td>    
-    
+              <td>{{healthProfessional.hp_Gln }}</td>
+              <td>{{healthProfessional.hp_Prefix}}</td>
+              <td>{{healthProfessional.hp_Fname}}</td> 
+              <td>{{healthProfessional.hp_Lname}}</td>    
             </tr>
-
           </tbody>
         </table>
         <button class="btn btn-primary"> Änderungen speichern</button>

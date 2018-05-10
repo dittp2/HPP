@@ -17,7 +17,7 @@ export class HealthProfessionalService {
   constructor(private _http: Http) { }
 
   getHealthProfesssionals() {
-    return this._http.get(this.baseUrl + '/healthprofessionals', this.options).map((response: Response) => response.json())
+    return this._http.get(this.baseUrl + '/healthProfessionals', this.options).map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
 
