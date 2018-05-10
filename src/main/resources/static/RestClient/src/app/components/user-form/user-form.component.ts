@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class UserFormComponent implements OnInit {
   private user: User;
-  //private healthProfessional: HealthProfessional;
+  private healthProfessional: HealthProfessional;
   private healthProfessionals: HealthProfessional[];
 
 
