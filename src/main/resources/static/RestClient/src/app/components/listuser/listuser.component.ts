@@ -3,9 +3,10 @@ import { UserService } from '../../shared-service/user.service';
 import { User } from '../../user';
 import { HealthProfessional } from '../../healthProfessional';
 import { Router } from '@angular/router';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDividerModule } from '@angular/material/divider';
+import { DocumentService } from './../../document.service';
 
 @Component({
   selector: 'app-listuser',
@@ -14,12 +15,13 @@ import {MatDividerModule} from '@angular/material/divider';
 })
 export class ListuserComponent implements OnInit {
   private users: User[];
+  private document;
   private idSearch;
   private fnameSearch;
   private lnameSearch;
   private genderSearch;
 
-  constructor(private _userService: UserService, private _router: Router) { }
+  constructor(private _userService: UserService, private _router: Router, private _documentService: DocumentService) { }
 
   ngOnInit() {
     this._userService.getUsers().subscribe((users) => {
@@ -62,9 +64,15 @@ export class ListuserComponent implements OnInit {
      console.log(error);
    });
 
+    getDocument(){
+     this.document = this._documentService.getDocument();
+     console.log(this.document);
+     return this.document;
+    }
 
+
+  }
 }
-
 
 
 /*
@@ -89,7 +97,7 @@ export class ListuserComponent implements OnInit {
     });
 
     */
-  }
+
 /*
     let users = this.users.find(x => x.Id === this.users);
     if (users !== undefined) {
