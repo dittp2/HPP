@@ -49,20 +49,20 @@ export class ListuserComponent implements OnInit {
     // Suche nach Name und Vorname und oder Geschlecht.
     this._userService.getNameUsers(this.fnameSearch, this.lnameSearch, this.genderSearch).subscribe((users) => {
       console.log(users);
-          this.users = users;
+      this.users = users;
 
-        }, (error) => {
-          console.log(error);
-        });
+    }, (error) => {
+      console.log(error);
+    });
 
     // Suche Nach ID
-     this._userService.getUser(this.idSearch).subscribe((user) => {
-     console.log(user);
-     this.users = [];
-     this.users[0] = user;
-   }, (error) => {
-     console.log(error);
-   });
+    this._userService.getUser(this.idSearch).subscribe((user) => {
+      console.log(user);
+      this.users = [];
+      this.users[0] = user;
+    }, (error) => {
+      console.log(error);
+    });
 
     getDocument(){
      this.document = this._documentService.getDocument();
@@ -75,28 +75,28 @@ export class ListuserComponent implements OnInit {
 }
 
 
-/*
-
- newUser() {
-    let user = new User();
-    this._userService.setter(user);
-    this._router.navigate(['/op']);
- }
-
-  searchUser(users, user) {
-    let idSearch = this.idSearch.toString();
-    console.log(idSearch);
-    let fnameSearch = this.fnameSearch.toString();
-    console.log(fnameSearch);
-    let fnameSearch = this.fnameSearch.toString();
-    console.log(fnameSearch);
-    console.log(user.fname === fnameSearch);
-
-    this.users.filter(function(user) {
-      return user.fname === fnameSearch;
-    });
-
-    */
+  /*
+  
+   newUser() {
+      let user = new User();
+      this._userService.setter(user);
+      this._router.navigate(['/op']);
+   }
+  
+    searchUser(users, user) {
+      let idSearch = this.idSearch.toString();
+      console.log(idSearch);
+      let fnameSearch = this.fnameSearch.toString();
+      console.log(fnameSearch);
+      let fnameSearch = this.fnameSearch.toString();
+      console.log(fnameSearch);
+      console.log(user.fname === fnameSearch);
+  
+      this.users.filter(function(user) {
+        return user.fname === fnameSearch;
+      });
+  
+      */
 
 /*
     let users = this.users.find(x => x.Id === this.users);

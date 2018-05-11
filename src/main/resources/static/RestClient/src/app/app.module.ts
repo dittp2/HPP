@@ -7,6 +7,7 @@ import { UserService } from './shared-service/user.service';
 import { HealthProfessionalService } from './shared-service/healthprofessional.service';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { DocumentService } from './document.service';
 
 import { MatButtonModule, MatCardModule, MatToolbarModule, MatMenuModule, MatInputModule, MatIconModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,10 +17,10 @@ import { ListuserComponent } from './components/listuser/listuser.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { User } from './user';
 import { HealthProfessional } from './healthProfessional';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {MaterialModule} from './material.module';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MaterialModule } from './material.module';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatGridListModule } from '@angular/material/grid-list';
 //import {MatInputModule} from '@angular/material/input';
 
 const appRoutes: Routes = [
@@ -50,7 +51,7 @@ const appRoutes: Routes = [
     MatDividerModule,
     MatGridListModule
   ],
-  providers: [UserService, HealthProfessionalService ],
+  providers: [UserService, HealthProfessionalService, DocumentService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
