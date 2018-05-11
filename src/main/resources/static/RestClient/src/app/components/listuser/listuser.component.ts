@@ -55,7 +55,6 @@ export class ListuserComponent implements OnInit {
       console.log(error);
     });
 
-    // Suche Nach ID
     this._userService.getUser(this.idSearch).subscribe((user) => {
       console.log(user);
       this.users = [];
@@ -64,7 +63,16 @@ export class ListuserComponent implements OnInit {
       console.log(error);
     });
 
-    getDocument(){
+     this._userService.getUser(this.idSearch).subscribe((user) => {
+     console.log(user);
+     this.users = [];
+     this.users[0] = user;
+   }, (error) => {
+     console.log(error);
+   });
+
+
+    getDocument() {
      this.document = this._documentService.getDocument();
      console.log(this.document);
      return this.document;
@@ -76,13 +84,13 @@ export class ListuserComponent implements OnInit {
 
 
   /*
-  
+
    newUser() {
       let user = new User();
       this._userService.setter(user);
       this._router.navigate(['/op']);
    }
-  
+
     searchUser(users, user) {
       let idSearch = this.idSearch.toString();
       console.log(idSearch);
@@ -91,23 +99,9 @@ export class ListuserComponent implements OnInit {
       let fnameSearch = this.fnameSearch.toString();
       console.log(fnameSearch);
       console.log(user.fname === fnameSearch);
-  
+
       this.users.filter(function(user) {
         return user.fname === fnameSearch;
       });
-  
+
       */
-
-/*
-    let users = this.users.find(x => x.Id === this.users);
-    if (users !== undefined) {
-        // You can access Id or Name of the found server object.
-        concole.log(server.Name);
-
-    for (let i = 0; i < users.count; i++) {
-      if (users[i].name === idSearch) {
-        return users[i];
-      }
-    }
-  }
-  */
