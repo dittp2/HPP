@@ -2,20 +2,38 @@ package org.medizininformatik.entities;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 @Entity
+@Table(name = "User")
 public class User {
+	
 	@Id
 	@GeneratedValue
+	@Column (name="id")
     private Long id;
+	
+	@Column (name="prefix")
 	private String prefix;
+	
+	@Column (name="fname")
     private String fname;
+	
+	@Column (name="secname")
     private String secfname;
+	
+	@Column (name="lname")
     private String lname;
+	
+	@Column (name="gender")
     private int gender;
+	
+	@Column (name="bdate")
     private Date bdate;
     
 	public Long getId() {

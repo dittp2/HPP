@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../shared-service/user.service';
+import { HealthProfessionalService } from '../../shared-service/healthprofessional.service';
 import { User } from '../../user';
+import { HealthProfessional } from '../../healthProfessional';
 import { Router } from '@angular/router';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDividerModule} from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-user-form',
@@ -13,9 +16,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class UserFormComponent implements OnInit {
   private user: User;
+  private healthProfessional: HealthProfessional;
+  private healthProfessionals: HealthProfessional[];
 
 
-  constructor(private _userService: UserService, private _router: Router ) { }
+  constructor(private _userService: UserService, private _router: Router, private _healthProfessionalService: HealthProfessionalService) { }
 
   navigateToHome() {
     this._router.navigate(['/']);
@@ -23,7 +28,14 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit() {
     this.user = this._userService.getter();
-  }
+    this._healthProfessionalService.getHealthProfesssionals().subscribe((healthProfessionals) => {
+      console.log(healthProfessionals);
+      this.healthProfessionals = healthProfessionals;
+    }, (error) => {
+    console.log(error);
+  });
+}
+
 
   processForm() {
     if (this.user.id === undefined) {

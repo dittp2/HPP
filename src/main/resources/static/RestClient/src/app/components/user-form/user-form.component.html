@@ -150,7 +150,7 @@
 
           <div class="form group col">
             <br>
-            <button class="btn btn-primary btn-block"> Gesundheitsfachperson suchen</button>
+            <button class="btn btn-primary btn-block" ng-click="showDetails = ! showDetails"> Gesundheitsfachperson suchen</button>
           </div>
 
         </form>
@@ -158,7 +158,7 @@
 
       </div>
 
-      <div class="rightContainer" id="downContainer">
+      <div class="rightContainer" id="downContainer" ng-class="{ 'hidden': ! showDetails }">
         <table class="tableRightContainer">
           <td>
             <h3 id="containerTitle">Gesundheitsfachpersonen</h3>
@@ -166,23 +166,20 @@
         </table>
         <table class="tableRightContainer">
           <thead>
-            <th>Name</th>
-            <th>Vorname</th>
-            <th>Fachrichtung</th>
             <th>GLN</th>
-            <th>Zugriffsstufen</th>
+            <th>Prefix</th>
+            <th>Vorname</th>
+            <th>Nachname</th>
           </thead>
-          <tbody>
-            <!-- Example Entry of Health Professional-->
-            <td>Peterssen</td>
-            <td>Manuel</td>
-            <td>Allgemeinmedizin</td>
-            <td>7601000248718</td>
-            <td>
-              <form>
-              </form>
-            </td>
 
+          <tbody>
+            <!-- HealthProfessional Entries from DB -->
+            <tr *ngFor="let healthProfessional of healthProfessionals">
+              <td>{{healthProfessional.hp_Gln }}</td>
+              <td>{{healthProfessional.hp_Prefix}}</td>
+              <td>{{healthProfessional.hp_Fname}}</td> 
+              <td>{{healthProfessional.hp_Lname}}</td>    
+            </tr>
           </tbody>
         </table>
         <button class="btn btn-primary"> Änderungen speichern</button>

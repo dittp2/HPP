@@ -17,7 +17,6 @@ export class UserService {
   constructor(private _http: Http) { }
 
   getUsers() {
-
     return this._http.get(this.baseUrl + '/users', this.options).map((response: Response) => response.json())
       .catch(this.errorHandler);
   }

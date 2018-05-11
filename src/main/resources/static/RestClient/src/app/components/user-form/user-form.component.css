@@ -39,6 +39,12 @@ h3 {
 .rightContainer {
     width: 70%;
     margin-left: 5%;
+    transition: .5s;
+    overflow: hidden;
+}
+
+.rightContainer.hidden {
+    height: 0px;
 }
 
 .tableRightContainer {
