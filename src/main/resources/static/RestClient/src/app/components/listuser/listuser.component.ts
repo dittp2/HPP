@@ -3,9 +3,10 @@ import { UserService } from '../../shared-service/user.service';
 import { User } from '../../user';
 import { HealthProfessional } from '../../healthProfessional';
 import { Router } from '@angular/router';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDividerModule } from '@angular/material/divider';
+import { DocumentService } from './../../document.service';
 
 @Component({
   selector: 'app-listuser',
@@ -14,12 +15,13 @@ import {MatDividerModule} from '@angular/material/divider';
 })
 export class ListuserComponent implements OnInit {
   private users: User[];
+  private document;
   private idSearch;
   private fnameSearch;
   private lnameSearch;
   private genderSearch;
 
-  constructor(private _userService: UserService, private _router: Router) { }
+  constructor(private _userService: UserService, private _router: Router, private _documentService: DocumentService) { }
 
   ngOnInit() {
     this._userService.getUsers().subscribe((users) => {
@@ -47,15 +49,26 @@ export class ListuserComponent implements OnInit {
     // Suche nach Name und Vorname und oder Geschlecht.
     this._userService.getNameUsers(this.fnameSearch, this.lnameSearch, this.genderSearch).subscribe((users) => {
       console.log(users);
-          this.users = users;
+      this.users = users;
 
-        }, (error) => {
-          console.log(error);
-        });
+    }, (error) => {
+      console.log(error);
+    });
 
+    this._userService.getUser(this.idSearch).subscribe((user) => {
+      console.log(user);
+      this.users = [];
+      this.users[0] = user;
+    }, (error) => {
+      console.log(error);
+    });
+
+<<<<<<< HEAD
 
     // Suche Nach ID
 
+=======
+>>>>>>> c26c99b8dfdc537af818d4ca3b7fcc9d7a55a0a6
      this._userService.getUser(this.idSearch).subscribe((user) => {
      console.log(user);
      this.users = [];
@@ -65,4 +78,40 @@ export class ListuserComponent implements OnInit {
    });
 
 
+<<<<<<< HEAD
 }}
+=======
+    getDocument() {
+     this.document = this._documentService.getDocument();
+     console.log(this.document);
+     return this.document;
+    }
+
+
+  }
+}
+
+
+  /*
+
+   newUser() {
+      let user = new User();
+      this._userService.setter(user);
+      this._router.navigate(['/op']);
+   }
+
+    searchUser(users, user) {
+      let idSearch = this.idSearch.toString();
+      console.log(idSearch);
+      let fnameSearch = this.fnameSearch.toString();
+      console.log(fnameSearch);
+      let fnameSearch = this.fnameSearch.toString();
+      console.log(fnameSearch);
+      console.log(user.fname === fnameSearch);
+
+      this.users.filter(function(user) {
+        return user.fname === fnameSearch;
+      });
+
+      */
+>>>>>>> c26c99b8dfdc537af818d4ca3b7fcc9d7a55a0a6
