@@ -63,12 +63,6 @@ export class ListuserComponent implements OnInit {
       console.log(error);
     });
 
-<<<<<<< HEAD
-
-    // Suche Nach ID
-
-=======
->>>>>>> c26c99b8dfdc537af818d4ca3b7fcc9d7a55a0a6
      this._userService.getUser(this.idSearch).subscribe((user) => {
      console.log(user);
      this.users = [];
@@ -77,11 +71,8 @@ export class ListuserComponent implements OnInit {
      console.log(error);
    });
 
-
-<<<<<<< HEAD
-}}
-=======
-    getDocument() {
+  }
+  getDocument() {
      this.document = this._documentService.getDocument();
      console.log(this.document);
      return this.document;
@@ -89,7 +80,7 @@ export class ListuserComponent implements OnInit {
 
 
   }
-}
+
 
 
   /*
@@ -114,4 +105,4 @@ export class ListuserComponent implements OnInit {
       });
 
       */
->>>>>>> c26c99b8dfdc537af818d4ca3b7fcc9d7a55a0a6
+

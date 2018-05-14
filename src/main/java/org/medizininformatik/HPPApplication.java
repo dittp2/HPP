@@ -53,8 +53,8 @@ public class HPPApplication implements CommandLineRunner {
 				userRepository.save(new User("","Bruno", "","Hause", 1, new Date(75,9,03)));
 							
 				//Add Health Professionals to hpDiretory (List)
-				hpDirectory.save(new HealthProfessional("123456765432" , "Zurkinden", "Erni", "Dr. med."));
-				hpDirectory.save(new HealthProfessional("124686765431" , "Baumann", "Maria", "Dr. med."));
+				hpDirectory.save(new HealthProfessional("123456765432" , "Zurkinden", "Erni", "Dr. med.", "Doctor","m'nnlih "," "," "," "," "," "," "," "));
+				hpDirectory.save(new HealthProfessional("124686765431" , "Baumann", "Maria", "Dr. med.","Doctor","erer "," "," "," "," "," "," "," "));
 
 
 			};
