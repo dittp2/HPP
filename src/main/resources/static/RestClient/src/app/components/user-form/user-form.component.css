@@ -44,7 +44,7 @@ h3 {
 .rightContainer {
     width: 75%;
     margin-left: 5%;
-    transition: .5s;
+     transition: .5s;
     overflow: hidden;
 }
 

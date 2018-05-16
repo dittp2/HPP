@@ -70,8 +70,21 @@ export class ListuserComponent implements OnInit {
    });
   }
 
+<<<<<<< HEAD
 
 }
+=======
+  }
+  getDocument() {
+     this.document = this._documentService.getDocument();
+     console.log(this.document);
+     return this.document;
+    }
+
+
+  }
+
+>>>>>>> 9106cc7489918d75e68c1f1802b0718c1dec8e6f
 
 
   /*
@@ -96,3 +109,4 @@ export class ListuserComponent implements OnInit {
       });
 
       */
+
