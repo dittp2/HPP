@@ -2,14 +2,14 @@
 <div class="body">
   <mat-toolbar class="mat-toolbar">
     <mat-toolbar-row>
-      <span>Patientendossieransicht</span>
+      <span class="title">Patientendossieransicht</span>
       <span class="example-spacer"></span>
+      <span class="link" (click)="navigateToHome()">zurück zum Dashboard</span>
       <mat-icon class="example-icon" (click)="navigateToHome()">home</mat-icon>
     </mat-toolbar-row>
   </mat-toolbar>
   <br>
-  <h3 class="patName"> {{ user.prefix }} {{ user.fname }} {{ user.lname }}</h3>
-
+  <h3 class="patName"> <u>  {{user.gender === 1 ? 'Frau' : 'Herr'}} {{ user.prefix }} {{ user.fname }} {{user.secfname}} {{ user.lname }}</u></h3>
 
 
   <div class="container">
@@ -17,7 +17,7 @@
       <div class="leftContainer">
         <form (ngSubmit)="processForm()">
           <!-- Titel bestimmt breite des div-containers!!! -->
-          <h3 id="containerTitle">Patientenangaben</h3>
+          <h3 class="patName">Patientenangaben</h3>
 
           <br>
           <div class="form group">
@@ -29,15 +29,16 @@
 
           <div class="form group">
             <br>
-            <label for="id">Prefix: </label>
+            <label for="id">Anrede: </label>
             <label></label>
+            {{user.gender === 1 ? 'Frau' : 'Herr'}}
             {{ user.prefix }}
             <mat-divider></mat-divider>
           </div>
 
           <div class="form group">
             <br>
-            <label for="fname">First Name:</label>
+            <label for="fname">1. Vorname:</label>
             <a id="value">
               {{ user.fname }}
             </a>
@@ -46,7 +47,7 @@
 
           <div class="form group">
             <br>
-            <label for="secfname">Second Name:</label>
+            <label for="secfname">2. Vorname:</label>
             <label></label>
             {{ user.secfname}}
             <mat-divider></mat-divider>
@@ -54,22 +55,22 @@
 
           <div class="form group">
             <br>           
-                  <label for="lname">Last Name:</label>
+                  <label for="lname">Nachname:</label>
                   <label></label>
                   {{ user.lname }}
             <mat-divider></mat-divider>
           </div>
-
+<!--
           <div class="form group">
             <br>
             <label for="gender">Gender:</label>
             {{ user.gender}}
             <mat-divider></mat-divider>
           </div>
-
+-->
           <div class="form group">
             <br>
-            <label for="bdate">Birthdate:</label>
+            <label for="bdate">Geburtsdatum:</label>
             {{ user.bdate}}
             <mat-divider></mat-divider>
           </div>
@@ -85,10 +86,10 @@
             <input type="text" placeholder="Suchbegriff eingeben"> </td>
           <td></td>
           <td>
-            <button class="btn btn-primary"> erweiterte Suche </button>
+            <button class="btn btn-primary">erweiterte Suche</button>
           </td>
           <td>
-            <button class="btn btn-primary"> Dokument hochladen </button>
+            <button class="btn btn-primary">Dokument hochladen</button>
           </td>
         </table>
         <table class="tableRightContainer">
@@ -97,7 +98,8 @@
             <th>Dokumenttyp</th>
             <th>Fachrichtung</th>
             <th>Instutition</th>
-            <th>Rolle des Authors</th>
+            <th>Authorenrolle</th>
+            <th>Datum</th>
             <th>Aktionen</th>
           </thead>
           <tbody>
@@ -107,7 +109,10 @@
             <td>Spital</td>
             <td>Arzt</td>
             <td>
-                <button class="btn btn-info">einsehen</button>
+              <a href="data.xml">einsehen</a>
+              <!--
+                <button class="btn btn-info" (click)="readXML()">einsehen</button>
+                -->
             </td>
             <td>
                 <button class="btn btn-primary">herunterladen</button>
@@ -164,34 +169,30 @@
             <h3 id="containerTitle">Gesundheitsfachpersonen</h3>
           </td>
         </table>
+
         <table class="tableRightContainer">
           <thead>
             <th>GLN</th>
             <th>Prefix</th>
-            <th>Vorname</th>
             <th>Nachname</th>
+            <th>Vorname</th>
+            <th>Gender</th>
           </thead>
 
           <tbody>
             <!-- HealthProfessional Entries from DB -->
             <tr *ngFor="let healthProfessional of healthProfessionals">
-              <td>{{healthProfessional.hp_Gln }}</td>
+              <td>{{healthProfessional.hp_Gln}}</td>
               <td>{{healthProfessional.hp_Prefix}}</td>
               <td>{{healthProfessional.hp_Fname}}</td> 
-              <td>{{healthProfessional.hp_Lname}}</td>    
+             <td>{{healthProfessional.hp_Lname}}</td>
+             <td>{{healthProfessional.hp_adminGender}}</td>
             </tr>
           </tbody>
         </table>
         <button class="btn btn-primary"> Änderungen speichern</button>
-
-        <!--
-              
-            <mat-checkbox labelPosition="left">normale Zugriffsstufe</mat-checkbox>
-            <mat-checkbox labelPosition="left">erweiterte Zugriffsstufe</mat-checkbox>
-            -->
-
-
       </div>
+      <pre lang="xml">{{document}}</pre>
     </div>
   </div>
 </div>

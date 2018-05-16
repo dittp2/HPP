@@ -1,12 +1,27 @@
 package org.medizininformatik.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
 import java.util.List;
+
+import javax.print.Doc;
+
+import org.apache.commons.io.IOUtils;
 
 import org.medizininformatik.entities.HealthProfessional;
 import org.medizininformatik.entities.User;
+import org.medizininformatik.entities.ReadXMLFile;
+import org.medizininformatik.entities.Document;
 import org.medizininformatik.repositories.HPDirectory;
 import org.medizininformatik.repositories.UserRepository;
+import org.medizininformatik.repositories.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.CacheControl;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.instrument.classloading.glassfish.GlassFishLoadTimeWeaver;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,6 +33,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -30,6 +46,10 @@ public class UserController {
 	
 	@Autowired
 	private HPDirectory hpDirectory;
+	
+	@Autowired
+	private DocumentRepository documentRepository;
+	
 
 	/*
 	 * Get all Patients from the Repository (function as MPI)
@@ -38,6 +58,69 @@ public class UserController {
 	public List<User> getUsers() {
 		return userRepository.findAll();
 	}
+	
+	@GetMapping("/documents")
+	public List<Document> getDocuments() {
+		return documentRepository.findAll();
+	}
+	
+	@GetMapping("/get-text")
+	public @ResponseBody String getText() {
+	    return "Hello world";
+	}
+	
+
+@GetMapping(value = "/file", 
+produces = MediaType.APPLICATION_PDF_VALUE)
+public @ResponseBody byte[] getFile() throws IOException {
+    InputStream in = getClass()
+      .getResourceAsStream("Max_Muster_Kurzbericht.pdf");
+    return IOUtils.toByteArray(in);
+}
+
+
+/*
+@RequestMapping(value="/getpdf1", method=RequestMethod.GET)
+public ResponseEntity<byte[]> getPDF1() {
+
+
+    HttpHeaders headers = new HttpHeaders();
+
+    headers.setContentType(MediaType.parseMediaType("application/pdf"));
+    String filename = "Max_Muster_Kurzbericht.pdf";
+
+    headers.add("content-disposition", "inline;filename=" + filename);
+
+    headers.setContentDispositionFormData(filename, filename);
+    headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+	ResponseEntity<byte[]> response = new ResponseEntity<byte[]>(pdf1Bytes , headers, HttpStatus.OK);
+    return response;
+}
+
+
+@RequestMapping("/handle")
+public ResponseEntity<String> handle() {
+  URI location = "Max_Muster_Kurzbericht.pdf";
+  return ResponseEntity.created(location).header("MyResponseHeader", "MyValue").body("Hello World");
+}
+
+@RequestMapping(value = "/image-byte-array", method = RequestMethod.GET)
+public @ResponseBody byte[] getImageAsByteArray() throws IOException {
+    InputStream in = servletContext.getResourceAsStream("/WEB-INF/images/image-example.jpg");
+    return IOUtils.toByteArray(in);
+}
+
+@RequestMapping(value = "/image-response-entity", method = RequestMethod.GET)
+public ResponseEntity<byte[]> getImageAsResponseEntity() {
+    HttpHeaders headers = new HttpHeaders();
+    InputStream in = servletContext.getResourceAsStream("image-example.jpg");
+    byte[] media = IOUtils.toByteArray(in);
+    headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+     
+    ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
+    return responseEntity;
+}
+*/
 
 	
 	/*
@@ -114,4 +197,49 @@ public class UserController {
 	public HealthProfessional updateHealthProfessional(@RequestBody HealthProfessional healthProfessional) {
 		return hpDirectory.save(healthProfessional);
 	}
+	
+	
+	
+	/*
+	 * @GetMapping("/cd")
+	public void readXMLFile () {
+	
+	}
+		public @ResponseBody byte[] getImageWithMediaType() throws IOException {
+		    InputStream in = getClass()
+		      .getResourceAsStream("/HPP/src/main/resources/data/Max_Muster_Kurzbericht.pdf");
+		    return IOUtils.toByteArray(in);
+	}
+ 
+	@RequestMapping(value="/Max_Muster_Kurzbericht", method=RequestMethod.GET)
+	public ResponseEntity<byte[]> getPDF1() {
+
+
+	    HttpHeaders headers = new HttpHeaders();
+
+	    headers.setContentType(MediaType.parseMediaType("application/pdf"));
+	    String filename = "data/Max_Muster_Kurzbericht.pdf";
+
+	    headers.add("content-disposition", "inline;filename=" + filename);
+
+	    headers.setContentDispositionFormData(filename, filename);
+	    headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+	    ResponseEntity<byte[]> response = new ResponseEntity<byte[]>(pdf1Bytes, headers, HttpStatus.OK);
+	    return response;
+}
+	@GetMapping(
+			  value = "/get-pdf",
+			  produces = MediaType.IMAGE_JPEG_VALUE
+			)
+			public @ResponseBody byte[] getImageWithMediaType() throws IOException {
+			    InputStream in = getClass()
+			      .getResourceAsStream("data/Max_Muster_Kurzbericht.pdf");
+			    return IOUtils.toByteArray(in);
+			}
+			*/
+	
+
+	
+	
+	
 }

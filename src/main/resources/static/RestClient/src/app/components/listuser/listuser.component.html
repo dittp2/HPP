@@ -8,7 +8,7 @@
     </mat-toolbar-row>
   </mat-toolbar>
   <br>
-  <h2>Dashboard</h2>
+  <h2 class="pageTitle">Dashboard</h2>
 
   <div class="container">
     <div class="row">
@@ -17,31 +17,40 @@
         <mat-divider></mat-divider>
 
         <form (ngSubmit)="processForm()">
-
+          <br>
           <div class="input-group">
-            <br>
+            <div class="form group">
+              <label for="id">ID:</label>
+              <label></label>
+              {{ user.id}}
+              <mat-divider></mat-divider>
+            </div>
+            </div>
+<!--  
             <div class="input-group-prepend">
               <span class="input-group-text" id="">ID:</span>
             </div>
             <input type="text" class="form-control" placeholder="type in ID..." [(ngModel)]="idSearch">
           </div>
+        -->
+          <br>
           <div class="input-group">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="">Prefix:</span>
+              <span class="input-group-text" id="">Titel:</span>
             </div>
             <input type="text" class="form-control" placeholder="type Prefix...">
           </div>
           <br>
           <div class="input-group">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="">First Name:</span>
+              <span class="input-group-text" id="">1. Vorname:</span>
             </div>
             <input type="text" class="form-control" placeholder="type in First Name..." [(ngModel)]="fnameSearch">
           </div>
           <br>
           <div class="input-group">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="">Second Name:</span>
+              <span class="input-group-text" id="">2. Vorname:</span>
             </div>
             <input type="text" class="form-control" placeholder="type in Second Name...">
           </div>
@@ -49,25 +58,25 @@
           <br>
           <div class="input-group">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="">Last Name:</span>
+              <span class="input-group-text" id="">Nachname:</span>
             </div>
             <input type="text" class="form-control" placeholder="type in Last Name..." [(ngModel)]="lnameSearch">
           </div>
           <br>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01">Gender</label>
+              <label class="input-group-text" for="inputGroupSelect01">Geschlecht</label>
             </div>
             <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="genderSearch">
-              <option selected>Choose Gender</option>
-              <option value="1">male</option>
-              <option value="2">female</option>
+              <option selected>Geschlecht auswählen</option>
+              <option value="1">männlich</option>
+              <option value="2">weiblich</option>
             </select>
           </div>
 
           <div class="input-group">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="">Birthdate:</span>
+              <span class="input-group-text" id="">Geburtsdatum:</span>
             </div>
             <input type="text" class="form-control" placeholder="type in Birthdate...">
           </div>
@@ -85,12 +94,12 @@
         <table class="table table-striped">
           <thead>
             <th>Id</th>
-            <th>Prefix</th>
-            <th>First Name</th>
-            <th>Second Name</th>
-            <th>Last Name</th>
-            <th>Gender</th>
-            <th>Birthdate</th>
+            <th>Titel</th>
+            <th>1. Vorname</th>
+            <th>2. Vorname</th>
+            <th>Nachname</th>
+            <th>Geschlecht</th>
+            <th>Geburtsdatum</th>
             <th>Operations</th>
           </thead>
           <tbody>
@@ -100,7 +109,7 @@
               <td>{{user.fname}}</td>
               <td>{{user.secfname}}</td>
               <td>{{user.lname}}</td>
-              <td>{{user.gender === 1 ? 'männlich' : 'weiblich'}}</td>
+              <td>{{user.gender === 1 ? 'weiblich' : 'männlich'}}</td>
               <td>{{user.bdate}}</td>
               <td>
                 <button class="btn btn-danger" (click)="getGender(user)">Delete</button>

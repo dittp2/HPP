@@ -1,4 +1,6 @@
-
+.row {
+    width: 100%;
+}
 
 
 .example-icon {
@@ -18,22 +20,21 @@
 
 .searchContainer {
     height: 100%;
-    padding: 3%;
-    margin-left: 4%;
+    margin-left: 2%;
+    margin-top: 2%;
 }
 
 .patientsList {
-   
-    width: 900px;
     height: 100%;
-    padding: 3%;
+    padding: 2%;
 }
 
 .container {
+    max-width: 2100px;
     width: 100%;
-  
     margin: 0px;
-    position: static; 
+    margin-right: 0px;
+    position:  static;
 }
 
 .col-4 {
@@ -44,6 +45,18 @@
 
 .patLabel {
     width: 50;
+}
+
+.table-striped {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 800px;
+}
+
+.pageTitle {
+        color: #007bff;
+        font-size: 32px;
+        margin-left: 2%;
 }
 
 

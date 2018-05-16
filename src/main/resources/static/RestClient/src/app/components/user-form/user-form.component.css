@@ -10,8 +10,7 @@ body {
 .mat-toolbar {
     padding-left: 0%;    
     background-color: #007bff;
-    color: white;
-    
+    color: white;    
 }
 
 .gridPatDossier {
@@ -20,6 +19,12 @@ body {
 
 .container {
     margin-top: 2%;
+    margin-left: 3%;
+    width: 100%;
+}
+
+.row {
+    width: 100%;
 }
 
 
@@ -37,7 +42,7 @@ h3 {
 }
 
 .rightContainer {
-    width: 70%;
+    width: 75%;
     margin-left: 5%;
     transition: .5s;
     overflow: hidden;
@@ -51,31 +56,51 @@ h3 {
     width: 100%;
 }
 
-  .patInformation {
-     margin-left: 5%;
+.patInformation {
+     margin-left: 2%;
      width: 80%;
-  }
+}
 
 
 .example-form {
     min-width: 150px;
     max-width: 500px;
     width: 100%;
-  }
+}
  
 .example-full-width {
     width: 100%;
 }
 
+.example-icon {
+    margin-left: 1%;
+}
+
+.link {
+    font-size: 12px;
+}
+
 .patName {
-    color: #007bff;
+    color: black;
     font-size: 32px;
+    margin-left: 2%;
 }
 
 .example-spacer {
     flex: 1 1 auto;
-  }
+}
 
-  .patDocumentContainer {
+.patDocumentContainer {
       margin-left: 5%;
-  }
+}
+
+.title {
+    margin-left: 2%;
+}
+
+u {
+    text-decoration-line: underline;
+    text-decoration-color: #007bff;
+}
+
+
