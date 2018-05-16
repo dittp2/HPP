@@ -31,10 +31,10 @@ public class HealthProfessional {
 	@Column (name="prefix")
 	private String HP_prefix;
 	
-<<<<<<< HEAD
+
 	@Column (name="administrativeGender")
 	private String HP_adminGender;
-=======
+
 	@Column (name="type")
 	private String HP_type;
 	
@@ -61,7 +61,7 @@ public class HealthProfessional {
 	
 	@Column (name="email")
 	private String HP_email;
->>>>>>> 9106cc7489918d75e68c1f1802b0718c1dec8e6f
+
 	
 
 	public String getHP_Gln() {
@@ -109,7 +109,6 @@ public class HealthProfessional {
 	}
 
 	
-<<<<<<< HEAD
 	//administrativeGender
 	public String getHP_adminGender() {
 		return HP_adminGender;
@@ -120,11 +119,6 @@ public class HealthProfessional {
 	}
 	
 
-	@Override
-	public String toString() {
-		return "HealthProfessional [gln=" + HP_gln + ", fname=" + HP_fname + 
-				", lname=" + HP_lname + ", prefix=" + HP_prefix +  ", adminGender=" + HP_adminGender + "]";
-=======
 	public String getHP_title() {
 		return HP_title;
 	}
@@ -196,13 +190,13 @@ public class HealthProfessional {
 				+ ", HP_fach=" + HP_fach + ", HP_beruf=" + HP_beruf + ", HP_addr=" + HP_addr + ", HP_nation="
 				+ HP_nation + ", HP_language=" + HP_language + ", HP_gender=" + HP_gender + ", HP_email=" + HP_email
 				+ "]";
->>>>>>> 9106cc7489918d75e68c1f1802b0718c1dec8e6f
+
 	}
 
 	public HealthProfessional() {
 	}
 	
-<<<<<<< HEAD
+
 	public HealthProfessional(String HP_gln, String HP_fname, String HP_lname, String HP_prefix, String HP_adminGender) {
 	this.HP_gln = HP_gln;
 	this.HP_fname = HP_fname;
@@ -210,7 +204,7 @@ public class HealthProfessional {
 	this.HP_prefix = HP_prefix;
 	this.HP_adminGender = HP_adminGender;
 	}	
-=======
+
 	
 	
 	public HealthProfessional( String hP_gln, String hP_fname, String hP_lname, String hP_prefix,
@@ -231,7 +225,7 @@ public class HealthProfessional {
 		HP_gender = hP_gender;
 		HP_email = hP_email;
 	}
->>>>>>> 9106cc7489918d75e68c1f1802b0718c1dec8e6f
+
 }
 
 
