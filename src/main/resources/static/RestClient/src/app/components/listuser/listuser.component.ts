@@ -44,8 +44,11 @@ export class ListuserComponent implements OnInit {
 
 
   searchUser() {
+    
+    console.log(this.fnameSearch);
     // Suche nach Name und Vorname und oder Geschlecht.
-    this._userService.getNameUsers(this.fnameSearch, this.lnameSearch, this.genderSearch).subscribe((users) => {
+    this._userService.getSearchUsers(this.fnameSearch).subscribe((users) => {
+     
       console.log(users);
       this.users = users;
 
@@ -53,38 +56,33 @@ export class ListuserComponent implements OnInit {
       console.log(error);
     });
 
-    this._userService.getUser(this.idSearch).subscribe((user) => {
-      console.log(user);
-      this.users = [];
-      this.users[0] = user;
-    }, (error) => {
-      console.log(error);
-    });
+  //   this._userService.getUser(this.idSearch).subscribe((user) => {
+  //     console.log(user);
+  //     this.users = [];
+  //     this.users[0] = user;
+  //   }, (error) => {
+  //     console.log(error);
+  //   });
 
-     this._userService.getUser(this.idSearch).subscribe((user) => {
-     console.log(user);
-     this.users = [];
-     this.users[0] = user;
-   }, (error) => {
-     console.log(error);
-   });
+  //    this._userService.getUser(this.idSearch).subscribe((user) => {
+  //    console.log(user);
+  //    this.users = [];
+  //    this.users[0] = user;
+  //  }, (error) => {
+  //    console.log(error);
+  //  });
   }
 
-<<<<<<< HEAD
+  
+  // getDocument() {
+  //    this.document = this._documentService.getDocument();
+  //    console.log(this.document);
+  //    return this.document;
+  //   }
 
-}
-=======
+
+  
   }
-  getDocument() {
-     this.document = this._documentService.getDocument();
-     console.log(this.document);
-     return this.document;
-    }
-
-
-  }
-
->>>>>>> 9106cc7489918d75e68c1f1802b0718c1dec8e6f
 
 
   /*

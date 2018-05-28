@@ -9,9 +9,11 @@ import javax.print.Doc;
 
 import org.apache.commons.io.IOUtils;
 
+
 import org.medizininformatik.entities.HealthProfessional;
 import org.medizininformatik.entities.User;
 import org.medizininformatik.entities.ReadXMLFile;
+
 import org.medizininformatik.entities.Document;
 import org.medizininformatik.repositories.HPDirectory;
 import org.medizininformatik.repositories.UserRepository;
@@ -64,10 +66,16 @@ public class UserController {
 		return documentRepository.findAll();
 	}
 	
-	@GetMapping("/get-text")
-	public @ResponseBody String getText() {
-	    return "Hello world";
+	@GetMapping("/document/{id}")
+	public Document getDocument(@PathVariable Long id) {
+		return documentRepository.findOne(id);
 	}
+//
+//	
+//	@GetMapping("/get-text")
+//	public @ResponseBody String getText() {
+//	    return "Hello world";
+//	}
 	
 
 @GetMapping(value = "/file", 
@@ -126,25 +134,25 @@ public ResponseEntity<byte[]> getImageAsResponseEntity() {
 	/*
 	 * Get all Patients, condition firstname and lastname , from the Repository (function as MPI)
 	 */
-	@GetMapping("/users/{fname}&{lname}&{gender}")
-	public List<User> getUsers(@PathVariable String fname, @PathVariable String lname, @PathVariable String gender){
+	@GetMapping("/users/{fname}")
+	public List<User> getUsers(@PathVariable String fname){
 		
 		List<User> users = null;
 		
-		if(!fname.equals("")&&lname.equals("")) {	
+	//	if(!fname.equals("")&&lname.equals("")) {	
 			users = userRepository.findByFnameIgnoreCase(fname);
-		}
-		
-		if(fname.equals("")&&!lname.equals("")) {
-			users = userRepository.findByLnameIgnoreCase(lname);
-		}else {
-			users = userRepository.findByLnameAndFnameAllIgnoreCase(lname, fname);
-		}
-		;
-		if(!gender.equals("")) {
-			 			
-			users = userRepository.findByGender(Integer.parseInt(gender));
-		}
+//	}, @PathVariable String lname, @PathVariable String gender
+//		
+//		if(fname.equals("")&&!lname.equals("")) {
+//			users = userRepository.findByLnameIgnoreCase(lname);
+//		}else {
+//			users = userRepository.findByLnameAndFnameAllIgnoreCase(lname, fname);
+//		}
+//		;
+//		if(!gender.equals("")) {
+//			 			
+//			users = userRepository.findByGender(Integer.parseInt(gender));
+//		}
 		
 		return users;
 	}

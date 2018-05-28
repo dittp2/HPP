@@ -4,11 +4,12 @@ import { HealthProfessionalService } from '../../shared-service/healthprofession
 import { User } from '../../user';
 import { HealthProfessional } from '../../healthProfessional';
 import { Router } from '@angular/router';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
 import { DocumentService } from './../../document.service';
 import { Http, Response } from '@angular/http';
+import { Document } from '../../document';
 
 
 @Component({
@@ -18,10 +19,12 @@ import { Http, Response } from '@angular/http';
 })
 export class UserFormComponent implements OnInit {
   private user: User;
-  private document;
+  private documents : Document;
   private healthProfessionals: HealthProfessional[];
   private _url = 'data.xml';
 
+  private iddoc;
+  items = [];
 
   constructor(private _userService: UserService, private _router: Router,
     private _healthProfessionalService: HealthProfessionalService, private _documentService: DocumentService, private _http: Http) { }
@@ -38,7 +41,8 @@ export class UserFormComponent implements OnInit {
     }, (error) => {
     console.log(error);
   });
-}
+  this.getDocument();
+  }
 
 
   processForm() {
@@ -61,6 +65,16 @@ export class UserFormComponent implements OnInit {
   }
 
   getDocument() {
+
+    this._documentService.getDocuments().subscribe((documents) => {
+        this.documents = documents;
+        console.log(documents);
+         
+       }, (error) => {
+          console.log(error);
+       });
+
+
     console.log(this._http.get(this._url)
     .map((response: Response) => response.toString()));
     return this._http.get(this._url)
@@ -79,13 +93,11 @@ export class UserFormComponent implements OnInit {
     document.write(xmlData);
   }
 
+  openDocument(){
+    
+      window.open('www.google.ch',null); 
+     
+      
+  
 
-}
-
-
-
-// getDocument() {
-//   this.document = this._documentService.getDocument();
-//   console.log(this.document);
-//   return this.document;
-//  }
+}}

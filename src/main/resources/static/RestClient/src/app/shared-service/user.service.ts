@@ -21,11 +21,11 @@ export class UserService {
       .catch(this.errorHandler);
   }
 
-  getNameUsers(fname:String, lname:String, gender:number) {
+  getSearchUsers(fname:String) {
 
-    return this._http.get(this.baseUrl + '/users/'+fname+"&"+lname+"&"+ gender, this.options).map((response: Response) => response.json())
-      .catch(this.errorHandler);
-  }
+    return this._http.get(this.baseUrl + '/users/'+fname, this.options).map((response: Response) => response.json())
+       .catch(this.errorHandler);
+   }
 
   getUser(id: Number) {
 
