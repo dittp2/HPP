@@ -9,7 +9,7 @@
     </mat-toolbar-row>
   </mat-toolbar>
   <br>
-  <h3 class="patName"> <u>  {{user.gender === 1 ? 'Frau' : 'Herr'}} {{ user.prefix }} {{ user.fname }} {{user.secfname}} {{ user.lname }}</u></h3>
+  <h2 class="patName">  {{user.gender === 1 ? 'Frau' : 'Herr'}} {{ user.prefix }} {{ user.fname }} {{user.secfname}} {{ user.lname }}</h2>
 
   <div class="container">
     <div class="row">
@@ -69,11 +69,12 @@
         </form>
       </div>
       <div class="rightContainer">
-        <table class="tableRightContainer">
+        <table class="tableRightContainerDocument">
           <td>
             <h3 id="containerTitle">Dokumente</h3>
           </td>
           <td></td>
+          <td>    </td>
           <td>
             <input type="text" placeholder="Suchbegriff eingeben"> </td>
           <td></td>
@@ -84,7 +85,7 @@
             <button class="btn btn-primary">Dokument hochladen</button>
           </td>
         </table>
-        <table class="tableRightContainer" >
+        <table class="table table-striped" >
           <thead>
             <th>Dokumenttitel</th>
             <th>Dokumenttyp</th>

@@ -1,12 +1,4 @@
 
-body {
-    position:absolute;
-    top:0px;
-    left:0px;
-    width:100%;
-    height:100%;
-}
-
 .mat-toolbar {
     padding-left: 0%;    
     background-color: #007bff;
@@ -18,9 +10,11 @@ body {
 }
 
 .container {
-    margin-top: 2%;
-    margin-left: 3%;
+    max-width: 2100px;
     width: 100%;
+    
+    
+    position:  static;
 }
 
 .row {
@@ -29,6 +23,7 @@ body {
 
 
 .leftContainer {
+    padding: 2%;
     width: 20%;
 }
 
@@ -42,8 +37,8 @@ h3 {
 }
 
 .rightContainer {
-    width: 75%;
-    margin-left: 5%;
+    padding: 2%;
+    width: 80%;
      transition: .5s;
     overflow: hidden;
 }
@@ -54,13 +49,23 @@ h3 {
 
 .tableRightContainer {
     width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.tableRightContainerDocument {
+    width: 50%;
 }
 
 .patInformation {
      margin-left: 2%;
      width: 80%;
 }
-
+.table-striped {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
 
 .example-form {
     min-width: 150px;
