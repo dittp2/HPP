@@ -1,15 +1,15 @@
-<<<<<<< HEAD
 .row {
     width: 100%;
 }
 
 
-=======
->>>>>>> 9106cc7489918d75e68c1f1802b0718c1dec8e6f
 .example-icon {
     padding: 0 14px;
   }
 
+.example-full-width {
+    width: 100%;
+}
   
 .example-spacer {
     flex: 1 1 auto;
@@ -23,13 +23,14 @@
 
 .searchContainer {
     height: 100%;
-    margin-left: 2%;
-    margin-top: 2%;
+    padding: 2%;
+    width: 20%;
 }
 
 .patientsList {
     height: 100%;
     padding: 2%;
+    width: 80%;
 }
 
 .container {
@@ -53,7 +54,7 @@
 .table-striped {
     overflow: hidden;
     white-space: nowrap;
-    width: 800px;
+    width: 100%;
 }
 
 .pageTitle {
@@ -61,5 +62,6 @@
         font-size: 32px;
         margin-left: 2%;
 }
+
 
 

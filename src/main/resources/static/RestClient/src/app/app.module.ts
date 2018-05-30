@@ -20,6 +20,7 @@ import { HealthProfessional } from './healthProfessional';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from './material.module';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
 //import {MatInputModule} from '@angular/material/input';
 
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MaterialModule,
     MatDividerModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSelectModule
   ],
   providers: [UserService, HealthProfessionalService, DocumentService ],
   bootstrap: [AppComponent]

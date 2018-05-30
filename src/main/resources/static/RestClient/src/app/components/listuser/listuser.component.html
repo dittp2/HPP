@@ -18,69 +18,36 @@
 
         <form (ngSubmit)="processForm()">
           <br>
-          <div class="input-group">
-            <div class="form group">
-              <label for="id">ID:</label>
-              <label> {{ user.id}}</label>
-             
-              <mat-divider></mat-divider>
+             <div class="form group">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Versicherungsnummer" value="">
+              </mat-form-field>
             </div>
-            </div>
-<!--  
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="">ID:</span>
-            </div>
-            <input type="text" class="form-control" placeholder="type in ID..." [(ngModel)]="idSearch">
+          <div class="form group">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Vorname" value="" [(ngModel)]="fnameSearch" name="fname">
+              </mat-form-field>
           </div>
-        -->
-          <br>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="">Titel:</span>
-            </div>
-            <input type="text" class="form-control" placeholder="type Prefix...">
+          <div class="form group">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Nachname" value="" [(ngModel)]="lnameSearch" name="lname">
+              </mat-form-field>
           </div>
-          <br>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="">1. Vorname:</span>
-            </div>
-            <input type="text" class="form-control" placeholder="type in First Name..." [(ngModel)]="fnameSearch">
-          </div>
-          <br>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="">2. Vorname:</span>
-            </div>
-            <input type="text" class="form-control" placeholder="type in Second Name...">
+         
+          <div class="form group">
+              <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Geschlecht" [(ngModel)]="genderSearch" name="gender" >
+                    <mat-option value="1">männlich</mat-option>
+                    <mat-option value="2">weiblich</mat-option>
+                    </mat-select>
+              </mat-form-field>
           </div>
 
-          <br>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="">Nachname:</span>
-            </div>
-            <input type="text" class="form-control" placeholder="type in Last Name..." [(ngModel)]="lnameSearch">
+          <div class="form group">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Geburtsjahr" value="" [(ngModel)]="yearSearch" name="year">
+                </mat-form-field>
           </div>
-          <br>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01">Geschlecht</label>
-            </div>
-            <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="genderSearch">
-              <option selected>Geschlecht auswählen</option>
-              <option value="1">männlich</option>
-              <option value="2">weiblich</option>
-            </select>
-          </div>
-
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="">Geburtsdatum:</span>
-            </div>
-            <input type="text" class="form-control" placeholder="type in Birthdate...">
-          </div>
-          <br>
         </form>
 
         <div class="form group col">
@@ -90,17 +57,17 @@
       </div>
       <div class="patientsList">
         <h3>Suchergebnisse</h3>
-        <mat-divider></mat-divider>
+       
         <table class="table table-striped">
           <thead>
-            <th>Id</th>
+            <th>Versicherungsnummer</th>
             <th>Titel</th>
             <th>1. Vorname</th>
             <th>2. Vorname</th>
             <th>Nachname</th>
             <th>Geschlecht</th>
             <th>Geburtsdatum</th>
-            <th>Operations</th>
+            <th></th>
           </thead>
           <tbody>
             <tr *ngFor="let user of users">
@@ -110,18 +77,14 @@
               <td>{{user.secfname}}</td>
               <td>{{user.lname}}</td>
               <td>{{user.gender === 1 ? 'weiblich' : 'männlich'}}</td>
-              <td>{{user.bdate}}</td>
-              <td>
-                <button class="btn btn-danger" (click)="getGender(user)">Delete</button>
-              </td>
-              <td>
+              <td>{{user.bdate | date:'dd.MM.yyyy'}}</td>
+               <td>
                 <button class="btn btn-primary" (click)="updateUser(user)">Dossier öffnen</button>
               </td>
             </tr>
           </tbody>
         </table>
-        <button class="btn btn-primary" (click)="newUser()"> New User </button>
-      </div>
+        </div>
     </div>
   </div>
 </div>
