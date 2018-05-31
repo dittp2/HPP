@@ -71,12 +71,13 @@
           </thead>
           <tbody>
             <tr *ngFor="let user of users">
-              <td>{{user.id}}</td>
+              <td>{{user.vnr}}</td>
+              
               <td>{{user.prefix}}</td>
               <td>{{user.fname}}</td>
               <td>{{user.secfname}}</td>
               <td>{{user.lname}}</td>
-              <td>{{user.gender === 1 ? 'weiblich' : 'männlich'}}</td>
+              <td>{{user.gender === 2 ? 'weiblich' : 'männlich'}}</td>
               <td>{{user.bdate | date:'dd.MM.yyyy'}}</td>
                <td>
                 <button class="btn btn-primary" (click)="updateUser(user)">Dossier öffnen</button>

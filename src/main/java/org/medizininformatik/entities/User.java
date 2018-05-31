@@ -18,6 +18,9 @@ public class User {
 	@Column (name="id")
     private Long id;
 	
+	@Column (name="vnr")
+	private String vnr;
+	
 	@Column (name="prefix")
 	private String prefix;
 	
@@ -41,6 +44,12 @@ public class User {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public String getVnr() {
+		return vnr;
+	}
+	public void setVnr(String vnr) {
+		this.vnr = vnr;
 	}
 	public String getFname() {
 		return fname;
@@ -69,7 +78,8 @@ public class User {
 		return bdate;
 	}
 	
-	public User(String prefix, String fname, String secfname, String lname, int gender, Date bdate) {
+	public User(String vnr, String prefix, String fname, String secfname, String lname, int gender, Date bdate) {
+		this.vnr = vnr;
 		this.prefix = prefix;
 		this.fname = fname;
 		this.secfname = secfname;

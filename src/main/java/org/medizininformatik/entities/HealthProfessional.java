@@ -207,23 +207,24 @@ public class HealthProfessional {
 
 	
 	
-	public HealthProfessional( String hP_gln, String hP_fname, String hP_lname, String hP_prefix,
+	public HealthProfessional( String hP_gln, String hP_fname, String hP_lname, String hP_prefix, String HP_adminGender,
 			String hP_type, String hP_title, String hP_fach, String hP_beruf, String hP_addr, String hP_nation,
 			String hP_language, String hP_gender, String hP_email) {
 		
-		HP_gln = hP_gln;
-		HP_fname = hP_fname;
-		HP_lname = hP_lname;
-		HP_prefix = hP_prefix;
-		HP_type = hP_type;
-		HP_title = hP_title;
-		HP_fach = hP_fach;
-		HP_beruf = hP_beruf;
-		HP_addr = hP_addr;
-		HP_nation = hP_nation;
-		HP_language = hP_language;
-		HP_gender = hP_gender;
-		HP_email = hP_email;
+		this.HP_gln = hP_gln;
+		this.HP_fname = hP_fname;
+		this.HP_lname = hP_lname;
+		this.HP_prefix = hP_prefix;
+		this.HP_adminGender = HP_adminGender;
+		this.HP_type = hP_type;
+		this.HP_title = hP_title;
+		this.HP_fach = hP_fach;
+		this.HP_beruf = hP_beruf;
+		this.HP_addr = hP_addr;
+		this.HP_nation = hP_nation;
+		this.HP_language = hP_language;
+		this.HP_gender = hP_gender;
+		this.HP_email = hP_email;
 	}
 
 }

@@ -22,13 +22,13 @@
           <br>
           <div class="form group">
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Versicherungsnummer" value="{{user.id}} ">
+              <input matInput placeholder="Versicherungsnummer" value="{{user.vnr}} ">
             </mat-form-field>
           </div>
 
           <div class="form group">
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Anrede" value="{{user.gender === 1 ? 'Frau' : 'Herr'}} {{ user.prefix }} ">
+                <input matInput placeholder="Anrede" value="{{user.gender === 2 ? 'Frau' : 'Herr'}} {{ user.prefix }} ">
               </mat-form-field>
           </div>
 
@@ -163,7 +163,7 @@
             <th>Prefix</th>
             <th>Nachname</th>
             <th>Vorname</th>
-            <th>Titel</th>
+            
             <th>Fachrichtung</th>
             <th>Instutition</th>
             <th>Language</th>
@@ -181,7 +181,7 @@
               <td>{{healthProfessional.hp_Lname}}</td>    
               
               
-              <td>{{healthProfessional.hp_title}}</td>    
+               
               <td>{{healthProfessional.hp_fach}}</td>
               
               <td>{{healthProfessional.hp_addr}}</td>

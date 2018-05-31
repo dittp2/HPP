@@ -28,6 +28,7 @@ export class ListuserComponent implements OnInit {
     this._userService.getUsers().subscribe((users) => {
       console.log(users);
       this.users = users;
+      
     }, (error) => {
       console.log(error);
     });
@@ -35,6 +36,7 @@ export class ListuserComponent implements OnInit {
 
   deleteUser(user) {
     this._userService.deleteUser(user.id).subscribe((data) => {
+    
     }, (error) => {
       console.log(error);
     });
