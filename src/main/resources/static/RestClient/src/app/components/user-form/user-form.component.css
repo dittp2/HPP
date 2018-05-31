@@ -103,9 +103,17 @@ h3 {
     margin-left: 2%;
 }
 
+.noColor{
+   background-color: transparent;
+}
+
 u {
     text-decoration-line: underline;
     text-decoration-color: #007bff;
 }
+.btn btn-primary btn-block{
+    width: 100%;
+}
+
 
 

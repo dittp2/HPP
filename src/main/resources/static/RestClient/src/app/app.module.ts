@@ -22,6 +22,7 @@ import { MaterialModule } from './material.module';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 //import {MatInputModule} from '@angular/material/input';
 
 const appRoutes: Routes = [
@@ -51,7 +52,8 @@ const appRoutes: Routes = [
     MaterialModule,
     MatDividerModule,
     MatGridListModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule
   ],
   providers: [UserService, HealthProfessionalService, DocumentService ],
   bootstrap: [AppComponent]

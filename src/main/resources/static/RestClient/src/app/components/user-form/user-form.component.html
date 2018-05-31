@@ -8,9 +8,10 @@
       <mat-icon class="example-icon" (click)="navigateToHome()">home</mat-icon>
     </mat-toolbar-row>
   </mat-toolbar>
+     <!--
   <br>
   <h2 class="patName">  {{user.gender === 1 ? 'Frau' : 'Herr'}} {{ user.prefix }} {{ user.fname }} {{user.secfname}} {{ user.lname }}</h2>
-
+-->
   <div class="container">
     <div class="row">
       <div class="leftContainer">
@@ -20,52 +21,39 @@
 
           <br>
           <div class="form group">
-            <label for="id">ID:</label>
-            <label></label>
-            {{ user.id}}
-            <mat-divider></mat-divider>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Versicherungsnummer" value="{{user.id}} ">
+            </mat-form-field>
           </div>
 
           <div class="form group">
-            <br>
-            <label for="id">Anrede: </label>
-            <label></label>
-            {{user.gender === 1 ? 'Frau' : 'Herr'}}
-            {{ user.prefix }}
-            <mat-divider></mat-divider>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Anrede" value="{{user.gender === 1 ? 'Frau' : 'Herr'}} {{ user.prefix }} ">
+              </mat-form-field>
           </div>
 
           <div class="form group">
-            <br>
-            <label for="fname">1. Vorname:</label>
-            <a id="value">
-              {{ user.fname }}
-            </a>
-            <mat-divider></mat-divider>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Vorname" value="{{user.fname}} ">
+              </mat-form-field>
           </div>
+          
+          <div class="form group">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Zweitvorname" value="{{user.secfname}} ">
+              </mat-form-field>
+          </div>
+          <div class="form group">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Nachname" value="{{user.lname}} ">
+              </mat-form-field>
+          </div>  
 
           <div class="form group">
-            <br>
-            <label for="secfname">2. Vorname:</label>
-            <label></label>
-            {{ user.secfname}}
-            <mat-divider></mat-divider>
-          </div>
-
-          <div class="form group">
-            <br>           
-                  <label for="lname">Nachname:</label>
-                  <label></label>
-                  {{ user.lname }}
-            <mat-divider></mat-divider>
-          </div>
-
-          <div class="form group">
-            <br>
-            <label for="bdate">Geburtsdatum:</label>
-            {{ user.bdate}}
-            <mat-divider></mat-divider>
-          </div>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Geburtsdatum" value="{{user.bdate | date:'dd.MM.yyyy'}} ">
+              </mat-form-field>
+          </div>  
         </form>
       </div>
       <div class="rightContainer">
@@ -74,9 +62,10 @@
             <h3 id="containerTitle">Dokumente</h3>
           </td>
           <td></td>
-          <td>    </td>
+          <td></td>
           <td>
-            <input type="text" placeholder="Suchbegriff eingeben"> </td>
+            <input type="text" placeholder="Suchbegriff eingeben"> 
+          </td>
           <td></td>
           <td>
             <button class="btn btn-primary">erweiterte Suche</button>
@@ -85,6 +74,7 @@
             <button class="btn btn-primary">Dokument hochladen</button>
           </td>
         </table>
+        <br>
         <table class="table table-striped" >
           <thead>
             <th>Dokumenttitel</th>
@@ -94,16 +84,18 @@
             <th>Authorenrolle</th>
             <th>Datum</th>
             <th>Aktionen</th>
+            <th> </th>
           </thead>
               <!-- HealthProfessional Entries from DB -->
               
           <tbody>
             <tr *ngFor="let doc of documents" >
-            <td>Bericht</td>
-            <td>PDF</td>
-            <td>as</td>
-            <td>s</td>
-            <td>s</td>
+            <td>{{doc.doc_Title}}</td>
+            <td>Kurzbericht</td>
+            <td>Psychiatrie</td>
+            <td>Psychiatriezentrum</td>            
+            <td>Dr.Zimmermann</td>
+            <td>31.05.2016</td>
             <td>
              
               <a target ="_blank"  href="{{doc.doc_Url}}">einsehen</a>           
@@ -150,7 +142,7 @@
 
           <div class="form group col">
             <br>
-            <button class="btn btn-primary btn-block" ng-click="showDetails = ! showDetails"> Gesundheitsfachperson suchen</button>
+            <button class="btn btn-primary btn-block" ng-click="showDetails = ! showDetails"> Suchen</button>
           </div>
 
         </form>
@@ -165,20 +157,19 @@
           </td>
         </table>
 
-        <table class="tableRightContainer">
+        <table class="table table-striped" >
           <thead>
             <th>GLN</th>
             <th>Prefix</th>
             <th>Nachname</th>
-            <th>Type</th>
-            <th>Gender</th>
+            <th>Vorname</th>
             <th>Titel</th>
             <th>Fachrichtung</th>
-            <th>Berufsausuebung</th>
-            <th>Addresse</th>
-            <th>Nation</th>
+            <th>Instutition</th>
             <th>Language</th>
             <th>Email</th>
+            <th>Zugriffsstufen</th>
+            
             </thead>
 
           <tbody>
@@ -188,16 +179,24 @@
               <td>{{healthProfessional.hp_Prefix}}</td>
               <td>{{healthProfessional.hp_Fname}}</td> 
               <td>{{healthProfessional.hp_Lname}}</td>    
-              <td>{{healthProfessional.hp_type}}</td> 
-              <td>{{healthProfessional.hp_gender}}</td>
+              
+              
               <td>{{healthProfessional.hp_title}}</td>    
               <td>{{healthProfessional.hp_fach}}</td>
-              <td>{{healthProfessional.hp_beruf}}</td>
+              
               <td>{{healthProfessional.hp_addr}}</td>
-              <td>{{healthProfessional.hp_nation}}</td>
+              
               <td>{{healthProfessional.hp_language}}</td>
               <td>{{healthProfessional.hp_email}}</td>
-           </tr>
+              <td>
+                <tr>
+                  <mat-checkbox> normal </mat-checkbox>
+                </tr>
+                <tr>
+                  <mat-checkbox> erweitert </mat-checkbox>
+                </tr>
+              </td>
+            </tr>
           </tbody>
         </table>
         <button class="btn btn-primary"> Änderungen speichern</button>

@@ -6,6 +6,7 @@ import { HealthProfessional } from '../../healthProfessional';
 import { Router } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { DocumentService } from './../../document.service';
 import { Http, Response } from '@angular/http';
