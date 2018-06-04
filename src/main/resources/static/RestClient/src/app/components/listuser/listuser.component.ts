@@ -52,7 +52,7 @@ export class ListuserComponent implements OnInit {
     
     console.log(this.fnameSearch);
     // Suche nach Name und Vorname und oder Geschlecht.
-    this._userService.getSearchUsers(this.fnameSearch).subscribe((users) => {
+    this._userService.getSearchUsers(this.fnameSearch,this.lnameSearch).subscribe((users) => {
      
       console.log(users);
       this.users = users;

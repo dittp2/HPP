@@ -21,9 +21,9 @@ export class UserService {
       .catch(this.errorHandler);
   }
 
-  getSearchUsers(fname:String) {
+  getSearchUsers(fname:String, lname:String) {
 
-    return this._http.get(this.baseUrl + '/users/'+fname, this.options).map((response: Response) => response.json())
+    return this._http.get(this.baseUrl + '/users/'+fname+'&'+lname, this.options).map((response: Response) => response.json())
        .catch(this.errorHandler);
    }
 

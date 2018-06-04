@@ -134,20 +134,28 @@ public ResponseEntity<byte[]> getImageAsResponseEntity() {
 	/*
 	 * Get all Patients, condition firstname and lastname , from the Repository (function as MPI)
 	 */
-	@GetMapping("/users/{fname}")
-	public List<User> getUsers(@PathVariable String fname){
+	@GetMapping("/users/{fname}&{lname}")
+	public List<User> getUsers(@PathVariable String fname,@PathVariable String lname){
 		
 		List<User> users = null;
 		
-	//	if(!fname.equals("")&&lname.equals("")) {	
+		if(!fname.equals("")&&lname.equals("")) {	
 			users = userRepository.findByFnameIgnoreCase(fname);
-//	}, @PathVariable String lname, @PathVariable String gender
-//		
-//		if(fname.equals("")&&!lname.equals("")) {
-//			users = userRepository.findByLnameIgnoreCase(lname);
-//		}else {
-//			users = userRepository.findByLnameAndFnameAllIgnoreCase(lname, fname);
-//		}
+		}
+		
+		if(fname.equals("")&&!lname.equals("")) {
+			users = userRepository.findByLnameIgnoreCase(lname);
+		}
+		
+		if(!fname.equals("")&&!lname.equals("")){
+			users = userRepository.findByLnameAndFnameAllIgnoreCase(lname, fname);
+		}
+		
+		if(fname.equals("")&&lname.equals("")){
+			users = getUsers();
+		}
+		
+		
 //		;
 //		if(!gender.equals("")) {
 //			 			

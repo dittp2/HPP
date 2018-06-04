@@ -63,8 +63,8 @@ public class HPPApplication implements CommandLineRunner {
 				hpDirectory.save(new HealthProfessional("7601000141764" , "Steinert", "Markus", "Phys.", "männlich","Arzt"," ","Innere Medizin"," ","USZ"," ", "Deutsch"," ","steinert.markus@usz.ch"));
 				hpDirectory.save(new HealthProfessional("7601000154724" , "Blumen", "Eliane", "Dr. med.", "weiblich","Arzt"," ","Gynokologie"," ","Insel Spital"," ", "Deutsch"," ","eliane.blumen@insel.ch"));
 				
-				documentRepository.save(new Document("Kurzberich_Max_Muster", "/assets/Max_Muster_Kurzbericht.pdf"));
-				documentRepository.save(new Document("Bericht_Max_Muster", "/assets/Max_Muster_Kurzbericht.pdf"));
+				documentRepository.save(new Document("Kurzberich_Tom_Hugo", "/assets/Max_Muster_Kurzbericht.pdf"));
+				documentRepository.save(new Document("Bericht_Tom_Hugo", "/assets/Max_Muster_Kurzbericht.pdf"));
 
 //				hpDirectory.save(new HealthProfessional("123456765432" , "Zurkinden", "Erni", "Dr. med.", "Doctor","männlich "," "," "," "," "," "," "," ", ""));
 //				hpDirectory.save(new HealthProfessional("124686765431" , "Baumann", "Maria", "Dr. med.","Doctor","erer "," "," "," "," "," "," "," ",""));
