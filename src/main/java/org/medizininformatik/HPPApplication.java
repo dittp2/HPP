@@ -39,7 +39,6 @@ public class HPPApplication implements CommandLineRunner {
 		SpringApplication.run(HPPApplication.class, args);
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void run(String... args) throws Exception { }
 		
@@ -51,11 +50,18 @@ public class HPPApplication implements CommandLineRunner {
 				Document doc1 = (new Document("Kurzberich_Tom_Hugo", "/assets/Max_Muster_Kurzbericht.pdf"));
 				Document doc2 = (new Document("Bericht_Tom_Hugo", "/assets/Max_Muster_Kurzbericht.pdf"));
 				
+				HealthProfessional healthp1 = (new HealthProfessional("7601000151764" , "Zimmermann", "Martin", "Dr.med.", "männlich","Arzt"," ","Psychiater"," ","Münsingen"," ", "Deutsch"," ","zimmermann.markus@psych.ch"));
+				
 				//Add User to userRepository (List)
-				userRepository.save(new User("756.1234.5678.96","","Tom", "","Hugentobler", 1,new Date(75,9,03), Arrays.asList(doc1, doc2)));
+				User user1 =new User("756.1234.5678.96","","Tom", "","Hugentobler", 1,new Date(75,9,03));
+				user1.setHealthp(Arrays.asList(healthp1));
+				user1.setDocuments(Arrays.asList(doc1, doc2));
+				
+				userRepository.save(user1);
+				
+				userRepository.save(new User("756.3454.3563.39","", "Astrid","Simone", "Beieler", 2,new Date(18,06,14)));
 				
 				
-			userRepository.save(new User("756.3454.3563.39","", "Astrid","Simone", "Beieler", 2,new Date(18,06,14),null));
 //				userRepository.save(new User("756.3452.3342.46","Dr.", "Markus","Peter", "Meister", 1, new Date(18,06,14)));
 //				userRepository.save(new User("756.3424.5757.33","Herr", "Pietro","Pablo", "Golums", 1, new Date(72,06,14)));
 //				userRepository.save(new User("756.1674.1345.98","Dr.", "Susanne","Nadia", "Rössner", 2,new Date(18,06,14)));
@@ -66,11 +72,11 @@ public class HPPApplication implements CommandLineRunner {
 //				userRepository.save(new User("756.8973.1234.26","","Erika", "","Eppener", 2,new Date(56,02,21)));
 //				userRepository.save(new User("756.2754.5232.78","","Bruno", "","Hause", 1, new Date(75,9,03)));
 							
-				//Add Health Professionals to hpDiretory (List)
-				hpDirectory.save(new HealthProfessional("7601000151764" , "Zimmermann", "Martin", "Dr.med.", "männlich","Arzt"," ","Psychiater"," ","Münsingen"," ", "Deutsch"," ","zimmermann.markus@psych.ch"));
-				hpDirectory.save(new HealthProfessional("7601000141764" , "Steinert", "Markus", "Phys.", "männlich","Arzt"," ","Innere Medizin"," ","USZ"," ", "Deutsch"," ","steinert.markus@usz.ch"));
-				hpDirectory.save(new HealthProfessional("7601000154724" , "Blumen", "Eliane", "Dr. med.", "weiblich","Arzt"," ","Gynokologie"," ","Insel Spital"," ", "Deutsch"," ","eliane.blumen@insel.ch"));
-				
+//				//Add Health Professionals to hpDiretory (List)
+//				hpDirectory.save(new HealthProfessional("7601000151764" , "Zimmermann", "Martin", "Dr.med.", "männlich","Arzt"," ","Psychiater"," ","Münsingen"," ", "Deutsch"," ","zimmermann.markus@psych.ch"));
+//				hpDirectory.save(new HealthProfessional("7601000141764" , "Steinert", "Markus", "Phys.", "männlich","Arzt"," ","Innere Medizin"," ","USZ"," ", "Deutsch"," ","steinert.markus@usz.ch"));
+//				hpDirectory.save(new HealthProfessional("7601000154724" , "Blumen", "Eliane", "Dr. med.", "weiblich","Arzt"," ","Gynokologie"," ","Insel Spital"," ", "Deutsch"," ","eliane.blumen@insel.ch"));
+//				
 //				documentRepository.save(new Document("Kurzberich_Tom_Hugo", "/assets/Max_Muster_Kurzbericht.pdf"));
 //				documentRepository.save(new Document("Bericht_Tom_Hugo", "/assets/Max_Muster_Kurzbericht.pdf"));
 

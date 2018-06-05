@@ -1,0 +1,119 @@
+
+.mat-toolbar {
+    padding-left: 0%;    
+    background-color: #007bff;
+    color: white;    
+}
+
+.gridPatDossier {
+    margin-top: 20px;
+}
+
+.container {
+    max-width: 2100px;
+    width: 100%;
+    
+    
+    position:  static;
+}
+
+.row {
+    width: 100%;
+}
+
+
+.leftContainer {
+    padding: 2%;
+    width: 20%;
+}
+
+#downContainer {
+    margin-top: 5%;
+}
+
+h3 {
+    font-size: medium;
+    font-style: bold;
+}
+
+.rightContainer {
+    padding: 2%;
+    width: 80%;
+     transition: .5s;
+    overflow: hidden;
+}
+
+.rightContainer.hidden {
+    height: 0px;
+}
+
+.tableRightContainer {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.tableRightContainerDocument {
+    width: 50%;
+}
+
+.patInformation {
+     margin-left: 2%;
+     width: 80%;
+}
+.table-striped {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+ 
+.example-full-width {
+    width: 100%;
+}
+
+.example-icon {
+    margin-left: 1%;
+}
+
+.link {
+    font-size: 12px;
+}
+
+.patName {
+    color: black;
+    font-size: 32px;
+    margin-left: 2%;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.patDocumentContainer {
+      margin-left: 5%;
+}
+
+.title {
+    margin-left: 2%;
+}
+
+.noColor{
+   background-color: transparent;
+}
+
+u {
+    text-decoration-line: underline;
+    text-decoration-color: #007bff;
+}
+.btn btn-primary btn-block{
+    width: 100%;
+}
+
+
+

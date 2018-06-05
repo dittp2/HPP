@@ -1,11 +1,16 @@
 package org.medizininformatik.entities;
 
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
@@ -61,6 +66,13 @@ public class HealthProfessional {
 	
 	@Column (name="email")
 	private String HP_email;
+	
+	@ManyToMany(fetch = FetchType.EAGER,
+            cascade = {
+                CascadeType.PERSIST,
+                CascadeType.MERGE
+            })
+    private List<User> users ;
 
 	
 
@@ -181,6 +193,14 @@ public class HealthProfessional {
 
 	public void setHP_email(String hP_email) {
 		HP_email = hP_email;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	@Override
