@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -22,6 +23,9 @@ public class Document {
 	@Column (name="docURL")
 	private String doc_Url;
 
+	@ManyToOne
+	private User user;
+	
 	public Long getDoc_Id() {
 		return doc_Id;
 	}
@@ -46,6 +50,8 @@ public class Document {
 		this.doc_Url = doc_Url;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Document [doc_Id=" + doc_Id + ", doc_Title=" + doc_Title + ", doc_Url=" + doc_Url + "]";
@@ -55,8 +61,17 @@ public class Document {
 		super();
 		this.doc_Title = doc_Title;
 		this.doc_Url = doc_Url;
+		
 	}
 	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public Document() {}
 
 }

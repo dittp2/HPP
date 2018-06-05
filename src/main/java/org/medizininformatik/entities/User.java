@@ -1,11 +1,15 @@
 package org.medizininformatik.entities;
 
 import java.sql.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -39,6 +43,10 @@ public class User {
 	@Column (name="bdate")
     private Date bdate;
     
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id", referencedColumnName = "id")
+	private List<Document> documents;
+	
 	public Long getId() {
 		return id;
 	}
@@ -78,7 +86,13 @@ public class User {
 		return bdate;
 	}
 	
-	public User(String vnr, String prefix, String fname, String secfname, String lname, int gender, Date bdate) {
+	public List<Document> getDocuments() {
+		return documents;
+	}
+	public void setDocuments(List<Document> documents) {
+		this.documents = documents;
+	}
+	public User(String vnr, String prefix, String fname, String secfname, String lname, int gender, Date bdate, List<Document> documents ) {
 		this.vnr = vnr;
 		this.prefix = prefix;
 		this.fname = fname;
@@ -86,6 +100,7 @@ public class User {
 		this.lname = lname;
 		this.gender = gender;
 		this.bdate = bdate;
+		this.documents = documents;
 	}
 	
 	
