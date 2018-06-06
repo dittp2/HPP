@@ -1,207 +1,34 @@
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <div class="body">
+
   <mat-toolbar class="mat-toolbar">
     <mat-toolbar-row>
-      <span class="title">Patientendossieransicht</span>
-      <span class="example-spacer"></span>
-      <span class="link" (click)="navigateToHome()">zurück zum Dashboard</span>
-      <mat-icon class="example-icon" (click)="navigateToHome()">home</mat-icon>
+      <span>
+        <h1>Health Professional Portal</h1>
+      </span>
     </mat-toolbar-row>
   </mat-toolbar>
-     <!--
-  <br>
-  <h2 class="patName">  {{user.gender === 1 ? 'Frau' : 'Herr'}} {{ user.prefix }} {{ user.fname }} {{user.secfname}} {{ user.lname }}</h2>
--->
-  <div class="container">
-    <div class="row">
-      <div class="leftContainer">
-        <form (ngSubmit)="processForm()">
-          <!-- Titel bestimmt breite des div-containers!!! -->
-          <h3 class="patName">Patientenangaben</h3>
-
-          <br>
-          <div class="form group">
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Versicherungsnummer" value="{{user.vnr}} ">
-            </mat-form-field>
-          </div>
-
-          <div class="form group">
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Anrede" value="{{user.gender === 2 ? 'Frau' : 'Herr'}} {{ user.prefix }} ">
-              </mat-form-field>
-          </div>
-
-          <div class="form group">
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Vorname" value="{{user.fname}} ">
-              </mat-form-field>
-          </div>
-          
-          <div class="form group">
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Zweitvorname" value="{{user.secfname}} ">
-              </mat-form-field>
-          </div>
-          <div class="form group">
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Nachname" value="{{user.lname}} ">
-              </mat-form-field>
-          </div>  
-
-          <div class="form group">
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Geburtsdatum" value="{{user.bdate | date:'dd.MM.yyyy'}} ">
-              </mat-form-field>
-          </div>  
-        </form>
-      </div>
-      <div class="rightContainer">
-        <table class="tableRightContainerDocument">
-          <td>
-            <h3 id="containerTitle">Dokumente</h3>
-          </td>
-          <td></td>
-          <td></td>
-          <td>
-            <input type="text" placeholder="Suchbegriff eingeben"> 
-          </td>
-          <td></td>
-          <td>
-            <button class="btn btn-primary">erweiterte Suche</button>
-          </td>
-          <td>
-            <button class="btn btn-primary">Dokument hochladen</button>
-          </td>
-        </table>
+ 
+      <form class= "centerbox" (ngSubmit)="processForm()">
         <br>
-        <table class="table table-striped" >
-          <thead>
-            <th>Dokumenttitel</th>
-            <th>Dokumenttyp</th>
-            <th>Fachrichtung</th>
-            <th>Instutition</th>
-            <th>Authorenrolle</th>
-            <th>Datum</th>
-            <th>Aktionen</th>
-            <th> </th>
-          </thead>
-              <!-- HealthProfessional Entries from DB -->
-              
-          <tbody>
-            <tr *ngFor="let doc of user.documents" >
-            <td>{{doc.doc_Title}}</td>
-            <td>Kurzbericht</td>
-            <td>Psychiatrie</td>
-            <td>Psychiatriezentrum</td>            
-            <td>Dr.Zimmermann</td>
-            <td>31.05.2016</td>
-            <td>
-             
-              <a target ="_blank"  href="{{doc.doc_Url}}">einsehen</a>           
-            </td>
-            <td>
-                <a target ="_blank"  href="{{doc.doc_Url}}" download><button class="btn btn-primary">herunterladen</button></a>
-            </td>
-          </tr>
-          </tbody>     
-         </table>
-      </div>
-    </div>
-    <div class="row">
-      <div class="leftContainer" id="downContainer">
-        <form (ngSubmit)="processForm()">
-          <!-- Titel bestimmt breite des div-containers!!! -->
-          <h3 id="containerTitle">Berechtigungen delegieren</h3>
+           <div class="form group">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Username" value="">
+            </mat-form-field>
+          </div>
+        <div class="form group">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Password" value="">
+            </mat-form-field>
+        </div>
+
+        <div class="form group col">
           <br>
-          <div class="form group">
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="GLN Nummer" value="">
-            </mat-form-field>
-          </div> 
-
-          <div class="form group">
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Name" value="">
-            </mat-form-field>
-
-          </div>
-
-          <div class="form group">
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Vorname" value="">
-            </mat-form-field>
-
-          </div>
-          <div class="form group">
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Fachrichtung" value="">
-            </mat-form-field>
-
-          </div>
-
-          <div class="form group col">
-            <br>
-            <button class="btn btn-primary btn-block" ng-click="showDetails = ! showDetails"> Suchen</button>
-          </div>
+          <button class="btn btn-primary btn-block" (click)="Login()"> Login </button>
+        </div>
 
         </form>
+        
+   
+  
 
-
-      </div>
-
-      <div class="rightContainer" id="downContainer" ng-class="{ 'hidden': ! showDetails }">
-        <table class="tableRightContainer">
-          <td>
-            <h3 id="containerTitle">Gesundheitsfachpersonen</h3>
-          </td>
-        </table>
-
-        <table class="table table-striped" >
-          <thead>
-            <th>GLN</th>
-            <th>Prefix</th>
-            <th>Nachname</th>
-            <th>Vorname</th>
-            
-            <th>Fachrichtung</th>
-            <th>Instutition</th>
-            <th>Language</th>
-            <th>Email</th>
-            <th>Zugriffsstufen</th>
-            
-            </thead>
-
-          <tbody>
-            <!-- HealthProfessional Entries from DB -->
-            <tr *ngFor="let healthProfessional of healthProfessionals">
-              <td>{{healthProfessional.hp_Gln}}</td>
-              <td>{{healthProfessional.hp_Prefix}}</td>
-              <td>{{healthProfessional.hp_Fname}}</td> 
-              <td>{{healthProfessional.hp_Lname}}</td>    
-              
-              
-               
-              <td>{{healthProfessional.hp_fach}}</td>
-              
-              <td>{{healthProfessional.hp_addr}}</td>
-              
-              <td>{{healthProfessional.hp_language}}</td>
-              <td>{{healthProfessional.hp_email}}</td>
-              <td>
-                <tr>
-                  <mat-checkbox> normal </mat-checkbox>
-                </tr>
-                <tr>
-                  <mat-checkbox> erweitert </mat-checkbox>
-                </tr>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <button class="btn btn-primary"> Änderungen speichern</button>
-      </div>
-      <pre lang="xml">{{document}}</pre>
-    </div>
   </div>
-</div>

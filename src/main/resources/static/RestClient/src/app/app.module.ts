@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { ListuserComponent } from './components/listuser/listuser.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { LoginComponent } from './components/login/login.component';
 import { User } from './user';
 import { HealthProfessional } from './healthProfessional';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -27,14 +28,16 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const appRoutes: Routes = [
   {path: '', component: ListuserComponent},
-  {path: 'op', component: UserFormComponent}
+  {path: 'op', component: UserFormComponent},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     ListuserComponent,
-    UserFormComponent
+    UserFormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

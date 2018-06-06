@@ -14,11 +14,11 @@ import { Document } from '../../document';
 
 
 @Component({
-  selector: 'app-user-form',
-  templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class UserFormComponent implements OnInit {
+export class LoginComponent implements OnInit {
   private user: User;
   private documents : Document;
   private healthProfessionals: HealthProfessional[];

@@ -5,6 +5,15 @@
     color: white;    
 }
 
+.centerbox {
+    box-align: center;
+    align-content: center;
+    border: 2px;
+    border-color: black;
+    width:  50%;
+    
+}
+
 .gridPatDossier {
     margin-top: 20px;
 }
