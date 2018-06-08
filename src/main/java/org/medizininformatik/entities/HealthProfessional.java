@@ -14,7 +14,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
-
 @Entity
 @Table(name = "tbl_Health_Professionals")
 public class HealthProfessional {
@@ -22,177 +21,215 @@ public class HealthProfessional {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column (name="id")
-    private Long HP_id;
+    private Long id;
 	
 	@Column (name="gln")
-    private String HP_gln;
-	
+    private String gln;
+
 	@Column (name="fname")
-	private String HP_fname;
+	private String fname;
 	
 	@Column (name="lname")
-	private String HP_lname;
+	private String lname;
 	
 	@Column (name="prefix")
-	private String HP_prefix;
+	private String prefix;
 	
 
 	@Column (name="administrativeGender")
-	private String HP_adminGender;
+	private String adminGender;
 
 	@Column (name="type")
-	private String HP_type;
+	private String type;
 	
 	@Column (name="title")
-	private String HP_title;
+	private String title;
 	
 	@Column (name="fach")
-	private String HP_fach;
+	private String fach;
 	
 	@Column (name="beruf")
-	private String HP_beruf;
+	private String beruf;
 	
 	@Column (name="addr")
-	private String HP_addr;
+	private String addr;
 	
 	@Column (name="nation")
-	private String HP_nation;
+	private String nation;
 	
 	@Column (name="language")
-	private String HP_language;
+	private String language;
 	
 	@Column (name="gender")
-	private String HP_gender;
+	private String gender;
 	
 	@Column (name="email")
-	private String HP_email;
+	private String email;
 	
-	@ManyToMany(fetch = FetchType.EAGER,
-            cascade = {
-                CascadeType.PERSIST,
-                CascadeType.MERGE
-            })
+	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE})
     private List<User> users ;
 
+	@Column (name ="login")
+	private String login;
+	
+	@Column (name ="pass")
+	private String pass;
+	
+	public HealthProfessional() {
+	}
+	
+	public HealthProfessional(String gln, String fname, String lname, String prefix, String adminGender, String login, String pass) {
+		this.gln = gln;
+		this.fname = fname;
+		this.lname = lname;
+		this.prefix = prefix;
+		this.adminGender = adminGender;
+		this.login = login;
+		this.pass = pass;
+	}
+	
 	
 
-	public String getHP_Gln() {
-		return HP_gln;
+	public HealthProfessional( String gln, String fname, String lname, String prefix, String adminGender,
+			String type, String title, String fach, String beruf, String addr, String nation, String language,
+			String gender, String email,  String login, String pass) {
+	
+		this.gln = gln;
+		this.fname = fname;
+		this.lname = lname;
+		this.prefix = prefix;
+		this.adminGender = adminGender;
+		this.type = type;
+		this.title = title;
+		this.fach = fach;
+		this.beruf = beruf;
+		this.addr = addr;
+		this.nation = nation;
+		this.language = language;
+		this.gender = gender;
+		this.email = email;
+		this.login = login;
+		this.pass = pass;
 	}
 
-	public void setHP_Gln(String HP_gln) {
-		this.HP_gln = HP_gln;
-	}
-	
-	//fname = first name
-	public String getHP_Fname() {
-		return HP_fname;
+	public Long getId() {
+		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-	public void setHP_Fname(String HP_fname) {
-		this.HP_fname = HP_fname;
+	public String getGln() {
+		return gln;
 	}
-	
-	//lname = last name
-	public String getHP_Lname() {
-		return HP_lname;
+
+	public void setGln(String gln) {
+		this.gln = gln;
 	}
-	
-	public void setLname(String HP_lname) {
-		this.HP_lname = HP_lname;
+
+	public String getFname() {
+		return fname;
 	}
-	
-	//prefix
-	public String getHP_Prefix() {
-		return HP_prefix;
+
+	public void setFname(String fname) {
+		this.fname = fname;
 	}
-	
+
+	public String getLname() {
+		return lname;
+	}
+
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+
+	public String getPrefix() {
+		return prefix;
+	}
+
 	public void setPrefix(String prefix) {
-		this.HP_prefix = prefix;
-	}
-	// type
-	public String getHP_type() {
-		return HP_type;
+		this.prefix = prefix;
 	}
 
-	public void setHP_type(String hP_type) {
-		HP_type = hP_type;
+	public String getAdminGender() {
+		return adminGender;
 	}
 
-	
-	//administrativeGender
-	public String getHP_adminGender() {
-		return HP_adminGender;
-	}
-	
-	public void setAdminGender(String gender) {
-		this.HP_adminGender = gender;
-	}
-	
-
-	public String getHP_title() {
-		return HP_title;
+	public void setAdminGender(String adminGender) {
+		this.adminGender = adminGender;
 	}
 
-	public void setHP_title(String hP_title) {
-		HP_title = hP_title;
+	public String getType() {
+		return type;
 	}
 
-	public String getHP_fach() {
-		return HP_fach;
+	public void setType(String type) {
+		this.type = type;
 	}
 
-	public void setHP_fach(String hP_fach) {
-		HP_fach = hP_fach;
+	public String getTitle() {
+		return title;
 	}
 
-	public String getHP_beruf() {
-		return HP_beruf;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public void setHP_beruf(String hP_beruf) {
-		HP_beruf = hP_beruf;
+	public String getFach() {
+		return fach;
 	}
 
-	public String getHP_addr() {
-		return HP_addr;
+	public void setFach(String fach) {
+		this.fach = fach;
 	}
 
-	public void setHP_addr(String hP_addr) {
-		HP_addr = hP_addr;
+	public String getBeruf() {
+		return beruf;
 	}
 
-	public String getHP_nation() {
-		return HP_nation;
+	public void setBeruf(String beruf) {
+		this.beruf = beruf;
 	}
 
-	public void setHP_nation(String hP_nation) {
-		HP_nation = hP_nation;
+	public String getAddr() {
+		return addr;
 	}
 
-	public String getHP_language() {
-		return HP_language;
+	public void setAddr(String addr) {
+		this.addr = addr;
 	}
 
-	public void setHP_language(String hP_language) {
-		HP_language = hP_language;
+	public String getNation() {
+		return nation;
 	}
 
-	public String getHP_gender() {
-		return HP_gender;
+	public void setNation(String nation) {
+		this.nation = nation;
 	}
 
-	public void setHP_gender(String hP_gender) {
-		HP_gender = hP_gender;
+	public String getLanguage() {
+		return language;
 	}
 
-	public String getHP_email() {
-		return HP_email;
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 
-	public void setHP_email(String hP_email) {
-		HP_email = hP_email;
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public List<User> getUsers() {
@@ -203,50 +240,34 @@ public class HealthProfessional {
 		this.users = users;
 	}
 
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
 	@Override
 	public String toString() {
-		return "HealthProfessional [HP_id=" + HP_id + ", HP_gln=" + HP_gln + ", HP_fname=" + HP_fname + ", HP_lname="
-				+ HP_lname + ", HP_prefix=" + HP_prefix + ", HP_type=" + HP_type + ", HP_title=" + HP_title
-				+ ", HP_fach=" + HP_fach + ", HP_beruf=" + HP_beruf + ", HP_addr=" + HP_addr + ", HP_nation="
-				+ HP_nation + ", HP_language=" + HP_language + ", HP_gender=" + HP_gender + ", HP_email=" + HP_email
-				+ "]";
-
-	}
-
-	public HealthProfessional() {
+		return "HealthProfessional [id=" + id + ", gln=" + gln + ", fname=" + fname + ", lname=" + lname + ", prefix="
+				+ prefix + ", adminGender=" + adminGender + ", type=" + type + ", title=" + title + ", fach=" + fach
+				+ ", beruf=" + beruf + ", addr=" + addr + ", nation=" + nation + ", language=" + language + ", gender="
+				+ gender + ", email=" + email + ", users=" + users + ", login=" + login + ", pass=" + pass + "]";
 	}
 	
-
-	public HealthProfessional(String HP_gln, String HP_fname, String HP_lname, String HP_prefix, String HP_adminGender) {
-	this.HP_gln = HP_gln;
-	this.HP_fname = HP_fname;
-	this.HP_lname = HP_lname;
-	this.HP_prefix = HP_prefix;
-	this.HP_adminGender = HP_adminGender;
-	}	
+	
 
 	
 	
-	public HealthProfessional( String hP_gln, String hP_fname, String hP_lname, String hP_prefix, String HP_adminGender,
-			String hP_type, String hP_title, String hP_fach, String hP_beruf, String hP_addr, String hP_nation,
-			String hP_language, String hP_gender, String hP_email) {
-		
-		this.HP_gln = hP_gln;
-		this.HP_fname = hP_fname;
-		this.HP_lname = hP_lname;
-		this.HP_prefix = hP_prefix;
-		this.HP_adminGender = HP_adminGender;
-		this.HP_type = hP_type;
-		this.HP_title = hP_title;
-		this.HP_fach = hP_fach;
-		this.HP_beruf = hP_beruf;
-		this.HP_addr = hP_addr;
-		this.HP_nation = hP_nation;
-		this.HP_language = hP_language;
-		this.HP_gender = hP_gender;
-		this.HP_email = hP_email;
-	}
-
 }
 
 

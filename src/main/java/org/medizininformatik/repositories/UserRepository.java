@@ -17,5 +17,7 @@ public interface UserRepository  extends JpaRepository<User, Long>{
 	List<User> findByLnameAndFnameAllIgnoreCase(String lname, String fname);
 	
 	List<User> findByGender(int gender);
+	
+	List<User> findByHealthpId(Long healthp);
 
 }

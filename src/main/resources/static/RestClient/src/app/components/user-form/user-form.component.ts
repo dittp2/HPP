@@ -31,7 +31,7 @@ export class UserFormComponent implements OnInit {
     private _healthProfessionalService: HealthProfessionalService, private _documentService: DocumentService, private _http: Http) { }
 
   navigateToHome() {
-    this._router.navigate(['/']);
+    this._router.navigate(['/dashboard']);
   }
 
   ngOnInit() {
@@ -50,14 +50,14 @@ export class UserFormComponent implements OnInit {
     if (this.user.id === undefined) {
       this._userService.createUser(this.user).subscribe((user) => {
         console.log(user);
-        this._router.navigate(['/']);
+        this._router.navigate(['/dashboard']);
       }, (error) => {
         console.log(error);
       });
     } else {
       this._userService.updateUser(this.user).subscribe((user) => {
         console.log(user);
-        this._router.navigate(['/']);
+        this._router.navigate(['/dashboard']);
       }, (error) => {
         console.log(error);
       });

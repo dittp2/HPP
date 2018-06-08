@@ -17,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 })
 export class ListuserComponent implements OnInit {
   private users: User[];
+  private healthprofessional: HealthProfessional;
   private idSearch;
   private fnameSearch;
   private lnameSearch;
@@ -25,6 +26,15 @@ export class ListuserComponent implements OnInit {
   constructor(private _userService: UserService, private _router: Router) { }
 
   ngOnInit() {
+    this.healthprofessional = this._userService.getterH();
+    console.log(this.healthprofessional);
+    this._userService.getUsers().subscribe((users) => {
+      console.log(users);
+      this.users = users;
+      
+    }, (error) => {
+      console.log(error);
+    });
     this._userService.getUsers().subscribe((users) => {
       console.log(users);
       this.users = users;
@@ -44,7 +54,7 @@ export class ListuserComponent implements OnInit {
 
   updateUser(user) {
     this._userService.setter(user);
-    this._router.navigate(['/op']);
+    this._router.navigate(['/dossier']);
   }
 
 
@@ -61,6 +71,7 @@ export class ListuserComponent implements OnInit {
       console.log(error);
     });
 
+    
   //   this._userService.getUser(this.idSearch).subscribe((user) => {
   //     console.log(user);
   //     this.users = [];
@@ -77,7 +88,10 @@ export class ListuserComponent implements OnInit {
   //    console.log(error);
   //  });
   }
-
+  Logout(){
+    this._router.navigate(['/']);
+      
+  }
   
   // getDocument() {
   //    this.document = this._documentService.getDocument();

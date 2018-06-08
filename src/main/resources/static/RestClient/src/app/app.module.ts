@@ -27,9 +27,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 //import {MatInputModule} from '@angular/material/input';
 
 const appRoutes: Routes = [
-  {path: '', component: ListuserComponent},
-  {path: 'op', component: UserFormComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'dashboard', component: ListuserComponent},
+  {path: 'dossier', component: UserFormComponent},
+  {path: '', component: LoginComponent}
 ];
 
 @NgModule({

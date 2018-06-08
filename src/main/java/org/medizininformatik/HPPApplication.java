@@ -50,17 +50,38 @@ public class HPPApplication implements CommandLineRunner {
 				Document doc1 = (new Document("Kurzberich_Tom_Hugo", "/assets/Max_Muster_Kurzbericht.pdf"));
 				Document doc2 = (new Document("Bericht_Tom_Hugo", "/assets/Max_Muster_Kurzbericht.pdf"));
 				
-				HealthProfessional healthp1 = (new HealthProfessional("7601000151764" , "Zimmermann", "Martin", "Dr.med.", "männlich","Arzt"," ","Psychiater"," ","Münsingen"," ", "Deutsch"," ","zimmermann.markus@psych.ch"));
+				HealthProfessional healthp1 = (new HealthProfessional("7601000151764" , "Zimmermann", "Martin", "Dr.med.", "männlich",
+						"Arzt"," ","Psychiater"," ","Münsingen"," ", "Deutsch"," ","zimmermann.markus@psych.ch","zim","pass"));
+				
+				
 				
 				//Add User to userRepository (List)
 				User user1 =new User("756.1234.5678.96","","Tom", "","Hugentobler", 1,new Date(75,9,03));
-				user1.setHealthp(Arrays.asList(healthp1));
+				
+				
+				
+				User user2 = new User("756.3454.3563.39","", "Astrid","Simone", "Beieler", 2,new Date(18,06,14));
+				
+				User user3 = new User("756.5223.5675.45","","Christina","", "Caruso", 2,new Date(42,9,29));
+				
+				
+				HealthProfessional healthp2 = new HealthProfessional("7601008851764" , "Meister", "Fabio", "Dr.med.", "männlich",
+						"Arzt"," ","Neurologie"," ","Bern"," ", "Deutsch"," ","meister.fabio@neuro.ch","mei","pass");
+				
+				
+				
+			
+				user1.setHealthp(Arrays.asList(healthp1,healthp2));
 				user1.setDocuments(Arrays.asList(doc1, doc2));
+				userRepository.save(user2);
+				user2.setHealthp(Arrays.asList(healthp2));
+				//Problematik beim Speichern Reienfolge ist sehr wichtig
+				
+				//user3.setHealthp(user1.getHealthp());
 				
 				userRepository.save(user1);
 				
-				userRepository.save(new User("756.3454.3563.39","", "Astrid","Simone", "Beieler", 2,new Date(18,06,14)));
-				
+				userRepository.save(user3);
 				
 //				userRepository.save(new User("756.3452.3342.46","Dr.", "Markus","Peter", "Meister", 1, new Date(18,06,14)));
 //				userRepository.save(new User("756.3424.5757.33","Herr", "Pietro","Pablo", "Golums", 1, new Date(72,06,14)));

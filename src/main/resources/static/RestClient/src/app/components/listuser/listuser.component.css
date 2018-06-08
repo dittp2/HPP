@@ -1,7 +1,11 @@
 .row {
     width: 100%;
 }
-
+.links{
+    text-align: right;
+    width: 100%;
+    padding-right:  1%;
+}
 
 .example-icon {
     padding: 0 14px;
