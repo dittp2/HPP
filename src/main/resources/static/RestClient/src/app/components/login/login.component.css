@@ -6,12 +6,31 @@
 }
 
 .centerbox {
+    margin-top: 50px;
     box-align: center;
+    margin-left: 40%;
     align-content: center;
-    border: 2px;
-    border-color: black;
-    width:  50%;
+    border-style: ridge;
+    /* border-color: black; */
+    width:  20%;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
     
+}
+.login{
+    text-align: center;
+
+}
+/* .mat-checkbox{
+    text-align: center;
+} */
+
+
+.form group col{
+    align-items: center;
+    /* padding: 20px; */
 }
 
 .gridPatDossier {
