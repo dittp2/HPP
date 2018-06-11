@@ -34,6 +34,7 @@
 h3 {
     font-size: medium;
     font-style: bold;
+  
 }
 
 .rightContainer {
@@ -88,8 +89,11 @@ h3 {
 .patName {
     color: black;
     font-size: 32px;
-    margin-left: 2%;
+    margin-left: 0%;
 }
+/* .mat-toolbar-row{
+    padding-left: 0px;
+} */
 
 .example-spacer {
     flex: 1 1 auto;
@@ -99,9 +103,7 @@ h3 {
       margin-left: 5%;
 }
 
-.title {
-    margin-left: 2%;
-}
+
 
 .noColor{
    background-color: transparent;
@@ -113,6 +115,10 @@ u {
 }
 .btn btn-primary btn-block{
     width: 100%;
+}
+
+.mat-toolbar-row{
+    padding-left: 2%;
 }
 
 

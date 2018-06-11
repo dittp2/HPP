@@ -48,7 +48,7 @@ public class HPPApplication implements CommandLineRunner {
 			
 			return args -> {				
 				
-				Document doc1 = (new Document("Medikation_Tom_Hugo", "/assets/Medikation.pdf"));
+				Document doc1 = (new Document("Medikation_Tom_Hugo", "/assets/Tom_Hugo_Medikation.pdf"));
 				Document doc2 = (new Document("Bericht_Tom_Hugo", "/assets/Max_Muster_Kurzbericht.pdf"));
 				
 				HealthProfessional healthp1 = (new HealthProfessional("7601000151764" , "Zimmermann", "Martin", "Dr.med.", "männlich",
