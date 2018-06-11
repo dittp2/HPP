@@ -255,6 +255,8 @@ public class HealthProfessional {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+	
+	
 
 	@Override
 	public String toString() {

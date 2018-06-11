@@ -1,0 +1,98 @@
+<div class="body">
+
+  <mat-toolbar class="mat-toolbar">
+    <mat-toolbar-row>
+      <span>
+        <h1>Health Professional Portal</h1>
+      </span>
+      <span class="example-spacer"></span>
+    
+      <span ></span>
+      <span class="link"(click)="Logout()" >Logout</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="links">
+  <span class="link" >angemeldet als {{healthprofessional.prefix}} {{healthprofessional.fname}} </span>
+</div>
+ 
+  <h2 class="pageTitle">Dashboard</h2>
+
+  <div class="container">
+    <div class="row">
+      <div class="searchContainer">
+        <h3>Patientensuche</h3>
+        <mat-divider></mat-divider>
+
+        <form (ngSubmit)="processForm()">
+          <br>
+             <div class="form group">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Versicherungsnummer" value="">
+              </mat-form-field>
+            </div>
+          <div class="form group">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Vorname" value="" [(ngModel)]="fnameSearch" name="fname">
+              </mat-form-field>
+          </div>
+          <div class="form group">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Nachname" value="" [(ngModel)]="lnameSearch" name="lname">
+              </mat-form-field>
+          </div>
+         
+          <div class="form group">
+              <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Geschlecht" [(ngModel)]="genderSearch" name="gender" >
+                    <mat-option value="1">männlich</mat-option>
+                    <mat-option value="2">weiblich</mat-option>
+                    </mat-select>
+              </mat-form-field>
+          </div>
+
+          <div class="form group">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Geburtsjahr" value="" [(ngModel)]="yearSearch" name="year">
+                </mat-form-field>
+          </div>
+        </form>
+
+        <div class="form group col">
+          <br>
+          <button class="btn btn-primary btn-block" (click)="searchUser()"> Search User </button>
+        </div>
+      </div>
+      <div class="patientsList">
+        <h3>Suchergebnisse</h3>
+       
+        <table class="table table-striped">
+          <thead>
+            <th>Versicherungsnummer</th>
+            <th>Titel</th>
+            <th>1. Vorname</th>
+            <th>2. Vorname</th>
+            <th>Nachname</th>
+            <th>Geschlecht</th>
+            <th>Geburtsdatum</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{user.vnr}}</td>
+              
+              <td>{{user.prefix}}</td>
+              <td>{{user.fname}}</td>
+              <td>{{user.secfname}}</td>
+              <td>{{user.lname}}</td>
+              <td>{{user.gender === 2 ? 'weiblich' : 'männlich'}}</td>
+              <td>{{user.bdate | date:'dd.MM.yyyy'}}</td>
+               <td>
+                <button class="btn btn-primary" (click)="updateUser(user)">Dossier öffnen</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+    </div>
+  </div>
+</div>

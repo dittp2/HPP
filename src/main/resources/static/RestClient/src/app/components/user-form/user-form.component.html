@@ -175,33 +175,33 @@
           <tbody>
             <!-- HealthProfessional Entries from DB -->
             <tr *ngFor="let healthProfessional of healthProfessionals">
-              <td>{{healthProfessional.hp_Gln}}</td>
-              <td>{{healthProfessional.hp_Prefix}}</td>
-              <td>{{healthProfessional.hp_Fname}}</td> 
-              <td>{{healthProfessional.hp_Lname}}</td>    
+              <td>{{healthProfessional.gln}}</td>
+              <td>{{healthProfessional.prefix}}</td>
+              <td>{{healthProfessional.fname}}</td> 
+              <td>{{healthProfessional.lname}}</td>    
               
               
                
-              <td>{{healthProfessional.hp_fach}}</td>
+              <td>{{healthProfessional.fach}}</td>
               
-              <td>{{healthProfessional.hp_addr}}</td>
+              <td>{{healthProfessional.addr}}</td>
               
-              <td>{{healthProfessional.hp_language}}</td>
-              <td>{{healthProfessional.hp_email}}</td>
+              <td>{{healthProfessional.language}}</td>
+              <td>{{healthProfessional.email}}</td>
               <td>
                 <tr>
-                  <mat-checkbox> normal </mat-checkbox>
+                  <mat-checkbox [checked]="healthProfessional.id"> normal </mat-checkbox>
                 </tr>
                 <tr>
-                  <mat-checkbox> erweitert </mat-checkbox>
+                  <mat-checkbox [(ngModel)]="healthProfessional.id"> erweitert </mat-checkbox>
                 </tr>
               </td>
             </tr>
           </tbody>
         </table>
-        <button class="btn btn-primary"> Änderungen speichern</button>
+        <button class="btn btn-primary" (click) = "saveRight()"> Änderungen speichern</button>
       </div>
-      <pre lang="xml">{{document}}</pre>
+    <pre lang="xml">{{document}}</pre>
     </div>
   </div>
 </div>

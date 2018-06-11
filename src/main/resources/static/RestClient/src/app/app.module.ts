@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { ListuserComponent } from './components/listuser/listuser.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { LoginComponent } from './components/login/login.component';
+import { NotfallComponent } from './components/notfall/notfall.component';
 import { User } from './user';
 import { HealthProfessional } from './healthProfessional';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -29,7 +30,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 const appRoutes: Routes = [
   {path: 'dashboard', component: ListuserComponent},
   {path: 'dossier', component: UserFormComponent},
-  {path: '', component: LoginComponent}
+  {path: '', component: LoginComponent},
+  {path: 'notfall', component: NotfallComponent}
 ];
 
 @NgModule({
@@ -37,7 +39,8 @@ const appRoutes: Routes = [
     AppComponent,
     ListuserComponent,
     UserFormComponent,
-    LoginComponent
+    LoginComponent,
+    NotfallComponent
   ],
   imports: [
     BrowserModule,

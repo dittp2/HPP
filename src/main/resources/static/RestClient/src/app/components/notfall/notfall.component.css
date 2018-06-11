@@ -1,0 +1,71 @@
+.row {
+    width: 100%;
+}
+.links{
+    text-align: right;
+    width: 100%;
+    padding-right:  1%;
+}
+
+.example-icon {
+    padding: 0 14px;
+  }
+
+.example-full-width {
+    width: 100%;
+}
+  
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.mat-toolbar {
+    padding-left: 2%;    
+    background-color: #007bff;
+    color: white;
+}
+
+.searchContainer {
+    height: 100%;
+    padding: 2%;
+    width: 20%;
+}
+
+.patientsList {
+    height: 100%;
+    padding: 2%;
+    width: 80%;
+}
+
+.container {
+    max-width: 2100px;
+    width: 100%;
+    margin: 0px;
+    margin-right: 0px;
+    position:  static;
+}
+
+.col-4 {
+    padding-left: 2%;
+    padding-top: 1%
+}
+
+
+.patLabel {
+    width: 50;
+}
+
+.table-striped {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.pageTitle {
+        color: #007bff;
+        font-size: 32px;
+        margin-left: 2%;
+}
+
+
+

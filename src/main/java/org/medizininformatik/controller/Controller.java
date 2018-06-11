@@ -2,17 +2,20 @@ package org.medizininformatik.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 
 
 import org.medizininformatik.entities.HealthProfessional;
+import org.medizininformatik.entities.Right;
 import org.medizininformatik.entities.User;
 
 
 import org.medizininformatik.entities.Document;
 import org.medizininformatik.repositories.HPDirectory;
+import org.medizininformatik.repositories.RightRepository;
 import org.medizininformatik.repositories.UserRepository;
 import org.medizininformatik.repositories.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +45,9 @@ public class Controller {
 	@Autowired
 	private DocumentRepository documentRepository;
 	
+	@Autowired
+	private RightRepository rightRepository;
+	
 
 	/*
 	 * Get all Patients from the Repository (function as MPI)
@@ -60,6 +66,40 @@ public class Controller {
 	public Document getDocument(@PathVariable Long id) {
 		return documentRepository.findOne(id);
 	}
+	
+//	@GetMapping("/rights")
+//	public List<Right> getRight() {
+//		return rightRepository.findAll();
+//	}
+//	
+//	@GetMapping("/rights/{healthp}")
+//	public List<Right> getRightuser(@PathVariable Long healthp) {
+//		
+//		List<Right> ls = new ArrayList<Right>();
+//		ls = rightRepository.findByHealthpId(healthp);
+//		
+//		return    ls;
+//		
+//			
+//	}
+//	
+//	@GetMapping("/rights/{healthp}")
+//	public List<User> getRightuser(@PathVariable Long healthp) {
+//		List<User> users = null;
+//		 List<Right> rights = rightRepository.findByHealthpId(healthp);
+//		
+////		 for(int i = 0; i< rights.size();i++) {
+////			// users.add(rights.get(i).getUser());
+////			 
+////		 }
+////		 
+//		 
+//		return users;
+//				
+//				
+//	}
+	
+
 //
 //	
 //	@GetMapping("/get-text")

@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   private LoginUser;
   private LoginPass;
   private idhealth;
+  private notfall;
 
   private iddoc;
   items = [];
@@ -41,8 +42,12 @@ export class LoginComponent implements OnInit {
          this.healthProfessional = healthProfessionals;
          if (this.healthProfessional!=null){
               this._userService.setterH(this.healthProfessional);
+              if(isBoolean(this.notfall)==true){
+                this._router.navigate(['/notfall']);
+              }else{
               console.log(this.healthProfessional);
               this._router.navigate(['/dashboard']);
+            }
          }
            
         

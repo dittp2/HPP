@@ -28,6 +28,16 @@ export class UserService {
       .catch(this.errorHandler);
   }
 
+
+  getUsersHealth(healthp : Number) {
+    return this._http.get(this.baseUrl + '/users/'+healthp, this.options).map((response: Response) => response.json())
+      .catch(this.errorHandler);
+  }
+
+  getRights(healthp : Number) {
+    return this._http.get(this.baseUrl + '/rights/'+healthp, this.options).map((response: Response) => response.json())
+      .catch(this.errorHandler);
+  }
   
   getSearchUsers(fname:String, lname:String) {
 

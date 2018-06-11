@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../shared-service/user.service';
 import { User } from '../../user';
-import { Right } from '../../right';
 import { HealthProfessional } from '../../healthProfessional';
 import { Router } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -12,13 +11,12 @@ import { MatSelectModule } from '@angular/material/select';
 
 
 @Component({
-  selector: 'app-listuser',
-  templateUrl: './listuser.component.html',
-  styleUrls: ['./listuser.component.css']
+  selector: 'app-notfall',
+  templateUrl: './notfall.component.html',
+  styleUrls: ['./notfall.component.css']
 })
-export class ListuserComponent implements OnInit {
+export class NotfallComponent implements OnInit {
   private users: User[];
-  private rights: Right[];
   private healthprofessional: HealthProfessional;
   private idSearch;
   private fnameSearch;
@@ -30,18 +28,7 @@ export class ListuserComponent implements OnInit {
   ngOnInit() {
     this.healthprofessional = this._userService.getterH();
     console.log(this.healthprofessional);
-    // this._userService.getRights(this.healthprofessional.id).subscribe((rights) => {
-    //   this.rights = rights;
-    //   console.log(rights);
-      
-         
-
-
-    // },(error) => {
-    //     console.log(error);
-    //   });
-
-    this._userService.getUsersHealth(this.healthprofessional.id).subscribe((users) => {
+    this._userService.getUsers().subscribe((users) => {
       console.log(users);
       this.users = users;
       

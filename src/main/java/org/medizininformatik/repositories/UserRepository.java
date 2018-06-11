@@ -2,9 +2,13 @@ package org.medizininformatik.repositories;
 
 import java.util.List;
 
+
 import org.medizininformatik.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.cdi.Eager;
+import org.springframework.data.repository.query.Param;
 
 //public interface UserRepository  extends JpaRepository<User, Long>
 
@@ -19,5 +23,8 @@ public interface UserRepository  extends JpaRepository<User, Long>{
 	List<User> findByGender(int gender);
 	
 	List<User> findByHealthpId(Long healthp);
+	
+//	@Query("SELECT * FROM user WHERE right.healthp_id = :id")
+//	List<User> findByUserHealth(@Param("id") Long id);
 
 }
