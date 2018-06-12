@@ -48,8 +48,8 @@ public class HPPApplication implements CommandLineRunner {
 			
 			return args -> {				
 				
-				Document doc1 = (new Document("Medikation_Tom_Hugo", "/assets/Tom_Hugo_Medikation.pdf"));
-				Document doc2 = (new Document("Bericht_Tom_Hugo", "/assets/Max_Muster_Kurzbericht.pdf"));
+				Document doc1 = (new Document("Medikation_Tom_Hugo","Medikationsplan","Psychiatrie","Psychiatriezentrum"," Dr.med. Zimmermann","10.04.2018", "/assets/Tom_Hugo_Medikation.pdf"));
+				Document doc2 = (new Document("Bericht_Tom_Hugo","Behandlungsbericht","Psychiatrie","Psychiatriezentrum"," Dr.med. Zimmermann","10.04.2018", "/assets/Max_Muster_Kurzbericht.pdf"));
 				
 				HealthProfessional healthp1 = (new HealthProfessional("7601000151764" , "Zimmermann", "Martin", "Dr.med.", "männlich",
 						"Arzt"," ","Psychiater"," ","Münsingen"," ", "Deutsch"," ","zimmermann.markus@psych.ch","zim","pass"));
@@ -73,10 +73,10 @@ public class HPPApplication implements CommandLineRunner {
 				
 				
 			
-				Right right1 = new Right(user1,healthp1);
-				
-				
-				Right right2 = new Right(user1,healthp2);
+//				Right right1 = new Right(user1,healthp1);
+//				
+//				
+//				Right right2 = new Right(user1,healthp2);
 				//user1.setHealthp(Arrays.asList(right1, right2));
 				user1.setDocuments(Arrays.asList(doc1, doc2));
 				
