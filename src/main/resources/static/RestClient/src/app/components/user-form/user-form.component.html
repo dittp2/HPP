@@ -91,11 +91,11 @@
           <tbody>
             <tr *ngFor="let doc of user.documents" >
             <td>{{doc.doc_Title}}</td>
-            <td>Kurzbericht</td>
-            <td>Psychiatrie</td>
-            <td>Psychiatriezentrum</td>            
-            <td>Dr.Zimmermann</td>
-            <td>31.05.2016</td>
+            <td>{{doc.doc_Type}}</td>
+            <td>{{doc.doc_Richtung}}</td>
+            <td>{{doc.doc_Institution}}</td>            
+            <td>{{doc.doc_Autor}}</td>
+            <td>{{doc.doc_Datum}}</td>
             <td>
              
               <a target ="_blank"  href="{{doc.doc_Url}}">einsehen</a>           
