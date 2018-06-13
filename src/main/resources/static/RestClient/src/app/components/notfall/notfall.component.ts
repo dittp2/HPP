@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../shared-service/user.service';
-import { User } from '../../user';
+import { PatientService } from '../../shared-service/patient.service';
+import { Patient } from '../../patient';
 import { HealthProfessional } from '../../healthProfessional';
 import { Router } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -16,21 +16,21 @@ import { MatSelectModule } from '@angular/material/select';
   styleUrls: ['./notfall.component.css']
 })
 export class NotfallComponent implements OnInit {
-  private users: User[];
+  private patients: Patient[];
   private healthprofessional: HealthProfessional;
   private idSearch;
   private fnameSearch;
   private lnameSearch;
   private genderSearch;
 
-  constructor(private _userService: UserService, private _router: Router) { }
+  constructor(private _patientService: PatientService, private _router: Router) { }
 
   ngOnInit() {
-    this.healthprofessional = this._userService.getterH();
+    this.healthprofessional = this._patientService.getterH();
     console.log(this.healthprofessional);
-    this._userService.getUsers().subscribe((users) => {
-      console.log(users);
-      this.users = users;
+    this._patientService.getPatients().subscribe((patients) => {
+      console.log(patients);
+      this.patients = patients;
       
     }, (error) => {
       console.log(error);
@@ -40,28 +40,28 @@ export class NotfallComponent implements OnInit {
    
   }
 
-  deleteUser(user) {
-    this._userService.deleteUser(user.id).subscribe((data) => {
+  deleteUser(patient) {
+    this._patientService.deletePatient(patient.id).subscribe((data) => {
     
     }, (error) => {
       console.log(error);
     });
   }
 
-  updateUser(user) {
-    this._userService.setter(user);
+  updatePatient(patient) {
+    this._patientService.setter(patient);
     this._router.navigate(['/dossier']);
   }
 
 
-  searchUser() {
+  searchPatient() {
     
     console.log(this.fnameSearch);
     // Suche nach Name und Vorname und oder Geschlecht.
-    this._userService.getSearchUsers(this.fnameSearch,this.lnameSearch).subscribe((users) => {
+    this._patientService.getSearchPatients(this.fnameSearch,this.lnameSearch).subscribe((patients) => {
      
-      console.log(users);
-      this.users = users;
+      console.log(patients);
+      this.patients = patients;
 
     }, (error) => {
       console.log(error);

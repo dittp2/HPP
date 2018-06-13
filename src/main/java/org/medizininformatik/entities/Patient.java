@@ -18,7 +18,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "User")
-public class User {
+public class Patient {
 	
 	@Id
 	@GeneratedValue
@@ -111,7 +111,7 @@ public class User {
 	public void setHealthp(List<HealthProfessional> healthp) {
 		this.healthp = healthp;
 	}
-	public User(String vnr, String prefix, String fname, String secfname, String lname, int gender, Date bdate ) {
+	public Patient(String vnr, String prefix, String fname, String secfname, String lname, int gender, Date bdate ) {
 		this.vnr = vnr;
 		this.prefix = prefix;
 		this.fname = fname;
@@ -128,7 +128,7 @@ public class User {
 		return "User [id=" + id + ", prefix=" + prefix + ", fname=" + fname + ", secfname=" + secfname + ", lname="
 				+ lname + ", gender=" + gender + ", bdate=" + bdate + "]";
 	}
-	public User() {
+	public Patient() {
 	}
 	public String getPrefix() {
 		return prefix;

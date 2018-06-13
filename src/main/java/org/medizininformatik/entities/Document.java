@@ -39,7 +39,7 @@ public class Document {
 	private String doc_Url;
 
 	@ManyToOne
-	private User user;
+	private Patient user;
 	
 	public Long getDoc_Id() {
 		return doc_Id;

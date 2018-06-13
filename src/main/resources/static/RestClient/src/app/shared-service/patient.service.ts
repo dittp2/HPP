@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { User } from '../user';
+import { Patient } from '../patient';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
@@ -10,11 +10,11 @@ import { HealthProfessional } from '../healthProfessional';
 
 
 @Injectable()
-export class UserService {
+export class PatientService {
   private baseUrl: String = 'http://localhost:8080/api';
   private headers = new Headers({'Content-Type': 'application/json'});
   private options = new RequestOptions({headers: this.headers});
-  private user = new User();
+  private patient = new Patient();
   private notfall: boolean;
   private healthprofessional = new HealthProfessional();
   constructor(private _http: Http) { }
@@ -24,14 +24,14 @@ export class UserService {
       .catch(this.errorHandler);
   }
 
-  getUsers() {
-    return this._http.get(this.baseUrl + '/users', this.options).map((response: Response) => response.json())
+  getPatients() {
+    return this._http.get(this.baseUrl + '/patients', this.options).map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
 
 
-  getUsersHealth(healthp : Number) {
-    return this._http.get(this.baseUrl + '/users/'+healthp, this.options).map((response: Response) => response.json())
+  getPatientsHealth(healthp : Number) {
+    return this._http.get(this.baseUrl + '/patients/'+healthp, this.options).map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
 
@@ -40,34 +40,34 @@ export class UserService {
       .catch(this.errorHandler);
   }
   
-  getSearchUsers(fname:String, lname:String) {
+  getSearchPatients(fname:String, lname:String) {
 
-    return this._http.get(this.baseUrl + '/users/'+fname+'&'+lname, this.options).map((response: Response) => response.json())
+    return this._http.get(this.baseUrl + '/patients/'+fname+'&'+lname, this.options).map((response: Response) => response.json())
        .catch(this.errorHandler);
    }
 
-  getUser(id: Number) {
+  getPatient(id: Number) {
 
-    return this._http.get(this.baseUrl + '/user/' + id, this.options).map((response: Response) => response.json())
+    return this._http.get(this.baseUrl + '/patient/' + id, this.options).map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
 
-  deleteUser(id: Number) {
+  deletePatient(id: Number) {
 
-    return this._http.delete(this.baseUrl + '/user/' + id, this.options).map((response: Response) => response.json())
+    return this._http.delete(this.baseUrl + '/patient/' + id, this.options).map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
 
 
-  createUser(user: User) {
+  createUser(patient: Patient) {
 
-    return this._http.post(this.baseUrl + '/user', JSON.stringify(user),  this.options).map((response: Response) => response.json())
+    return this._http.post(this.baseUrl + '/patient', JSON.stringify(patient),  this.options).map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
 
-   updateUser(user: User) {
+   updateUser(patient: Patient) {
 
-    return this._http.put(this.baseUrl + '/user', JSON.stringify(user),  this.options).map((response: Response) => response.json())
+    return this._http.put(this.baseUrl + '/patient', JSON.stringify(patient),  this.options).map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
 
@@ -76,8 +76,8 @@ export class UserService {
      return Observable.throw(error || 'SERVER ERROR');
   }
 
-   setter(user: User) {
-     this.user = user;
+   setter(patient: Patient) {
+     this.patient = patient;
    }
 
    setterH(healthProfessional: HealthProfessional) {
@@ -89,7 +89,7 @@ export class UserService {
   }
 
   getter() {
-    return this.user;
+    return this.patient;
   }
 
 
@@ -105,9 +105,9 @@ export class UserService {
 
   // )
   /*
-  searchUser(id: Number) {
-    angular.isArray(users);
-    return this._http.get(this.baseUrl + '/user/' + id, this.options).map((response: Response) => response.json())
+  searchPatient(id: Number) {
+    angular.isArray(patients);
+    return this._http.get(this.baseUrl + '/patient/' + id, this.options).map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
   */

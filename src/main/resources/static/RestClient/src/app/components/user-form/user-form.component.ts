@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../shared-service/user.service';
+import { PatientService } from '../../shared-service/patient.service';
 import { HealthProfessionalService } from '../../shared-service/healthprofessional.service';
-import { User } from '../../user';
+import { Patient } from '../../patient';
 import { HealthProfessional } from '../../healthProfessional';
 import { Router } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -19,7 +19,7 @@ import { Document } from '../../document';
   styleUrls: ['./user-form.component.css']
 })
 export class UserFormComponent implements OnInit {
-  private user: User;
+  private patient: Patient;
   private documents : Document;
   private healthProfessionals: HealthProfessional[];
   private _url = 'data.xml';
@@ -27,7 +27,7 @@ export class UserFormComponent implements OnInit {
   private iddoc;
   items = [];
 
-  constructor(private _userService: UserService, private _router: Router,
+  constructor(private _patientService: PatientService, private _router: Router,
     private _healthProfessionalService: HealthProfessionalService, private _documentService: DocumentService, private _http: Http) { }
 
   navigateToHome() {
@@ -35,7 +35,7 @@ export class UserFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this._userService.getter();
+    this.patient = this._patientService.getter();
     this._healthProfessionalService.getHealthProfesssionals().subscribe((healthProfessionals) => {
       console.log(healthProfessionals);
       this.healthProfessionals = healthProfessionals;
@@ -48,16 +48,16 @@ export class UserFormComponent implements OnInit {
 
 
   processForm() {
-    if (this.user.id === undefined) {
-      this._userService.createUser(this.user).subscribe((user) => {
-        console.log(user);
+    if (this.patient.id === undefined) {
+      this._patientService.createUser(this.patient).subscribe((patient) => {
+        console.log(patient);
         this._router.navigate(['/dashboard']);
       }, (error) => {
         console.log(error);
       });
     } else {
-      this._userService.updateUser(this.user).subscribe((user) => {
-        console.log(user);
+      this._patientService.updateUser(this.patient).subscribe((patient) => {
+        console.log(patient);
         this._router.navigate(['/dashboard']);
       }, (error) => {
         console.log(error);
@@ -68,7 +68,7 @@ export class UserFormComponent implements OnInit {
 
   getDocument() {
 
-if(this._userService.getNotfall()==true){
+if(this._patientService.getNotfall()==true){
   this._documentService.getDocument(1).subscribe((documents) => {
     this.documents = null;
     this.documents = documents;

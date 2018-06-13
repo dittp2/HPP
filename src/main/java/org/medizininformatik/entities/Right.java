@@ -20,7 +20,7 @@ public class Right {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @MapsId("userId")
-	private User user;
+	private Patient user;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @MapsId("healthId")
@@ -30,7 +30,7 @@ public class Right {
 	
 	public Right() {}
 	
-	 public Right(User user, HealthProfessional healthp) {
+	 public Right(Patient user, HealthProfessional healthp) {
 	        this.user = user;
 	        this.healthp = healthp;
 	        this.id = new UserHealthProfessionalId(user.getId(), healthp.getId());
@@ -46,11 +46,11 @@ public class Right {
 		this.id = id;
 	}
 
-	public User getUser() {
+	public Patient getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Patient user) {
 		this.user = user;
 	}
 

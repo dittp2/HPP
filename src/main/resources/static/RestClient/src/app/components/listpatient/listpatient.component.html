@@ -59,7 +59,7 @@
 
         <div class="form group col">
           <br>
-          <button class="btn btn-primary btn-block" (click)="searchUser()"> Search User </button>
+          <button class="btn btn-primary btn-block" (click)="searchPatient()"> Search </button>
         </div>
       </div>
       <div class="patientsList">
@@ -77,17 +77,17 @@
             <th></th>
           </thead>
           <tbody>
-            <tr *ngFor="let user of users">
-              <td>{{user.vnr}}</td>
+            <tr *ngFor="let patient of patients">
+              <td>{{patient.vnr}}</td>
               
-              <td>{{user.prefix}}</td>
-              <td>{{user.fname}}</td>
-              <td>{{user.secfname}}</td>
-              <td>{{user.lname}}</td>
-              <td>{{user.gender === 2 ? 'weiblich' : 'männlich'}}</td>
-              <td>{{user.bdate | date:'dd.MM.yyyy'}}</td>
+              <td>{{patient.prefix}}</td>
+              <td>{{patient.fname}}</td>
+              <td>{{patient.secfname}}</td>
+              <td>{{patient.lname}}</td>
+              <td>{{patient.gender === 2 ? 'weiblich' : 'männlich'}}</td>
+              <td>{{patient.bdate | date:'dd.MM.yyyy'}}</td>
                <td>
-                <button class="btn btn-primary" (click)="updateUser(user)">Dossier öffnen</button>
+                <button class="btn btn-primary" (click)="updatePatient(patient)">Dossier öffnen</button>
               </td>
             </tr>
           </tbody>

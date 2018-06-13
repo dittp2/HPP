@@ -10,13 +10,13 @@ import org.apache.commons.io.IOUtils;
 
 import org.medizininformatik.entities.HealthProfessional;
 import org.medizininformatik.entities.Right;
-import org.medizininformatik.entities.User;
+import org.medizininformatik.entities.Patient;
 
 
 import org.medizininformatik.entities.Document;
 import org.medizininformatik.repositories.HPDirectory;
 import org.medizininformatik.repositories.RightRepository;
-import org.medizininformatik.repositories.UserRepository;
+import org.medizininformatik.repositories.PatientRepository;
 import org.medizininformatik.repositories.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -37,7 +37,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 	
 	@Autowired
-	private UserRepository patientRepository;
+	private PatientRepository patientRepository;
 	
 	@Autowired
 	private HPDirectory hpDirectory;
@@ -52,8 +52,8 @@ public class Controller {
 	/*
 	 * Get all Patients from the Repository (function as MPI)
 	 */
-	@GetMapping("/users")
-	public List<User> getUsers() {
+	@GetMapping("/patients")
+	public List<Patient> getPatients() {
 		return patientRepository.findAll();
 	}
 	
@@ -88,25 +88,15 @@ public class Controller {
 //		List<User> users = null;
 //		 List<Right> rights = rightRepository.findByHealthpId(healthp);
 //		
-////		 for(int i = 0; i< rights.size();i++) {
-////			// users.add(rights.get(i).getUser());
-////			 
-////		 }
-////		 
-//		 
+//		 for(int i = 0; i< rights.size();i++) {
+//			 users.add(rights.get(i).getUser());
+//			}
 //		return users;
 //				
 //				
 //	}
 	
 
-//
-//	
-//	@GetMapping("/get-text")
-//	public @ResponseBody String getText() {
-//	    return "Hello world";
-//	}
-	
 
 @GetMapping(value = "/file", 
 produces = MediaType.APPLICATION_PDF_VALUE)
@@ -164,25 +154,25 @@ public ResponseEntity<byte[]> getImageAsResponseEntity() {
 	/*
 	 * Get all Patients, condition firstname and lastname , from the Repository (function as MPI)
 	 */
-	@GetMapping("/users/{fname}&{lname}")
-	public List<User> getUsers(@PathVariable String fname,@PathVariable String lname){
+	@GetMapping("/patients/{fname}&{lname}")
+	public List<Patient> getPatient(@PathVariable String fname,@PathVariable String lname){
 		
-		List<User> users = null;
+		List<Patient> patients = null;
 		
 		if(!fname.equals("")&&lname.equals("")) {	
-			users = patientRepository.findByFnameIgnoreCase(fname);
+			patients = patientRepository.findByFnameIgnoreCase(fname);
 		}
 		
 		if(fname.equals("")&&!lname.equals("")) {
-			users = patientRepository.findByLnameIgnoreCase(lname);
+			patients = patientRepository.findByLnameIgnoreCase(lname);
 		}
 		
 		if(!fname.equals("")&&!lname.equals("")){
-			users = patientRepository.findByLnameAndFnameAllIgnoreCase(lname, fname);
+			patients = patientRepository.findByLnameAndFnameAllIgnoreCase(lname, fname);
 		}
 		
 		if(fname.equals("")&&lname.equals("")){
-			users = getUsers();
+			patients = getPatients();
 		}
 		
 		
@@ -192,19 +182,19 @@ public ResponseEntity<byte[]> getImageAsResponseEntity() {
 //			users = userRepository.findByGender(Integer.parseInt(gender));
 //		}
 		
-		return users;
+		return patients;
 	}
 	
 	/*
 	 * Get all Patients, condition id, from the Repository (function as MPI)
 	 */
-	@GetMapping("/user/{id}")
-	public User getUser(@PathVariable Long id) {
+	@GetMapping("/patient/{id}")
+	public Patient getUser(@PathVariable Long id) {
 		return patientRepository.findOne(id);
 	}
 	
-	@GetMapping("/users/{healthp}")
-	public List<User> getUserHealth(@PathVariable Long healthp) {
+	@GetMapping("/patients/{healthp}")
+	public List<Patient> getUserHealth(@PathVariable Long healthp) {
 		
 		
 		return patientRepository.findByHealthpId(healthp);
@@ -212,20 +202,20 @@ public ResponseEntity<byte[]> getImageAsResponseEntity() {
 	
 	
 
-	@DeleteMapping("/user/{id}")
+	@DeleteMapping("/patient/{id}")
 	public boolean deleteUser(@PathVariable Long id) {
 		patientRepository.delete(id);
 		return true;
 	}
 
-	@PutMapping("/user")
-	public User updateUser(@RequestBody User user) {
-		return patientRepository.save(user);
+	@PutMapping("/patient")
+	public Patient updateUser(@RequestBody Patient patient) {
+		return patientRepository.save(patient);
 	}
 
-	@PostMapping("/user")
-	public User createUser(@RequestBody User user) {
-		return patientRepository.save(user);
+	@PostMapping("/patient")
+	public Patient createUser(@RequestBody Patient patient) {
+		return patientRepository.save(patient);
 	}
 	
 	

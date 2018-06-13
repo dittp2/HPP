@@ -3,7 +3,7 @@ import { NgModule, Component } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
 
-import { UserService } from './shared-service/user.service';
+import { PatientService } from './shared-service/patient.service';
 import { HealthProfessionalService } from './shared-service/healthprofessional.service';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
@@ -13,11 +13,11 @@ import { MatButtonModule, MatCardModule, MatToolbarModule, MatMenuModule, MatInp
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { ListuserComponent } from './components/listuser/listuser.component';
+import { ListpatientComponent } from './components/listpatient/listpatient.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotfallComponent } from './components/notfall/notfall.component';
-import { User } from './user';
+import { Patient } from './patient';
 import { HealthProfessional } from './healthProfessional';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from './material.module';
@@ -28,7 +28,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 //import {MatInputModule} from '@angular/material/input';
 
 const appRoutes: Routes = [
-  {path: 'dashboard', component: ListuserComponent},
+  {path: 'dashboard', component: ListpatientComponent},
   {path: 'dossier', component: UserFormComponent},
   {path: '', component: LoginComponent},
   {path: 'notfall', component: NotfallComponent}
@@ -37,7 +37,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ListuserComponent,
+    ListpatientComponent,
     UserFormComponent,
     LoginComponent,
     NotfallComponent
@@ -61,7 +61,7 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatCheckboxModule
   ],
-  providers: [UserService, HealthProfessionalService, DocumentService ],
+  providers: [PatientService, HealthProfessionalService, DocumentService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

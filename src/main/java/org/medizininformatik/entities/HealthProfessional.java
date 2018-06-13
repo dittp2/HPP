@@ -67,7 +67,7 @@ public class HealthProfessional {
 	private String email;
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE})
-    private List<User> users ;
+    private List<Patient> users ;
 
 	@Column (name ="login")
 	private String login;
@@ -232,11 +232,11 @@ public class HealthProfessional {
 		this.email = email;
 	}
 
-	public List<User> getUsers() {
+	public List<Patient> getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<User> users) {
+	public void setUsers(List<Patient> users) {
 		this.users = users;
 	}
 
