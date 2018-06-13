@@ -37,7 +37,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UserRepository patientRepository;
 	
 	@Autowired
 	private HPDirectory hpDirectory;
@@ -54,7 +54,7 @@ public class Controller {
 	 */
 	@GetMapping("/users")
 	public List<User> getUsers() {
-		return userRepository.findAll();
+		return patientRepository.findAll();
 	}
 	
 	@GetMapping("/documents")
@@ -170,15 +170,15 @@ public ResponseEntity<byte[]> getImageAsResponseEntity() {
 		List<User> users = null;
 		
 		if(!fname.equals("")&&lname.equals("")) {	
-			users = userRepository.findByFnameIgnoreCase(fname);
+			users = patientRepository.findByFnameIgnoreCase(fname);
 		}
 		
 		if(fname.equals("")&&!lname.equals("")) {
-			users = userRepository.findByLnameIgnoreCase(lname);
+			users = patientRepository.findByLnameIgnoreCase(lname);
 		}
 		
 		if(!fname.equals("")&&!lname.equals("")){
-			users = userRepository.findByLnameAndFnameAllIgnoreCase(lname, fname);
+			users = patientRepository.findByLnameAndFnameAllIgnoreCase(lname, fname);
 		}
 		
 		if(fname.equals("")&&lname.equals("")){
@@ -200,32 +200,32 @@ public ResponseEntity<byte[]> getImageAsResponseEntity() {
 	 */
 	@GetMapping("/user/{id}")
 	public User getUser(@PathVariable Long id) {
-		return userRepository.findOne(id);
+		return patientRepository.findOne(id);
 	}
 	
 	@GetMapping("/users/{healthp}")
 	public List<User> getUserHealth(@PathVariable Long healthp) {
 		
 		
-		return userRepository.findByHealthpId(healthp);
+		return patientRepository.findByHealthpId(healthp);
 	}
 	
 	
 
 	@DeleteMapping("/user/{id}")
 	public boolean deleteUser(@PathVariable Long id) {
-		userRepository.delete(id);
+		patientRepository.delete(id);
 		return true;
 	}
 
 	@PutMapping("/user")
 	public User updateUser(@RequestBody User user) {
-		return userRepository.save(user);
+		return patientRepository.save(user);
 	}
 
 	@PostMapping("/user")
 	public User createUser(@RequestBody User user) {
-		return userRepository.save(user);
+		return patientRepository.save(user);
 	}
 	
 	

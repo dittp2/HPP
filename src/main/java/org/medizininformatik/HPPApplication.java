@@ -114,11 +114,11 @@ public class HPPApplication implements CommandLineRunner {
 //				userRepository.save(new User("756.8973.1234.26","","Erika", "","Eppener", 2,new Date(56,02,21)));
 //				userRepository.save(new User("756.2754.5232.78","","Bruno", "","Hause", 1, new Date(75,9,03)));
 							
-//				//Add Health Professionals to hpDiretory (List)
-//				hpDirectory.save(new HealthProfessional("7601000151764" , "Zimmermann", "Martin", "Dr.med.", "männlich","Arzt"," ","Psychiater"," ","Münsingen"," ", "Deutsch"," ","zimmermann.markus@psych.ch"));
-//				hpDirectory.save(new HealthProfessional("7601000141764" , "Steinert", "Markus", "Phys.", "männlich","Arzt"," ","Innere Medizin"," ","USZ"," ", "Deutsch"," ","steinert.markus@usz.ch"));
-//				hpDirectory.save(new HealthProfessional("7601000154724" , "Blumen", "Eliane", "Dr. med.", "weiblich","Arzt"," ","Gynokologie"," ","Insel Spital"," ", "Deutsch"," ","eliane.blumen@insel.ch"));
-//				
+////				//Add Health Professionals to hpDiretory (List)
+//				hpDirectory.save(new HealthProfessional("7601000151764" , "Hubendorf", "Otto", "Dr.med.", "männlich","Arzt"," ","Neurologie"," ","KSA"," ", "Deutsch"," ","hubendorf.otto@ksa.ch","hub","pass"));
+//				hpDirectory.save(new HealthProfessional("7601000141764" , "Steinert", "Markus", "Phys.", "männlich","Arzt"," ","Innere Medizin"," ","USZ"," ", "Deutsch"," ","steinert.markus@usz.ch","ste","pass"));
+//				hpDirectory.save(new HealthProfessional("7601000154724" , "Berger", "Alex", "Dr. med.", "weiblich","Arzt"," ","Kardiologie"," ","Insel Spital"," ", "Deutsch"," ","berger.alex@insel.ch","ber","pass"));
+////				
 //				documentRepository.save(new Document("Kurzberich_Tom_Hugo", "/assets/Max_Muster_Kurzbericht.pdf"));
 //				documentRepository.save(new Document("Bericht_Tom_Hugo", "/assets/Max_Muster_Kurzbericht.pdf"));
 

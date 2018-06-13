@@ -15,6 +15,7 @@ export class UserService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private options = new RequestOptions({headers: this.headers});
   private user = new User();
+  private notfall: boolean;
   private healthprofessional = new HealthProfessional();
   constructor(private _http: Http) { }
 
@@ -91,6 +92,18 @@ export class UserService {
     return this.user;
   }
 
+
+  setNotfall(notfall:boolean){
+    this.notfall = notfall;
+  }
+
+  getNotfall(){
+    return this.notfall
+  }
+
+  // setRight(
+
+  // )
   /*
   searchUser(id: Number) {
     angular.isArray(users);

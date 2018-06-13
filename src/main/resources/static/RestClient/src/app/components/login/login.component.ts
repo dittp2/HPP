@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
               this._userService.setterH(this.healthProfessional);
               if(isBoolean(this.notfall)==true){
                 this._router.navigate(['/notfall']);
+                this._userService.setNotfall(this.notfall);
               }else{
               console.log(this.healthProfessional);
               this._router.navigate(['/dashboard']);

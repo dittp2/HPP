@@ -39,6 +39,7 @@ export class UserFormComponent implements OnInit {
     this._healthProfessionalService.getHealthProfesssionals().subscribe((healthProfessionals) => {
       console.log(healthProfessionals);
       this.healthProfessionals = healthProfessionals;
+      this.healthProfessionals.splice(0,1);
     }, (error) => {
     console.log(error);
   });
@@ -67,15 +68,30 @@ export class UserFormComponent implements OnInit {
 
   getDocument() {
 
+if(this._userService.getNotfall()==true){
+  this._documentService.getDocument(1).subscribe((documents) => {
+    this.documents = null;
+    this.documents = documents;
+    
+
+  
+    console.log(documents);
+     
+   }, (error) => {
+      console.log(error);
+   });
+}else{
     this._documentService.getDocuments().subscribe((documents) => {
         this.documents = documents;
+        
+
         console.log(documents);
          
        }, (error) => {
           console.log(error);
        });
 
-
+      }
     console.log(this._http.get(this._url)
     .map((response: Response) => response.toString()));
     return this._http.get(this._url)
@@ -99,6 +115,12 @@ export class UserFormComponent implements OnInit {
       window.open('www.google.ch',null); 
      
       
+      
   
 
+}
+
+saveRight(){
+  this._router.navigate(['/dashboard']);
+        
 }}
