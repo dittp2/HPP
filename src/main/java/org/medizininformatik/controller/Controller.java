@@ -10,13 +10,13 @@ import org.apache.commons.io.IOUtils;
 
 import org.medizininformatik.entities.HealthProfessional;
 import org.medizininformatik.entities.Right;
-import org.medizininformatik.entities.Patient;
+import org.medizininformatik.entities.User;
 
 
 import org.medizininformatik.entities.Document;
 import org.medizininformatik.repositories.HPDirectory;
 import org.medizininformatik.repositories.RightRepository;
-import org.medizininformatik.repositories.PatientRepository;
+import org.medizininformatik.repositories.UserRepository;
 import org.medizininformatik.repositories.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -37,7 +37,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 	
 	@Autowired
-	private PatientRepository patientRepository;
+	private UserRepository patientRepository;
 	
 	@Autowired
 	private HPDirectory hpDirectory;
@@ -52,8 +52,8 @@ public class Controller {
 	/*
 	 * Get all Patients from the Repository (function as MPI)
 	 */
-	@GetMapping("/patients")
-	public List<Patient> getPatients() {
+	@GetMapping("/users")
+	public List<User> getUsers() {
 		return patientRepository.findAll();
 	}
 	
@@ -65,29 +65,127 @@ public class Controller {
 		return patientRepository.findOne(id);
 	}
 	
+<<<<<<< HEAD
+=======
+//	@GetMapping("/rights")
+//	public List<Right> getRight() {
+//		return rightRepository.findAll();
+//	}
+//	
+//	@GetMapping("/rights/{healthp}")
+//	public List<Right> getRightuser(@PathVariable Long healthp) {
+//		
+//		List<Right> ls = new ArrayList<Right>();
+//		ls = rightRepository.findByHealthpId(healthp);
+//		
+//		return    ls;
+//		
+//			
+//	}
+//	
+//	@GetMapping("/rights/{healthp}")
+//	public List<User> getRightuser(@PathVariable Long healthp) {
+//		List<User> users = null;
+//		 List<Right> rights = rightRepository.findByHealthpId(healthp);
+//		
+////		 for(int i = 0; i< rights.size();i++) {
+////			// users.add(rights.get(i).getUser());
+////			 
+////		 }
+////		 
+//		 
+//		return users;
+//				
+//				
+//	}
+	
+
+//
+//	
+//	@GetMapping("/get-text")
+//	public @ResponseBody String getText() {
+//	    return "Hello world";
+//	}
+	
+
+@GetMapping(value = "/file", 
+produces = MediaType.APPLICATION_PDF_VALUE)
+public @ResponseBody byte[] getFile() throws IOException {
+    InputStream in = getClass()
+      .getResourceAsStream("Max_Muster_Kurzbericht.pdf");
+    return IOUtils.toByteArray(in);
+}
+
+
+/*
+@RequestMapping(value="/getpdf1", method=RequestMethod.GET)
+public ResponseEntity<byte[]> getPDF1() {
+
+
+    HttpHeaders headers = new HttpHeaders();
+
+    headers.setContentType(MediaType.parseMediaType("application/pdf"));
+    String filename = "Max_Muster_Kurzbericht.pdf";
+
+    headers.add("content-disposition", "inline;filename=" + filename);
+
+    headers.setContentDispositionFormData(filename, filename);
+    headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
+	ResponseEntity<byte[]> response = new ResponseEntity<byte[]>(pdf1Bytes , headers, HttpStatus.OK);
+    return response;
+}
+
+
+@RequestMapping("/handle")
+public ResponseEntity<String> handle() {
+  URI location = "Max_Muster_Kurzbericht.pdf";
+  return ResponseEntity.created(location).header("MyResponseHeader", "MyValue").body("Hello World");
+}
+
+@RequestMapping(value = "/image-byte-array", method = RequestMethod.GET)
+public @ResponseBody byte[] getImageAsByteArray() throws IOException {
+    InputStream in = servletContext.getResourceAsStream("/WEB-INF/images/image-example.jpg");
+    return IOUtils.toByteArray(in);
+}
+
+@RequestMapping(value = "/image-response-entity", method = RequestMethod.GET)
+public ResponseEntity<byte[]> getImageAsResponseEntity() {
+    HttpHeaders headers = new HttpHeaders();
+    InputStream in = servletContext.getResourceAsStream("image-example.jpg");
+    byte[] media = IOUtils.toByteArray(in);
+    headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+     
+    ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
+    return responseEntity;
+}
+*/
+
+	
+>>>>>>> parent of 2042fdf... umbrenennt
 	/*
 	 * Get all Patients, condition firstname and lastname , from the Repository (function as MPI)
 	 */
-	@GetMapping("/patients/{fname}&{lname}")
-	public List<Patient> getPatient(@PathVariable String fname,@PathVariable String lname){
+	@GetMapping("/users/{fname}&{lname}")
+	public List<User> getUsers(@PathVariable String fname,@PathVariable String lname){
 		
-		List<Patient> patients = null;
+		List<User> users = null;
 		
 		if(!fname.equals("")&&lname.equals("")) {	
-			patients = patientRepository.findByFnameIgnoreCase(fname);
+			users = patientRepository.findByFnameIgnoreCase(fname);
 		}
 		
 		if(fname.equals("")&&!lname.equals("")) {
-			patients = patientRepository.findByLnameIgnoreCase(lname);
+			users = patientRepository.findByLnameIgnoreCase(lname);
 		}
 		
 		if(!fname.equals("")&&!lname.equals("")){
-			patients = patientRepository.findByLnameAndFnameAllIgnoreCase(lname, fname);
+			users = patientRepository.findByLnameAndFnameAllIgnoreCase(lname, fname);
 		}
 		
 		if(fname.equals("")&&lname.equals("")){
-			patients = getPatients();
+			users = getUsers();
 		}
+<<<<<<< HEAD
 				
 		return patients;
 	}
@@ -100,11 +198,50 @@ public class Controller {
 	@PutMapping("/patient")
 	public Patient updateUser(@RequestBody Patient patient) {
 		return patientRepository.save(patient);
+=======
+		
+		
+//		;
+//		if(!gender.equals("")) {
+//			 			
+//			users = userRepository.findByGender(Integer.parseInt(gender));
+//		}
+		
+		return users;
+	}
+	
+	/*
+	 * Get all Patients, condition id, from the Repository (function as MPI)
+	 */
+	@GetMapping("/user/{id}")
+	public User getUser(@PathVariable Long id) {
+		return patientRepository.findOne(id);
+	}
+	
+	@GetMapping("/users/{healthp}")
+	public List<User> getUserHealth(@PathVariable Long healthp) {
+		
+		
+		return patientRepository.findByHealthpId(healthp);
+	}
+	
+	
+
+	@DeleteMapping("/user/{id}")
+	public boolean deleteUser(@PathVariable Long id) {
+		patientRepository.delete(id);
+		return true;
 	}
 
-	@PostMapping("/patient")
-	public Patient createUser(@RequestBody Patient patient) {
-		return patientRepository.save(patient);
+	@PutMapping("/user")
+	public User updateUser(@RequestBody User user) {
+		return patientRepository.save(user);
+>>>>>>> parent of 2042fdf... umbrenennt
+	}
+
+	@PostMapping("/user")
+	public User createUser(@RequestBody User user) {
+		return patientRepository.save(user);
 	}
 		
 	/*

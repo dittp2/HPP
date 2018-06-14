@@ -22,8 +22,13 @@ public class Right {
 	 * Create an n:1 Relation to the Patient
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
+<<<<<<< HEAD
 	@MapsId("patientId")
 	private Patient patient;
+=======
+    @MapsId("userId")
+	private User user;
+>>>>>>> parent of 2042fdf... umbrenennt
 	
 	/*
 	 * Create an n:1 Relation to the Healthprofessional
@@ -39,6 +44,7 @@ public class Right {
 	 */
 	public Right() {}
 	
+<<<<<<< HEAD
 	public Right(Patient patient, HealthProfessional healthp) {
         this.patient = patient;
         this.healthp = healthp;
@@ -50,6 +56,17 @@ public class Right {
 	 * Getter and Setter of all attribut
 	 */
 	public PatientHealthProfessionalId getId() {
+=======
+	 public Right(User user, HealthProfessional healthp) {
+	        this.user = user;
+	        this.healthp = healthp;
+	        this.id = new UserHealthProfessionalId(user.getId(), healthp.getId());
+	        this.setErweitert(false);
+	       
+	    }
+
+	public UserHealthProfessionalId getId() {
+>>>>>>> parent of 2042fdf... umbrenennt
 		return id;
 	}
 
@@ -57,12 +74,21 @@ public class Right {
 		this.id = id;
 	}
 
+<<<<<<< HEAD
 	public Patient getPatient() {
 		return patient;
 	}
 
 	public void setPatient(Patient patient) {
 		this.patient = patient;
+=======
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+>>>>>>> parent of 2042fdf... umbrenennt
 	}
 
 	public HealthProfessional getHealth() {

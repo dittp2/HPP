@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PatientService } from '../../shared-service/patient.service';
-import { Patient } from '../../patient';
+import { UserService } from '../../shared-service/user.service';
+import { User } from '../../user';
 import { HealthProfessional } from '../../healthProfessional';
 import { Router } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -16,28 +16,29 @@ import { MatSelectModule } from '@angular/material/select';
   styleUrls: ['./notfall.component.css']
 })
 export class NotfallComponent implements OnInit {
-  private patients: Patient[];
+  private users: User[];
   private healthprofessional: HealthProfessional;
   private idSearch;
   private fnameSearch;
   private lnameSearch;
   private genderSearch;
 
-  constructor(private _patientService: PatientService, private _router: Router) { }
+  constructor(private _userService: UserService, private _router: Router) { }
 
 /*
 * This function initalize the view. It get all patient.
 */
   ngOnInit() {
-    this.healthprofessional = this._patientService.getterH();
+    this.healthprofessional = this._userService.getterH();
     console.log(this.healthprofessional);
-    this._patientService.getPatients().subscribe((patients) => {
-      console.log(patients);
-      this.patients = patients;
+    this._userService.getUsers().subscribe((users) => {
+      console.log(users);
+      this.users = users;
       
     }, (error) => {
       console.log(error);
     });
+<<<<<<< HEAD
   }
 
 /*
@@ -66,6 +67,36 @@ searchPatient() {
     this._patientService.getSearchPatients(this.fnameSearch,this.lnameSearch).subscribe((patients) => {
       console.log(patients);
       this.patients = patients;
+=======
+
+  
+   
+  }
+
+  deleteUser(user) {
+    this._userService.deleteUser(user.id).subscribe((data) => {
+    
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  updateUser(user) {
+    this._userService.setter(user);
+    this._router.navigate(['/dossier']);
+  }
+
+
+  searchUser() {
+    
+    console.log(this.fnameSearch);
+    // Suche nach Name und Vorname und oder Geschlecht.
+    this._userService.getSearchUsers(this.fnameSearch,this.lnameSearch).subscribe((users) => {
+     
+      console.log(users);
+      this.users = users;
+
+>>>>>>> parent of 2042fdf... umbrenennt
     }, (error) => {
       console.log(error);
     });

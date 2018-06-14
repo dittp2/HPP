@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PatientService } from '../../shared-service/patient.service';
+import { UserService } from '../../shared-service/user.service';
 import { HealthProfessionalService } from '../../shared-service/healthprofessional.service';
-import { Patient } from '../../patient';
+import { User } from '../../user';
 import { HealthProfessional } from '../../healthProfessional';
 import { Router } from '@angular/router';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -20,7 +20,7 @@ import { isBoolean } from 'util';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private patient: Patient;
+  private user: User;
   private documents : Document;
   private healthProfessional: HealthProfessional;
   private _url = 'data.xml';
@@ -33,18 +33,18 @@ export class LoginComponent implements OnInit {
   private iddoc;
   items = [];
 
-  constructor(private _patientService: PatientService, private _router: Router,
+  constructor(private _userService: UserService, private _router: Router,
     private _healthProfessionalService: HealthProfessionalService, private _documentService: DocumentService, private _http: Http) { }
 
     Login(){
-      this._patientService.getHealthProfessionalsLogin(this.LoginUser,this.LoginPass).subscribe((healthProfessionals) => {
+      this._userService.getHealthProfessionalsLogin(this.LoginUser,this.LoginPass).subscribe((healthProfessionals) => {
         console.log(healthProfessionals);
          this.healthProfessional = healthProfessionals;
          if (this.healthProfessional!=null){
-              this._patientService.setterH(this.healthProfessional);
+              this._userService.setterH(this.healthProfessional);
               if(isBoolean(this.notfall)==true){
                 this._router.navigate(['/notfall']);
-                this._patientService.setNotfall(this.notfall);
+                this._userService.setNotfall(this.notfall);
               }else{
               console.log(this.healthProfessional);
               this._router.navigate(['/dashboard']);

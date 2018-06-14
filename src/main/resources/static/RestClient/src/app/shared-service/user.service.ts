@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Patient } from '../patient';
+import { User } from '../user';
 import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
@@ -10,11 +10,11 @@ import { HealthProfessional } from '../healthProfessional';
 
 
 @Injectable()
-export class PatientService {
+export class UserService {
   private baseUrl: String = 'http://localhost:8080/api';
   private headers = new Headers({'Content-Type': 'application/json'});
   private options = new RequestOptions({headers: this.headers});
-  private patient = new Patient();
+  private user = new User();
   private notfall: boolean;
   private healthprofessional = new HealthProfessional();
   constructor(private _http: Http) { }
@@ -27,6 +27,7 @@ export class PatientService {
       .catch(this.errorHandler);
   }
 
+<<<<<<< HEAD:src/main/resources/static/RestClient/src/app/shared-service/patient.service.ts
 /*
 * This function get all Patient
 */
@@ -40,6 +41,16 @@ export class PatientService {
 */
   getPatientsHealth(healthp : Number) {
     return this._http.get(this.baseUrl + '/patients/'+healthp, this.options).map((response: Response) => response.json())
+=======
+  getUsers() {
+    return this._http.get(this.baseUrl + '/users', this.options).map((response: Response) => response.json())
+      .catch(this.errorHandler);
+  }
+
+
+  getUsersHealth(healthp : Number) {
+    return this._http.get(this.baseUrl + '/users/'+healthp, this.options).map((response: Response) => response.json())
+>>>>>>> parent of 2042fdf... umbrenennt:src/main/resources/static/RestClient/src/app/shared-service/user.service.ts
       .catch(this.errorHandler);
   }
 
@@ -51,6 +62,7 @@ export class PatientService {
       .catch(this.errorHandler);
   }
   
+<<<<<<< HEAD:src/main/resources/static/RestClient/src/app/shared-service/patient.service.ts
 /*
 * This function get all Patient, which is matched with firstname or/and lastname
 */
@@ -63,35 +75,57 @@ export class PatientService {
 * This function get on patient
 */
   getPatient(id: Number) {
+=======
+  getSearchUsers(fname:String, lname:String) {
 
-    return this._http.get(this.baseUrl + '/patient/' + id, this.options).map((response: Response) => response.json())
+    return this._http.get(this.baseUrl + '/users/'+fname+'&'+lname, this.options).map((response: Response) => response.json())
+       .catch(this.errorHandler);
+   }
+
+  getUser(id: Number) {
+>>>>>>> parent of 2042fdf... umbrenennt:src/main/resources/static/RestClient/src/app/shared-service/user.service.ts
+
+    return this._http.get(this.baseUrl + '/user/' + id, this.options).map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
 
+<<<<<<< HEAD:src/main/resources/static/RestClient/src/app/shared-service/patient.service.ts
 /*
 * This function delete the patient with the given id
 */
   deletePatient(id: Number) {
+=======
+  deleteUser(id: Number) {
+>>>>>>> parent of 2042fdf... umbrenennt:src/main/resources/static/RestClient/src/app/shared-service/user.service.ts
 
-    return this._http.delete(this.baseUrl + '/patient/' + id, this.options).map((response: Response) => response.json())
+    return this._http.delete(this.baseUrl + '/user/' + id, this.options).map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
 
+<<<<<<< HEAD:src/main/resources/static/RestClient/src/app/shared-service/patient.service.ts
 /*
 * This function create the patient
 */
   createUser(patient: Patient) {
+=======
 
-    return this._http.post(this.baseUrl + '/patient', JSON.stringify(patient),  this.options).map((response: Response) => response.json())
+  createUser(user: User) {
+>>>>>>> parent of 2042fdf... umbrenennt:src/main/resources/static/RestClient/src/app/shared-service/user.service.ts
+
+    return this._http.post(this.baseUrl + '/user', JSON.stringify(user),  this.options).map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
 
+<<<<<<< HEAD:src/main/resources/static/RestClient/src/app/shared-service/patient.service.ts
 /*
 * This function update the patient
 */
    updateUser(patient: Patient) {
+=======
+   updateUser(user: User) {
+>>>>>>> parent of 2042fdf... umbrenennt:src/main/resources/static/RestClient/src/app/shared-service/user.service.ts
 
-    return this._http.put(this.baseUrl + '/patient', JSON.stringify(patient),  this.options).map((response: Response) => response.json())
+    return this._http.put(this.baseUrl + '/user', JSON.stringify(user),  this.options).map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
 
@@ -103,11 +137,16 @@ export class PatientService {
      return Observable.throw(error || 'SERVER ERROR');
   }
 
+<<<<<<< HEAD:src/main/resources/static/RestClient/src/app/shared-service/patient.service.ts
 /*
 * This function set the patient in initialvariable
 */
    setter(patient: Patient) {
      this.patient = patient;
+=======
+   setter(user: User) {
+     this.user = user;
+>>>>>>> parent of 2042fdf... umbrenennt:src/main/resources/static/RestClient/src/app/shared-service/user.service.ts
    }
 
 /*
@@ -128,7 +167,7 @@ export class PatientService {
 * This function get the patient of initialvariable
 */
   getter() {
-    return this.patient;
+    return this.user;
   }
 
 /*
@@ -145,4 +184,18 @@ export class PatientService {
     return this.notfall
   }
 
+<<<<<<< HEAD:src/main/resources/static/RestClient/src/app/shared-service/patient.service.ts
+=======
+  // setRight(
+
+  // )
+  /*
+  searchUser(id: Number) {
+    angular.isArray(users);
+    return this._http.get(this.baseUrl + '/user/' + id, this.options).map((response: Response) => response.json())
+      .catch(this.errorHandler);
+  }
+  */
+
+>>>>>>> parent of 2042fdf... umbrenennt:src/main/resources/static/RestClient/src/app/shared-service/user.service.ts
 }

@@ -3,7 +3,7 @@ import { NgModule, Component } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
 
-import { PatientService } from './shared-service/patient.service';
+import { UserService } from './shared-service/user.service';
 import { HealthProfessionalService } from './shared-service/healthprofessional.service';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
@@ -12,11 +12,11 @@ import { MatButtonModule, MatCardModule, MatToolbarModule, MatMenuModule, MatInp
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { ListpatientComponent } from './components/listpatient/listpatient.component';
+import { ListuserComponent } from './components/listuser/listuser.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotfallComponent } from './components/notfall/notfall.component';
-import { Patient } from './patient';
+import { User } from './user';
 import { HealthProfessional } from './healthProfessional';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from './material.module';
@@ -27,7 +27,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 const appRoutes: Routes = [
-  {path: 'dashboard', component: ListpatientComponent},
+  {path: 'dashboard', component: ListuserComponent},
   {path: 'dossier', component: UserFormComponent},
   {path: '', component: LoginComponent},
   {path: 'notfall', component: NotfallComponent}
@@ -36,7 +36,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ListpatientComponent,
+    ListuserComponent,
     UserFormComponent,
     LoginComponent,
     NotfallComponent
@@ -60,7 +60,11 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatCheckboxModule
   ],
+<<<<<<< HEAD
   providers: [PatientService, HealthProfessionalService ],
+=======
+  providers: [UserService, HealthProfessionalService, DocumentService ],
+>>>>>>> parent of 2042fdf... umbrenennt
   bootstrap: [AppComponent]
 })
 export class AppModule { }

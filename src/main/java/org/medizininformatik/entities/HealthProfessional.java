@@ -72,7 +72,11 @@ public class HealthProfessional {
 	 * Create a n:m relation to the patient
 	 */
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE})
+<<<<<<< HEAD
     private List<Patient> patients ;
+=======
+    private List<User> users ;
+>>>>>>> parent of 2042fdf... umbrenennt
 
 	@Column (name ="login")
 	private String login;
@@ -241,12 +245,21 @@ public class HealthProfessional {
 		this.email = email;
 	}
 
+<<<<<<< HEAD
 	public List<Patient> getUsers() {
 		return patients;
 	}
 
 	public void setUsers(List<Patient> users) {
 		this.patients = users;
+=======
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+>>>>>>> parent of 2042fdf... umbrenennt
 	}
 
 	public String getLogin() {

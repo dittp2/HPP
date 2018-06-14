@@ -12,6 +12,7 @@ import 'rxjs/add/observable/throw';
   private baseUrl: String = 'http://localhost:8080/api';
   private headers = new Headers({'Content-Type': 'application/json'});
   private options = new RequestOptions({headers: this.headers});
+  // private user = new User();
   private document = new Document();
 
   constructor(private _http: Http) { }

@@ -17,11 +17,17 @@ import javax.persistence.Table;
 
 
 @Entity
+<<<<<<< HEAD:src/main/java/org/medizininformatik/entities/Patient.java
 @Table(name = "Patient")
 public class Patient {
 	/*
 	 * Attribut of Patient
 	 */
+=======
+@Table(name = "User")
+public class User {
+	
+>>>>>>> parent of 2042fdf... umbrenennt:src/main/java/org/medizininformatik/entities/User.java
 	@Id
 	@GeneratedValue
 	@Column (name="id")
@@ -151,6 +157,20 @@ public class Patient {
 	public void setHealthp(List<HealthProfessional> healthp) {
 		this.healthp = healthp;
 	}
+<<<<<<< HEAD:src/main/java/org/medizininformatik/entities/Patient.java
+=======
+	public User(String vnr, String prefix, String fname, String secfname, String lname, int gender, Date bdate ) {
+		this.vnr = vnr;
+		this.prefix = prefix;
+		this.fname = fname;
+		this.secfname = secfname;
+		this.lname = lname;
+		this.gender = gender;
+		this.bdate = bdate;
+	
+	}
+	
+>>>>>>> parent of 2042fdf... umbrenennt:src/main/java/org/medizininformatik/entities/User.java
 	
 	/*
 	 * Override the toString with the Attribut
@@ -159,5 +179,24 @@ public class Patient {
 	public String toString() {
 		return "User [id=" + id + ", prefix=" + prefix + ", fname=" + fname + ", secfname=" + secfname + ", lname="
 				+ lname + ", gender=" + gender + ", bdate=" + bdate + "]";
+<<<<<<< HEAD:src/main/java/org/medizininformatik/entities/Patient.java
 	}    
+=======
+	}
+	public User() {
+	}
+	public String getPrefix() {
+		return prefix;
+	}
+	public void setPrefix(String prefix) {
+		this.prefix = prefix;
+	}
+	public String getSecfname() {
+		return secfname;
+	}
+	public void setSecfname(String secfname) {
+		this.secfname = secfname;
+	}
+    
+>>>>>>> parent of 2042fdf... umbrenennt:src/main/java/org/medizininformatik/entities/User.java
 }

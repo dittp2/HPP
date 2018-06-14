@@ -44,6 +44,7 @@ public class Document {
 	 * Create a n:1 relation to the entity patient
 	 */
 	@ManyToOne
+<<<<<<< HEAD
 	private Patient patient;
 		
 	/*
@@ -64,6 +65,9 @@ public class Document {
 	}
 
 	public Document() {}
+=======
+	private User user;
+>>>>>>> parent of 2042fdf... umbrenennt
 	
 	/*
 	 * Getter and Setter of all Attribut 
