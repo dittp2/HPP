@@ -8,50 +8,61 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 
-
-
-
-@Entity(name = "UserHealthProfessional")
-@Table(name = "User_HealthProfessional")
+@Entity(name = "PatientHealthProfessional")
+@Table(name = "Patient_HealthProfessional")
 public class Right {
 	
+	/*
+	 * Attribut of Right
+	 */
 	@EmbeddedId
-	private UserHealthProfessionalId id;
+	private PatientHealthProfessionalId id;
 	
+	/*
+	 * Create an n:1 Relation to the Patient
+	 */
 	@ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("userId")
-	private Patient user;
+	@MapsId("patientId")
+	private Patient patient;
 	
+	/*
+	 * Create an n:1 Relation to the Healthprofessional
+	 */
 	@ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("healthId")
+	@MapsId("healthId")
 	private HealthProfessional healthp;
 	
 	private Boolean erweitert;
 	
+	/*
+	 * Constructor
+	 */
 	public Right() {}
 	
-	 public Right(Patient user, HealthProfessional healthp) {
-	        this.user = user;
-	        this.healthp = healthp;
-	        this.id = new UserHealthProfessionalId(user.getId(), healthp.getId());
-	        this.setErweitert(false);
-	       
-	    }
-
-	public UserHealthProfessionalId getId() {
+	public Right(Patient patient, HealthProfessional healthp) {
+        this.patient = patient;
+        this.healthp = healthp;
+        this.id = new PatientHealthProfessionalId(patient.getId(), healthp.getId());
+        this.setErweitert(false);  
+    }
+	
+	/*
+	 * Getter and Setter of all attribut
+	 */
+	public PatientHealthProfessionalId getId() {
 		return id;
 	}
 
-	public void setId(UserHealthProfessionalId id) {
+	public void setId(PatientHealthProfessionalId id) {
 		this.id = id;
 	}
 
-	public Patient getUser() {
-		return user;
+	public Patient getPatient() {
+		return patient;
 	}
 
-	public void setUser(Patient user) {
-		this.user = user;
+	public void setPatient(Patient patient) {
+		this.patient = patient;
 	}
 
 	public HealthProfessional getHealth() {
@@ -69,8 +80,4 @@ public class Right {
 	public void setErweitert(Boolean erweitert) {
 		this.erweitert = erweitert;
 	}
-	
-	
-	
-
 }

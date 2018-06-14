@@ -24,16 +24,19 @@ export class UserFormComponent implements OnInit {
   private healthProfessionals: HealthProfessional[];
   private _url = 'data.xml';
 
-  private iddoc;
-  items = [];
-
   constructor(private _patientService: PatientService, private _router: Router,
     private _healthProfessionalService: HealthProfessionalService, private _documentService: DocumentService, private _http: Http) { }
 
+/*
+* This function navigated to the Dashboard.
+*/   
   navigateToHome() {
     this._router.navigate(['/dashboard']);
   }
 
+/*
+* This function initalize the view. It get all healthprofessional and call the function getDocument of this class.
+*/
   ngOnInit() {
     this.patient = this._patientService.getter();
     this._healthProfessionalService.getHealthProfesssionals().subscribe((healthProfessionals) => {
@@ -46,7 +49,9 @@ export class UserFormComponent implements OnInit {
   this.getDocument();
   }
 
-
+/*
+* This function show the information of patient, whose record is opened
+*/ 
   processForm() {
     if (this.patient.id === undefined) {
       this._patientService.createUser(this.patient).subscribe((patient) => {
@@ -66,60 +71,35 @@ export class UserFormComponent implements OnInit {
     }
   }
 
+/*
+* This function gets Document. If the healthprofessional is in mode emergency, it show only one document.
+* else it show all document of the patient.
+*/ 
   getDocument() {
+    if(this._patientService.getNotfall()==true){
+    this._documentService.getDocument(1).subscribe((documents) => {
+      this.documents = documents;
+      console.log(documents);
+    }, (error) => {
+        console.log(error);
+    });
+    }else{
+      this._documentService.getDocuments().subscribe((documents) => {
+          this.documents = documents;
+          console.log(documents);
+        }, (error) => {
+            console.log(error);
+        });
+        }
+      console.log(this._http.get(this._url)
+      .map((response: Response) => response.toString()));
+      return this._http.get(this._url)
+      .map((response: Response) => response.toString());
+    }
 
-if(this._patientService.getNotfall()==true){
-  this._documentService.getDocument(1).subscribe((documents) => {
-    this.documents = null;
-    this.documents = documents;
-    
-
-  
-    console.log(documents);
-     
-   }, (error) => {
-      console.log(error);
-   });
-}else{
-    this._documentService.getDocuments().subscribe((documents) => {
-        this.documents = documents;
-        
-
-        console.log(documents);
-         
-       }, (error) => {
-          console.log(error);
-       });
-
-      }
-    console.log(this._http.get(this._url)
-    .map((response: Response) => response.toString()));
-    return this._http.get(this._url)
-    .map((response: Response) => response.toString());
-
-  }
-
-
-// /Users/pascal/Documents/workspace-sts-3.9.3.RELEASE/HPP/src/main/resources/static/RestClient/src/app/components/user-form/
-  readXML() {
-    const xml = new XMLHttpRequest();
-    // tslint:disable-next-line:max-line-length
-    xml.open('GET', 'data.xml', false);
-    xml.send();
-    const xmlData = xml.responseText;
-    document.write(xmlData);
-  }
-
-  openDocument(){
-    
-      window.open('www.google.ch',null); 
-     
-      
-      
-  
-
-}
-
+/*
+* This function save the rights and navigate back to the listpatient (Dashboard)
+*/ 
 saveRight(){
   this._router.navigate(['/dashboard']);
         

@@ -13,7 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
+/*
+ * Attribut of HealthProfessional
+ */
 @Entity
 @Table(name = "tbl_Health_Professionals")
 public class HealthProfessional {
@@ -66,8 +68,11 @@ public class HealthProfessional {
 	@Column (name="email")
 	private String email;
 	
+	/*
+	 * Create a n:m relation to the patient
+	 */
 	@ManyToMany(fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Patient> users ;
+    private List<Patient> patients ;
 
 	@Column (name ="login")
 	private String login;
@@ -75,6 +80,9 @@ public class HealthProfessional {
 	@Column (name ="pass")
 	private String pass;
 	
+	/*
+	 * Constructor
+	 */
 	public HealthProfessional() {
 	}
 	
@@ -88,8 +96,6 @@ public class HealthProfessional {
 		this.pass = pass;
 	}
 	
-	
-
 	public HealthProfessional( String gln, String fname, String lname, String prefix, String adminGender,
 			String type, String title, String fach, String beruf, String addr, String nation, String language,
 			String gender, String email,  String login, String pass) {
@@ -111,7 +117,10 @@ public class HealthProfessional {
 		this.login = login;
 		this.pass = pass;
 	}
-
+	
+	/*
+	 * Getter and Setter of all Attribut 
+	 */	
 	public Long getId() {
 		return id;
 	}
@@ -233,11 +242,11 @@ public class HealthProfessional {
 	}
 
 	public List<Patient> getUsers() {
-		return users;
+		return patients;
 	}
 
 	public void setUsers(List<Patient> users) {
-		this.users = users;
+		this.patients = users;
 	}
 
 	public String getLogin() {
@@ -256,20 +265,16 @@ public class HealthProfessional {
 		this.pass = pass;
 	}
 	
-	
-
+	/*
+	 * Override the toString with the Attribut
+	 */
 	@Override
 	public String toString() {
 		return "HealthProfessional [id=" + id + ", gln=" + gln + ", fname=" + fname + ", lname=" + lname + ", prefix="
 				+ prefix + ", adminGender=" + adminGender + ", type=" + type + ", title=" + title + ", fach=" + fach
 				+ ", beruf=" + beruf + ", addr=" + addr + ", nation=" + nation + ", language=" + language + ", gender="
-				+ gender + ", email=" + email + ", users=" + users + ", login=" + login + ", pass=" + pass + "]";
+				+ gender + ", email=" + email + ", users=" + patients + ", login=" + login + ", pass=" + pass + "]";
 	}
-	
-	
-
-	
-	
 }
 
 

@@ -11,7 +11,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tbl_Documents")
 public class Document {
-	
+	/*
+	 * Attribut of Document
+	 */
 	@Id
 	@GeneratedValue
 	@Column (name="docId")
@@ -38,135 +40,15 @@ public class Document {
 	@Column (name="docURL")
 	private String doc_Url;
 
+	/*
+	 * Create a n:1 relation to the entity patient
+	 */
 	@ManyToOne
-	private Patient user;
-	
-	public Long getDoc_Id() {
-		return doc_Id;
-	}
-
-	
-
-
-	public String getDoc_Title() {
-		return doc_Title;
-	}
-
-
-
-
-	public void setDoc_Title(String doc_Title) {
-		this.doc_Title = doc_Title;
-	}
-
-
-
-
-	public String getDoc_Type() {
-		return doc_Type;
-	}
-
-
-
-
-	public void setDoc_Type(String doc_Type) {
-		this.doc_Type = doc_Type;
-	}
-
-
-
-
-	public String getDoc_Richtung() {
-		return doc_Richtung;
-	}
-
-
-
-
-	public void setDoc_Richtung(String doc_Richtung) {
-		this.doc_Richtung = doc_Richtung;
-	}
-
-
-
-
-	public String getDoc_Institution() {
-		return doc_Institution;
-	}
-
-
-
-
-	public void setDoc_Institution(String doc_Institution) {
-		this.doc_Institution = doc_Institution;
-	}
-
-
-
-
-	public String getDoc_Autor() {
-		return doc_Autor;
-	}
-
-
-
-
-	public void setDoc_Autor(String doc_Autor) {
-		this.doc_Autor = doc_Autor;
-	}
-
-
-
-
-	public String getDoc_Datum() {
-		return doc_Datum;
-	}
-
-
-
-
-	public void setDoc_Datum(String doc_Datum) {
-		this.doc_Datum = doc_Datum;
-	}
-
-
-
-
-	public String getDoc_Url() {
-		return doc_Url;
-	}
-
-
-
-
-	public void setDoc_Url(String doc_Url) {
-		this.doc_Url = doc_Url;
-	}
-
-
-
-
-	public void setDoc_Id(Long doc_Id) {
-		this.doc_Id = doc_Id;
-	}
-
-
-
-
-
-
-	@Override
-	public String toString() {
-		return "Document [doc_Id=" + doc_Id + ", doc_Title=" + doc_Title + ", doc_Type=" + doc_Type + ", doc_Richtung="
-				+ doc_Richtung + ", doc_Institution=" + doc_Institution + ", doc_Autor=" + doc_Autor + ", doc_Datum="
-				+ doc_Datum + ", doc_Url=" + doc_Url + ", user=" + user + "]";
-	}
-
-
-
-
-
-	
+	private Patient patient;
+		
+	/*
+	 * Constructor
+	 */
 	public Document( String doc_Title, String doc_Type, String doc_Richtung, String doc_Institution,
 			String doc_Autor, String doc_Datum, String doc_Url) {
 		super();
@@ -181,17 +63,83 @@ public class Document {
 		
 	}
 
-
-
-
-//	public User getUser() {
-//		return user;
-//	}
-//
-//	public void setUser(User user) {
-//		this.user = user;
-//	}
-
 	public Document() {}
+	
+	/*
+	 * Getter and Setter of all Attribut 
+	 */	
+	public Long getDoc_Id() {
+		return doc_Id;
+	}
+
+	public String getDoc_Title() {
+		return doc_Title;
+	}
+	
+	public void setDoc_Title(String doc_Title) {
+		this.doc_Title = doc_Title;
+	}
+
+	public String getDoc_Type() {
+		return doc_Type;
+	}
+	
+	public void setDoc_Type(String doc_Type) {
+		this.doc_Type = doc_Type;
+	}
+
+	public String getDoc_Richtung() {
+		return doc_Richtung;
+	}
+
+	public void setDoc_Richtung(String doc_Richtung) {
+		this.doc_Richtung = doc_Richtung;
+	}
+
+	public String getDoc_Institution() {
+		return doc_Institution;
+	}
+
+	public void setDoc_Institution(String doc_Institution) {
+		this.doc_Institution = doc_Institution;
+	}
+
+	public String getDoc_Autor() {
+		return doc_Autor;
+	}
+
+	public void setDoc_Autor(String doc_Autor) {
+		this.doc_Autor = doc_Autor;
+	}
+
+	public String getDoc_Datum() {
+		return doc_Datum;
+	}
+
+	public void setDoc_Datum(String doc_Datum) {
+		this.doc_Datum = doc_Datum;
+	}
+
+	public String getDoc_Url() {
+		return doc_Url;
+	}
+
+	public void setDoc_Url(String doc_Url) {
+		this.doc_Url = doc_Url;
+	}
+
+	public void setDoc_Id(Long doc_Id) {
+		this.doc_Id = doc_Id;
+	}
+	
+	/*
+	 * Override the toString with the Attribut
+	 */
+	@Override
+	public String toString() {
+		return "Document [doc_Id=" + doc_Id + ", doc_Title=" + doc_Title + ", doc_Type=" + doc_Type + ", doc_Richtung="
+				+ doc_Richtung + ", doc_Institution=" + doc_Institution + ", doc_Autor=" + doc_Autor + ", doc_Datum="
+				+ doc_Datum + ", doc_Url=" + doc_Url + ", user=" + patient + "]";
+	}
 
 }

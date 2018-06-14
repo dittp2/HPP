@@ -12,35 +12,45 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Embeddable
-public class UserHealthProfessionalId 
+public class PatientHealthProfessionalId 
 	implements Serializable{
- 
-    @Column(name = "user_id")
-    private Long userId;
+	
+	/*
+	 * Attribut of PatientHealth ID
+	 */
+    @Column(name = "patient_id")
+    private Long patientId;
  
     @Column(name = "health_id")
     private Long healthId;
+    
+    /*
+	 * Constructor
+	 */ 
+    private PatientHealthProfessionalId() {}
  
-    private UserHealthProfessionalId() {}
- 
-    public UserHealthProfessionalId(
-        Long userId, 
+    public PatientHealthProfessionalId(
+        Long patientId, 
         Long healthId) {
-        this.userId = userId;
+        this.patientId = patientId;
         this.healthId = healthId;
     }
  
-    //Getters omitted for brevity
- 
+    /*
+	 * HashCode
+	 */
     @Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((healthId == null) ? 0 : healthId.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + ((patientId == null) ? 0 : patientId.hashCode());
 		return result;
 	}
-
+    
+    /*
+	 * Equal
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -49,16 +59,16 @@ public class UserHealthProfessionalId
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UserHealthProfessionalId other = (UserHealthProfessionalId) obj;
+		PatientHealthProfessionalId other = (PatientHealthProfessionalId) obj;
 		if (healthId == null) {
 			if (other.healthId != null)
 				return false;
 		} else if (!healthId.equals(other.healthId))
 			return false;
-		if (userId == null) {
-			if (other.userId != null)
+		if (patientId == null) {
+			if (other.patientId != null)
 				return false;
-		} else if (!userId.equals(other.userId))
+		} else if (!patientId.equals(other.patientId))
 			return false;
 		return true;
 	}

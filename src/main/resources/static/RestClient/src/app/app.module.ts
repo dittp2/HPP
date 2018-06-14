@@ -7,7 +7,6 @@ import { PatientService } from './shared-service/patient.service';
 import { HealthProfessionalService } from './shared-service/healthprofessional.service';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { DocumentService } from './document.service';
 
 import { MatButtonModule, MatCardModule, MatToolbarModule, MatMenuModule, MatInputModule, MatIconModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -25,7 +24,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-//import {MatInputModule} from '@angular/material/input';
+
 
 const appRoutes: Routes = [
   {path: 'dashboard', component: ListpatientComponent},
@@ -61,7 +60,7 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatCheckboxModule
   ],
-  providers: [PatientService, HealthProfessionalService, DocumentService ],
+  providers: [PatientService, HealthProfessionalService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

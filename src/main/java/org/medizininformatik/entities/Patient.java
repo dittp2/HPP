@@ -17,9 +17,11 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "User")
+@Table(name = "Patient")
 public class Patient {
-	
+	/*
+	 * Attribut of Patient
+	 */
 	@Id
 	@GeneratedValue
 	@Column (name="id")
@@ -45,21 +47,46 @@ public class Patient {
 	
 	@Column (name="bdate")
     private Date bdate;
-    
+	/*
+	 * Create a 1:n relation to the Document
+	 */
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id", referencedColumnName = "id")
 	private List<Document> documents;
 	
+	/*
+	 * Create a n:m relation to the Healthprofessional
+	 */
 	@ManyToMany(fetch = FetchType.LAZY,
             cascade = {
                     CascadeType.PERSIST,
                     CascadeType.MERGE
                 })
-	 @JoinTable(name = "user_healthp",
-     joinColumns = { @JoinColumn(name = "user_id") },
+	 @JoinTable(name = "patient_healthp",
+     joinColumns = { @JoinColumn(name = "patient_id") },
      inverseJoinColumns = { @JoinColumn(name = "healthp_id") })
 	private List<HealthProfessional> healthp;
 	
+	/*
+	 * Constructor
+	 */
+	public Patient() {
+	}
+	
+	public Patient(String vnr, String prefix, String fname, String secfname, String lname, int gender, Date bdate ) {
+		this.vnr = vnr;
+		this.prefix = prefix;
+		this.fname = fname;
+		this.secfname = secfname;
+		this.lname = lname;
+		this.gender = gender;
+		this.bdate = bdate;
+	
+	}
+	
+	/*
+	 * Getter and Setter of all attribut
+	 */
 	public Long getId() {
 		return id;
 	}
@@ -99,37 +126,6 @@ public class Patient {
 		return bdate;
 	}
 	
-	public List<Document> getDocuments() {
-		return documents;
-	}
-	public void setDocuments(List<Document> documents) {
-		this.documents = documents;
-	}
-	public List<HealthProfessional> getHealthp() {
-		return healthp;
-	}
-	public void setHealthp(List<HealthProfessional> healthp) {
-		this.healthp = healthp;
-	}
-	public Patient(String vnr, String prefix, String fname, String secfname, String lname, int gender, Date bdate ) {
-		this.vnr = vnr;
-		this.prefix = prefix;
-		this.fname = fname;
-		this.secfname = secfname;
-		this.lname = lname;
-		this.gender = gender;
-		this.bdate = bdate;
-	
-	}
-	
-	
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", prefix=" + prefix + ", fname=" + fname + ", secfname=" + secfname + ", lname="
-				+ lname + ", gender=" + gender + ", bdate=" + bdate + "]";
-	}
-	public Patient() {
-	}
 	public String getPrefix() {
 		return prefix;
 	}
@@ -142,5 +138,26 @@ public class Patient {
 	public void setSecfname(String secfname) {
 		this.secfname = secfname;
 	}
-    
+	
+	public List<Document> getDocuments() {
+		return documents;
+	}
+	public void setDocuments(List<Document> documents) {
+		this.documents = documents;
+	}
+	public List<HealthProfessional> getHealthp() {
+		return healthp;
+	}
+	public void setHealthp(List<HealthProfessional> healthp) {
+		this.healthp = healthp;
+	}
+	
+	/*
+	 * Override the toString with the Attribut
+	 */	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", prefix=" + prefix + ", fname=" + fname + ", secfname=" + secfname + ", lname="
+				+ lname + ", gender=" + gender + ", bdate=" + bdate + "]";
+	}    
 }

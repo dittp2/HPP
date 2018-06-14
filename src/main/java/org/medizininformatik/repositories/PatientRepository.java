@@ -10,8 +10,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.cdi.Eager;
 import org.springframework.data.repository.query.Param;
 
-//public interface UserRepository  extends JpaRepository<User, Long>
-
+/*
+ * PatientRepository has Patient objects 
+ * There are function, which you can take as SELECT - Statements
+ */
 public interface PatientRepository  extends JpaRepository<Patient, Long>{
 
 	List<Patient> findByFnameIgnoreCase(String fname);
@@ -23,8 +25,9 @@ public interface PatientRepository  extends JpaRepository<Patient, Long>{
 	List<Patient> findByGender(int gender);
 	
 	List<Patient> findByHealthpId(Long healthp);
-	
-//	@Query("SELECT * FROM user WHERE right.healthp_id = :id")
-//	List<User> findByUserHealth(@Param("id") Long id);
 
 }
+
+
+
+

@@ -57,99 +57,13 @@ public class Controller {
 		return patientRepository.findAll();
 	}
 	
-	@GetMapping("/documents")
-	public List<Document> getDocuments() {
-		return documentRepository.findAll();
+	/*
+	 * Get all Patients, condition id, from the Repository (function as MPI)
+	 */
+	@GetMapping("/patient/{id}")
+	public Patient getPatient(@PathVariable Long id) {
+		return patientRepository.findOne(id);
 	}
-	
-	@GetMapping("/document/{id}")
-	public Document getDocument(@PathVariable Long id) {
-		return documentRepository.findOne(id);
-	}
-	
-//	@GetMapping("/rights")
-//	public List<Right> getRight() {
-//		return rightRepository.findAll();
-//	}
-//	
-//	@GetMapping("/rights/{healthp}")
-//	public List<Right> getRightuser(@PathVariable Long healthp) {
-//		
-//		List<Right> ls = new ArrayList<Right>();
-//		ls = rightRepository.findByHealthpId(healthp);
-//		
-//		return    ls;
-//		
-//			
-//	}
-//	
-//	@GetMapping("/rights/{healthp}")
-//	public List<User> getRightuser(@PathVariable Long healthp) {
-//		List<User> users = null;
-//		 List<Right> rights = rightRepository.findByHealthpId(healthp);
-//		
-//		 for(int i = 0; i< rights.size();i++) {
-//			 users.add(rights.get(i).getUser());
-//			}
-//		return users;
-//				
-//				
-//	}
-	
-
-
-@GetMapping(value = "/file", 
-produces = MediaType.APPLICATION_PDF_VALUE)
-public @ResponseBody byte[] getFile() throws IOException {
-    InputStream in = getClass()
-      .getResourceAsStream("Max_Muster_Kurzbericht.pdf");
-    return IOUtils.toByteArray(in);
-}
-
-
-/*
-@RequestMapping(value="/getpdf1", method=RequestMethod.GET)
-public ResponseEntity<byte[]> getPDF1() {
-
-
-    HttpHeaders headers = new HttpHeaders();
-
-    headers.setContentType(MediaType.parseMediaType("application/pdf"));
-    String filename = "Max_Muster_Kurzbericht.pdf";
-
-    headers.add("content-disposition", "inline;filename=" + filename);
-
-    headers.setContentDispositionFormData(filename, filename);
-    headers.setCacheControl("must-revalidate, post-check=0, pre-check=0");
-	ResponseEntity<byte[]> response = new ResponseEntity<byte[]>(pdf1Bytes , headers, HttpStatus.OK);
-    return response;
-}
-
-
-@RequestMapping("/handle")
-public ResponseEntity<String> handle() {
-  URI location = "Max_Muster_Kurzbericht.pdf";
-  return ResponseEntity.created(location).header("MyResponseHeader", "MyValue").body("Hello World");
-}
-
-@RequestMapping(value = "/image-byte-array", method = RequestMethod.GET)
-public @ResponseBody byte[] getImageAsByteArray() throws IOException {
-    InputStream in = servletContext.getResourceAsStream("/WEB-INF/images/image-example.jpg");
-    return IOUtils.toByteArray(in);
-}
-
-@RequestMapping(value = "/image-response-entity", method = RequestMethod.GET)
-public ResponseEntity<byte[]> getImageAsResponseEntity() {
-    HttpHeaders headers = new HttpHeaders();
-    InputStream in = servletContext.getResourceAsStream("image-example.jpg");
-    byte[] media = IOUtils.toByteArray(in);
-    headers.setCacheControl(CacheControl.noCache().getHeaderValue());
-     
-    ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
-    return responseEntity;
-}
-*/
-
 	
 	/*
 	 * Get all Patients, condition firstname and lastname , from the Repository (function as MPI)
@@ -174,40 +88,15 @@ public ResponseEntity<byte[]> getImageAsResponseEntity() {
 		if(fname.equals("")&&lname.equals("")){
 			patients = getPatients();
 		}
-		
-		
-//		;
-//		if(!gender.equals("")) {
-//			 			
-//			users = userRepository.findByGender(Integer.parseInt(gender));
-//		}
-		
+				
 		return patients;
 	}
 	
-	/*
-	 * Get all Patients, condition id, from the Repository (function as MPI)
-	 */
-	@GetMapping("/patient/{id}")
-	public Patient getUser(@PathVariable Long id) {
-		return patientRepository.findOne(id);
-	}
-	
 	@GetMapping("/patients/{healthp}")
-	public List<Patient> getUserHealth(@PathVariable Long healthp) {
-		
-		
+	public List<Patient> getUserHealth(@PathVariable Long healthp) {		
 		return patientRepository.findByHealthpId(healthp);
 	}
 	
-	
-
-	@DeleteMapping("/patient/{id}")
-	public boolean deleteUser(@PathVariable Long id) {
-		patientRepository.delete(id);
-		return true;
-	}
-
 	@PutMapping("/patient")
 	public Patient updateUser(@RequestBody Patient patient) {
 		return patientRepository.save(patient);
@@ -217,8 +106,41 @@ public ResponseEntity<byte[]> getImageAsResponseEntity() {
 	public Patient createUser(@RequestBody Patient patient) {
 		return patientRepository.save(patient);
 	}
+		
+	/*
+	 * Get all Documentinformation, condition id, from the DB 
+	 */
+	@GetMapping("/documents")
+	public List<Document> getDocuments() {
+		return documentRepository.findAll();
+	}
 	
+	@GetMapping("/document/{id}")
+	public Document getDocument(@PathVariable Long id) {
+		return documentRepository.findOne(id);
+	}
 	
+	/*
+	 * Get all right, condition healthp, from the DB 
+	 */
+//	@GetMapping("/rights")
+//	public List<Right> getRight() {
+//		return rightRepository.findAll();
+//	}
+//	
+//	@GetMapping("/rights/{healthp}")
+//	public List<User> getRightuser(@PathVariable Long healthp) {
+//		List<User> users = null;
+//		 List<Right> rights = rightRepository.findByHealthpId(healthp);
+//		
+//		 for(int i = 0; i< rights.size();i++) {
+//			 users.add(rights.get(i).getUser());
+//			}
+//		return users;
+//				
+//				
+//	}
+
 	/*
 	 * Get all Health Professional, condition id, from the hpDirectory (function as HPD)
 	 */
@@ -246,10 +168,5 @@ public ResponseEntity<byte[]> getImageAsResponseEntity() {
 	public HealthProfessional updateHealthProfessional(@RequestBody HealthProfessional healthProfessional) {
 		return hpDirectory.save(healthProfessional);
 	}
-	
-	
-
-	
-	
 	
 }
